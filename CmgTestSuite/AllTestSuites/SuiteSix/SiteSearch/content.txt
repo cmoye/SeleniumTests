@@ -1,0 +1,17 @@
+!|script|
+| user opens | http://${wsbradio}|
+| pause | 15000 |
+| user types | casey anthony | into | q |
+| user clicks and waits | //button[@type='submit'] |
+| pause | 3000 |
+| user | ensure | existence of text | Results 1 - 20 |
+| pause | 3000 |
+| user clicks and waits | link=Stories |
+| pause | 3000 |
+| user types | Remembering Royal Marshall | into | id_q |
+| pause | 3000 |
+| user clicks and waits | //x:div[1]/x:form/x:button |
+| pause | 3000 |
+| ensure | isElementPresent | link=Remembering Royal Marshall |
+| user | reject | existence of text | The page could not be found |
+| pause | 3000 |

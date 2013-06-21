@@ -1,0 +1,123 @@
+!|script|
+| user opens| http://www.test.ajc.com/admin/ |
+|$sTime=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm||
+|pause                 |21000                |
+| user types | sushil| into | id=id_username |
+|note| user types |pass@word1 | into | id=id_password |
+|note| user clicks and waits | css=input[type="submit"] |
+| user types | pass@word1 | into | id=id_password |
+| user clicks and waits | css=input[type="submit"] |
+| user clicks and waits |css=a[href='/admin/news/medleystory/add/']|
+|$sTimeUrl=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm|
+|pause                 |2200                |
+|$sTimeContent=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm|
+|pause                 |2000                |
+| user types | story_automation_$sTime | into | id=id_headline |
+|user types| ${largeContent} story_automation_$sTimeContent| into |id=tinymce|
+| user selects | label=www.test.ajc.com | from | id=id_originating_site |
+|pause                 |7500                |
+|$slinkUrl=            |getEval                                     |"${ajc}"                 |
+|pause                 |1000                |
+|addSelection;         |id_sites_from                               |label=$slinkUrl             |
+|pause                 |5000                |
+|user clicks           |link=Add |
+|pause                 |5000                |
+|note|user clicks           |css=a[href='javascript: (function(){SelectBox.move("id_sites_from","id_sites_to");})()']           |
+|pause                 |5000                |
+| user clicks | link=[1063] Business |
+| user clicks   | css=div.form-row.update_date > div > p.datetime > span.datetimeshortcuts > a |
+|pause                 |10000                |
+| user clicks   | xpath=(//a[contains(text(),'Now')])[2] |
+|pause                 |10000                |
+| user selects | label=Free| from | css=select#id_premium |
+|pause                 |5100                |
+| user selects | label=Photo | from | id=id_related_objects-relatedobject-from_type-from_id-0-to_type |
+|pause                 |15000                |
+|user clicks and waits|css=a[id='lookup_id_related_objects-relatedobject-from_type-from_id-0-to_id']>img|
+|selectWindow| !-Select photo | Medley-! |
+|user clicks|link=www.test.ajc.com|
+|pause| 25000|
+|user clicks| link=Live|
+|pause| 35000|
+|user clicks and waits| css=#result_list>tbody>tr.row1>th>a|
+|note| user types | 3045080 | into | id=id_related_objects-relatedobject-from_type-from_id-0-to_id |
+|pause                 |15000                |
+|selectWindow|null|
+| user selects | label=Story | from | id=id_related_objects-relatedobject-from_type-from_id-2-0-to_type |
+|pause                 |2000                |
+|user clicks and waits|css=a[id='lookup_id_related_objects-relatedobject-from_type-from_id-2-0-to_id']>img|
+|selectWindow| !-Select story | Medley-! |
+|user clicks|link=www.test.ajc.com|
+|pause| 15000|
+|user clicks| link=Live|
+|pause| 5000|
+|user clicks| css=#result_list>tbody>tr.row1>th>a|
+|pause                 |5000                |
+|selectWindow|null|
+| user clicks and waits | name=_continue |
+|$sURL=|getEval|this.browserbot.getCurrentWindow().location.href;|
+|$Id=|getEval| var url="$sURL"; var n; url=url.substring(0, (url.length -1)); n=url.lastIndexOf('/'); url=url.substring((n+1),url.length);|
+| user clicks and waits | css=a.viewsitelink|
+|pause| 20000|
+|selectWindow|!-story_automation_$sTime | www.test.ajc.com-!|
+| user | ensure | existence of text | story_automation_$sTime |
+|note|ensure|isElementPresent|css=div.cmLeadPhoto>a>img|
+|pause| 12000|
+|note| user clicks and waits | css=a[class='cmButton linkFullStory']|
+|note| user | reject | existence of text | story_automation_$sTimeContent|
+| user | ensure | existence of text | story_automation_$sTimeContent|
+|selectWindow|null|
+| user clicks and waits | css=a.viewsitelink |
+|pause| 5100|
+|selectWindow|!-story_automation_$sTime | www.test.ajc.com-!|
+| user | ensure | existence of text | story_automation_$sTime |
+|note|ensure|isElementPresent|css=div.cmLeadPhoto>a>img|
+|pause| 3000|
+|note| user clicks and waits | link=... Read More |
+| user | ensure | existence of text | story_automation_$sTimeContent|
+|pause             | 5000                |
+|selectWindow|null|
+|user clicks and waits|link=Dashboard|
+|user clicks and waits| css=a[href='/admin/grids/grid/']|
+|note| user types | AJC Atlanta Grid | into | css=input[id='searchbar'] |
+| user clicks| link=www.test.ajc.com|
+|pause| 20000|
+|note|pause|5000|
+|note| user clicks and waits | //table[@id='result_list']/tbody/tr[25]/th/a |
+| user clicks and waits | //table[@id='result_list']/tbody/tr[1]/th/a |
+|note| user clicks and waits | link=AJC Atlanta grid |
+| user clicks and waits | css=div.grid-body|
+|$sTime1=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm|
+| user types | AJC Atlanta grid $sTime1 | into | id=id_areas-0-heading |
+|user types| $Id |into|id=id_areas-0-object_id|
+|note| user selects | label=--- Select one --- | from | id=id_areas-0-content_type |
+|note| user selects | label=Story | from | id=id_areas-0-content_type |
+|note| user clicks | css=#lookup_id_areas-0-object_id > img[alt="Lookup"] |
+|note|pause | 40000|
+|note|selectWindow| !-Select story | Medley-!|
+|note|note| user types | story_automation_$sTime1 | into | css=input[id='searchbar'] |
+|note|note| user clicks and waits | css=input[value='Search']|
+|note|note| user clicks and waits| link=Live|
+|note|note|user clicks| //table[@id='result_list']/tbody/tr[35]/th/a|
+|note|user clicks| link=story_automation_$sTime|
+|note|pause| 40000|
+|note|selectWindow| null|
+| user clicks | css=#areas-0 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user clicks and waits | name=_continue |
+|$Content=| getText | //span[@class='content-link']/a|
+|pause|3000|
+|$Src=|getEval|var src;var counter=0;var a=this.browserbot.getCurrentWindow().document.getElementsByTagName('a'); for(i=0;i<a.length;i++){if(a[i].innerHTML.indexOf("View on")>=0){counter++; src=a[i].href; src=src+"?=$sTimeUrl"; break;}}||
+| user opens| $Src |
+|note| user clicks | link=View on site |
+|pause| 60000|
+|note|selectWindow|null|
+| user | ensure | existence of text | AJC Atlanta grid $sTime1 |
+| user | ensure | existence of text | $Content|
+|pause| 9000|
+| user | ensure | existence of text | $Content|
+| user | ensure | existence of text | story_automation|
+| $Content=|getText|css=div.cmTeaseSummary|
+|note|$ContentLength=|getEval| var a=this.browserbot.getUserWindow().document.getElementById('story-text').innerHTML.length;|
+|note|$ContentLength=|getEval| var a=this.browserbot.getUserWindow().document.getElementById('story-text').value.length;|
+| $ContentLength=|getEval|var a='$Content'; a=a.replace('More success stories','');a=a.length-3;|
+|check|getEval|var Diff="False"; var Counter="$ContentLength"; if(Counter < 450) {Diff= "True";}else{Diff= "False";};var Value=Diff;|True|

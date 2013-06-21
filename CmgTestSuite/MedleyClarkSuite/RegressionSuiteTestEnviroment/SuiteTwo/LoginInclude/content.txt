@@ -1,0 +1,6 @@
+!|script|
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+

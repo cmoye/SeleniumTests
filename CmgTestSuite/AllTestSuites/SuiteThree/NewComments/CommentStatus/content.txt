@@ -1,0 +1,48 @@
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | css=a[href='/admin/news/medleystory/'] |
+| user clicks and waits | link=Live |
+| user clicks and waits | css=table#result_list>tbody>tr.row1>th>a |
+| user clicks | id=id_comment_status |
+| user selects | label=Enabled | from | id=id_comment_status |
+| user clicks | css=option[value="4"] |
+| user clicks and waits | name=_continue |
+| pause | 60000 |
+| user clicks and waits | link=View on site |
+| selectWindow; | _blank |
+| close; |
+| selectWindow; | null |
+| user clicks and waits | link=View on site |
+| selectWindow; | _blank |
+| user | ensure | existence of text | If you would like to post a comment please |
+| close; |
+| selectWindow; | null |
+| user selects | label=Frozen | from | id=id_comment_status |
+| user clicks and waits | name=_continue |
+| pause | 60000 |
+| user clicks and waits | link=View on site |
+| selectWindow; | _blank |
+| close; |
+| selectWindow; | null |
+| user clicks and waits | link=View on site |
+| selectWindow; | _blank |
+| user | reject | existence of text | If you would like to post a comment please Sign in or Register |
+| user | ensure | existence of text | Comments are no longer being accepted. |
+| close; |
+| selectWindow; | null |
+| user selects | label=Disabled | from | id=id_comment_status |
+| user clicks and waits | name=_continue |
+| pause | 60000 |
+| user clicks and waits | link=View on site |
+| selectWindow; | _blank |
+| close; |
+| selectWindow; | null |
+| user clicks and waits | link=View on site |
+| selectWindow; | _blank |
+| user | reject | existence of text | Comments are no longer being accepted. |
+| reject | isElementPresent | css=div#cmComments |
+| close; |
+| selectWindow; | null |

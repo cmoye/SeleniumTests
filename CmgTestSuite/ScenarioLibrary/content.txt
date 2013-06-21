@@ -1,0 +1,155 @@
+#!| scenario | Search google for|keyWords|
+#| open | ${baseURL} |
+#| type; | q | @keyWords |
+#| click |name=btnG|up to|5|times|
+#|waitForTextPresent|glob:About*results (* seconds)|
+
+#!|scenario|The page should contain at least|minimumNumberOfLinks|link(s) containing the phrase|thePhrase|
+#|check|getXpathCount|//a[contains(., '@thePhrase')]|>=@minimumNumberOfLinks|
+
+!****> | user opens | URL |
+!| scenario | user opens | URL |
+| open | @URL |
+
+****!
+
+!****> | user clicks | object |
+!| scenario | user clicks | object |
+| click | @object |
+
+****!
+
+!****> | user clicks and waits | button|
+!| scenario | user clicks and waits | button |
+| clickAndWait | @button |
+
+****!
+
+!****> | user clicks at | item | within | object |
+!| scenario | user clicks at | item | within | object |
+| clickAt; | @object | @item |
+
+****!
+
+!****> | user types | text | into | field |
+!| scenario | user types | text | into | field |
+| type; | @field | @text |
+
+****!
+
+!****> | user selects | item | from | list |
+!| scenario | user selects | item | from | list |
+| select; | @list | @item |
+
+****!
+
+!****> | user selects and waits | item | from | list |
+!| scenario | user selects and waits | item | from | list |
+| selectAndWait; | @list | @item |
+
+****!
+
+!****> | user | verifies | that list | ddList | displays | option |
+!| scenario | user | verifies | that list | ddList | displays | option |
+| @verifies | verifyOption; | @ddList | @option |
+
+****!
+
+!****> | user clicks the | brochureButton | for | property |
+!| scenario | user clicks the | brochureButton | for | property |
+| openBrochure; | @brochureButton | @property |
+
+****!
+
+!****> | user waits for Pop Up | windowName | for | milliseconds |
+!| scenario | user waits for Pop Up | windowName | for | milliseconds |
+| waitForPopUp; | @windowName | @milliseconds |
+
+****!
+
+!****> | user | verifies | that | object | has source | attributes |
+!| scenario | user | verifies | that | object | has source | attributes |
+| @verifies | verifySrc; | @object | @attributes |
+
+
+****!
+
+!****> | user | verifies | existence of | element |
+!| scenario | user | verifies | existence of | element |
+| @verifies | isElementPresent | @element |
+
+
+****!
+
+!****> | user | ensure | existence of | element | and sends email if not found |
+!| scenario | user | verifies | existence of | element | and sends email if not found |
+| @verifies | isElementMissingSendMail | @element |
+
+
+****!
+
+!****> | user | verifies | visibility of | object |
+!| scenario | user | verifies | visibility of | object |
+| @verifies | verifyVisibility | @object |
+
+****!
+
+!****> | user | verifies | that | object | has style | attributes |
+!| scenario | user | verifies | that | object | has style | attributes |
+| @verifies | verifyStyle; | @object | @attributes |
+
+****!
+
+!****> | user | verifies | that title is | title |
+!| scenario | user | verifies | that title is | title |
+| @verifies | getTitle | @title |
+
+****!
+
+!****> | user | verifies | existence of text | txt |
+!| scenario | user | verifies | existence of text | txt |
+| @verifies | isTextPresent | @txt |
+
+****!
+
+!****> | user | verifies | that | object | has | txt |
+!| scenario | user | verifies | that | object | has | txt |
+| @verifies | verifyText; | @object | @txt |
+
+****!
+
+!****> | user | verifies | that | object | includes text | txt |
+!| scenario | user | verifies | that | object | includes text | txt |
+| @verifies | verifyPartialText; | @object | @txt |
+
+****!
+
+!****> | user | verifies | that | data string | contains substring | txt |
+!| scenario | user | verifies | that | data string | contains substring | txt |
+| @verifies | containsSubstring; | @string | @substring |
+
+****!
+
+!****> | user waits for text | txt |
+!| scenario | user waits for text | txt |
+| waitForTextPresent | @txt |
+
+****!
+
+!****> | user | verifies | existence of traffic | http |
+!| scenario | user | verifies | existence of traffic | http |
+| @verifies | checkTraffic | @http |
+
+****!
+
+!****> | user | verifies | that | trafficType | contains | tag |
+!| scenario | user | verifies | that | trafficType | contains | tag |
+| @verifies | verifyTags; | @tag | @trafficType |
+
+****!
+
+!****> | user | verifies | web trends | wtTags |
+!| scenario | user | verifies | web trends | wtTags |
+| @verifies | verifyWtTags | @wtTags |
+
+****!

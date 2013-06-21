@@ -1,0 +1,26 @@
+!| script |
+| user opens | https://jira.cmgdigital.com/secure/QuickSearch.jspa?searchString=Fitnesse |
+| user clicks and waits | link=Log In |
+| user types | imelnikov | into | //input[@id='usernameinput'] |
+| user types | pass@word1 | into | //input[@id='os_password'] |
+| user clicks and waits | //input[@id='login'] |
+| user clicks | //a[@id='find_link'] |
+| pause | 9000 |
+| user types | Fitnesse | into | //input[@id='query'] |
+| user selects | helpdesk | from | //select[@id='pid'] |
+| pause | 5000 |
+| user clicks and waits | //input[@id='searchButton'] |
+| pause | 15000 |
+| user | ensure | existence of | link=! Fitnesse Automation Test |
+| user clicks and waits | link=! Fitnesse Automation Test |
+| user clicks | //a[@id='opsbar-operations_more'] |
+| user clicks and waits | //a[@id='move-issue'] |
+| user selects | Help Desk Transition | from | //select[@id='project'] |
+| pause | 5000 |
+| user selects | Yellow | from | //select[@id='issuetype'] |
+| user clicks and waits | //input[@id='next_submit'] |
+| pause | 5000 |
+| user clicks and waits | //input[@id='next_submit'] |
+| pause | 15000 |
+| user clicks and waits | //input[@id='move_submit'] |
+| pause | 15000 |

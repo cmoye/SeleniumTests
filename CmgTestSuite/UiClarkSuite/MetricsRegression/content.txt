@@ -1,0 +1,4 @@
+
+This Suite verifies the specs contained in the following ticket: https://jira.cmgdigital.com/browse/CMSAUTO-2
+
+!contents -R2 -g -p -f -h

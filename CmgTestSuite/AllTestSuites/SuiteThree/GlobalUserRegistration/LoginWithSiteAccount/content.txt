@@ -1,0 +1,105 @@
+!| script |
+|note |Assumption : User already registerd in http://www.test.newstalkradiowhio.com with email-id twittertest8@rediffmail.com .|
+|note |Scenario Covered : Step 1# Open the application http://www.test.newstalkradiowhio.com and navigate to Sign in page, and  Sign in with site login. |
+|note |Step 2# Verify that user is able to sign in http://www.test.newstalkradiowhio.com  |
+|note |Step 3# Click on 'Member Center' and click on 'Change Password' and verify user is able to change his password. |
+|note |Step 4# Navigate to 'Subscriptions'Tab and verify user is able to mange Manage Email Subscriptions by doing  subscribe/unsubscribe  |
+|note |Step 5# Navigate to 'Favorites'Tab and verify text 'Your Favorites' |
+|note |Step 6# Navigate to 'Account Information'Tab and verify that User is able to update basic profile eg. .CmgTestSuite.MedleyClarkSuite.RegressionSuiteTestEnviroment.SuiteThree.GlobalUserRegistration.FirstName , .CmgTestSuite.MedleyClarkSuite.RegressionSuiteTestEnviroment.SuiteThree.GlobalUserRegistration.LastName and date of birth , and on clicking 'save' getting confirmation message 'Your information has been saved & your account has been updated!'|
+|note |Step 7# Navigate to 'Public Profile'Tab and verify that User is able to update in About Me Section eg. about me , and on clicking 'save' getting confirmation message 'Your information has been saved & your account has been updated!' |
+|note |Step 8# Verifying that user is able to view and edit public profile |
+|user opens |http://${ohioradio}/ |
+|pause |10000 |
+|user clicks |link=Sign In or Register |
+|pause |15000 |
+|user waits for text   |Sign In Using Your Social Account |
+|user types |twittertest8@rediffmail.com |into |css=input[name='username'] |
+|user types |atlanta |into |css=input#id_password |
+|user clicks and waits |css=input[value='Sign in']  |
+|pause |10000 |
+|user waits for text   |Member center |
+|user clicks |link=Member Center |
+|pause |10000 |
+|user waits for text   |Account Information  |
+|user clicks |link=My Account |
+|pause |10000 |
+|user clicks |link=Subscriptions |
+|pause |10000 |
+|user |ensure |existence of text |Manage Email Subscriptions |
+|user clicks |css=input[name='subscribe_8'] |
+|user clicks and waits |css=input[value='Update'] |
+|pause |10000 |
+|user |ensure |existence of text  |Current Subscriptions  |
+|user clicks |css=input[name='unsubscribe_8'] |
+|user clicks and waits |css=input[value='Update'] |
+|pause |10000 |
+|user |ensure |existence of text |Not Subscribed  |
+|pause |10000 |
+|user clicks |link=Favorites |
+|pause |10000 |
+|user |ensure |existence of text |Your Favorites  |
+|pause |10000 |
+|user clicks |link=My Account |
+|pause |10000 |
+|user clicks |link=Account Information |
+|pause |10000 |
+|user |ensure |existence of text |My Basic Profile |
+|pause |10000 |
+|user types |user |into |css=input[name='first_name'] |
+|user types |New |into |css=input[name='last_name'] |
+|user selects and waits|January |from     |css=select[name='date_of_birth_month'] |
+|user selects and waits|12 |from |css=select[name='date_of_birth_day'] |
+|user selects and waits|1965 |from |css=select[name='date_of_birth_year'] |
+|user clicks and waits |css=input[value='Save'] |
+|pause |10000 |
+|user |ensure |existence of text |Your information has been saved & your account has been updated! |
+|user clicks |link=Public Profile |
+|pause |10000 |
+|user |ensure |existence of text |View Your Public Profile |
+|user types |I am a tester. |into |css=textarea[name='bio'] |
+|user clicks and waits |css=input[value='Save'] |
+|pause |10000 |
+|user |ensure |existence of text |Your information has been saved & your account has been updated! |
+|user clicks |link=View My Public Profile |
+|pause |10000 |
+|user |ensure |existence of text |Edit My Public Profile |
+|user clicks |link=Edit My Public Profile |
+|pause |10000 |
+| user |ensure |existence of text |View Your Public Profile |
+|user types  |I am Passionate about Quality. |into |css=textarea[name='bio'] |
+|user clicks |css=input[name='gender_status'] |
+|user clicks |css=input[name='bio_status'] |
+|user clicks and waits |css=input[value='Save'] |
+|pause |10000 |
+|user |ensure |existence of text |Your information has been saved & your account has been updated! |
+|user clicks |link=View My Public Profile  |
+|pause |10000 |
+|user |ensure |existence of text |Edit My Public Profile |
+|user clicks |link=Edit My Public Profile |
+|pause |10000 |
+|user clicks |link=My Account                                                                                                                                                                                                                                                      |
+|pause |10000 |
+|user clicks |link=Change Password |
+|pause |10000 |
+|user |ensure |existence of text |Change Password |
+|user types  |atlanta |into |css=input[name='old_password'] |
+|user types  |newatlanta |into |css=input[name='new_password1'] |
+|user types  |newatlanta |into |css=input[name='new_password2'] |
+|user clicks and waits |css=input[value='Save'] |
+|pause |20000 |
+|user |ensure |existence of text |Password change successful |
+|note |Revert back the password |
+|pause |10000 |
+|user clicks |link=My Account |
+|pause |10000 |
+|user clicks |link=Change Password |
+|pause |10000 |
+|user |ensure |existence of text |Change Password |
+|user types |newatlanta |into |css=input[name='old_password'] |
+|user types |atlanta  |into |css=input[name='new_password1'] |
+|user types |atlanta  |into |css=input[name='new_password2'] |
+|user clicks and waits |css=input[value='Save']                                                                                                                                                                                                                                               |
+|pause |20000 |
+|user |ensure |existence of text |Password change successful |
+| user | reject | existence of text | The page could not be found |
+|user clicks |link=Sign Out  |

@@ -1,0 +1,77 @@
+!| script |
+|user opens |http://www.test.wsbradio.com/ |
+|pause |15000 |
+|user clicks | css=div#cmJanrainAuthLinks>p.cmUserAnonymous>a.cmOpenJanrainModal  |
+|pause |15000  |
+|note|user waits for text |Sign In Using Your Social Account  |
+|user clicks and waits | css=#janrain-facebook>a.janrain-provider-icon-32 |
+|pause |15000 |
+|selectWindow|!-Log In | Facebook-!|
+|pause|5000|
+|user types |balamn11@gmail.com |into | css=input[name="email"]  |
+|user types |cox@atl|into | css=input[name="pass"] |
+|user clicks and waits | css=input[value='Log In'] |
+|pause |15000 |
+|selectWindow|null|
+|pause|5000|
+|note|user opens  |http://${pbp}/ |
+|note|pause|30000|
+|note|user waits for text |Member center |
+|user clicks |link=Member Center |
+|pause  |10000 |
+|note|user waits for text |Account Information |
+|note|pause |10000  |
+|user clicks | link=Subscriptions |
+|pause |10000  |
+|user  |ensure |existence of text | Manage Email Subscriptions  |
+|user clicks |css=input[name='subscribe_27'] |
+|user clicks and waits |css=input[value='Update'] |
+|pause |10000  |
+|user  |ensure |existence of text |Current Subscriptions |
+|user clicks |css=input[name='unsubscribe_27'] |
+|user clicks and waits |css=input[value='Update'] |
+|pause |10000  |
+|user  |ensure |existence of text |Not Subscribed |
+|pause |10000  |
+|note|user clicks |link=Favorites |
+|note|pause |10000  |
+|note|user  |ensure |existence of text |Your Favorites |
+|note|pause |10000  |
+|note|user clicks |link=My Account  |
+|note|pause |10000  |
+|note|user clicks |link=Account Information |
+|note|pause |10000  |
+|note|user  |ensure |existence of text |My Basic Profile |
+|note|pause |10000 |
+|note|user types |user |into |css=input[name='first_name'] |
+|note|user types |New |into |css=input[name='last_name'] |
+|note|user selects and waits|January |from |css=select[name='date_of_birth_month'] |
+|note|user selects and waits|12 |from  |css=select[name='date_of_birth_day']  |
+|note|user selects and waits|1965 |from |css=select[name='date_of_birth_year']  |
+|note|user clicks and waits |css=input[value='Save']   |
+|note|pause |10000  |
+|note|user  |ensure |existence of text  |Your information has been saved & your account has been updated!  |
+|note|user clicks and waits |link=Public Profile  |
+|note|pause |10000  |
+|note|user  |ensure |existence of text  |View Your Public Profile  |
+|note|user types |I am a tester.  |into |css=textarea[name='bio']  |
+|note|user clicks and waits |css=input[value='Save']  |
+|note|pause |10000  |
+|note|user  |ensure |existence of text |Your information has been saved & your account has been updated!  |
+|note|user clicks |link=View My Public Profile |
+|note|pause |10000  |
+|note|user  |ensure |existence of text |Edit My Public Profile  |
+|note|user clicks |link=Edit My Public Profile |
+|note|pause |10000  |
+|note|user  |ensure |existence of text |View Your Public Profile  |
+|note|user types |I am Passionate about Quality. |into |css=textarea[name='bio']   |
+|note|user clicks |css=input[name='gender_status'] |
+|note|user clicks |css=input[name='bio_status']    |
+|note|user clicks and waits |css=input[value='Save'] |
+|note|pause |10000  |
+|note|user  |ensure |existence of text |Your information has been saved & your account has been updated! |
+|note|user clicks |link=View My Public Profile  |
+|note|pause |1000  |
+|user clicks|link=Sign Out|
+|pause|10000|
+| user | reject | existence of text | The page could not be found |

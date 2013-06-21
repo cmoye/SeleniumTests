@@ -1,0 +1,13 @@
+!| script |
+!|webfixture.WebTest|
+| open | ${baseURL} |
+| pause | 3000 |
+| clickAndWait | //a[@href='/s/about-clark/']. |
+#| clickAndWait | //a[@href='/s/community/'] |
+#| clickAndWait | //a[@href='/s/help-advice/'] |
+#| clickAndWait | //a[@href='/s/clark-bargains/'] |
+#| clickAndWait | //a[@href='/s/clarks-topics/'] |
+#| clickAndWait | //a[@href='/s/show-notes/'] |
+#| clickAndWait | //a[@href='/s/radio-tv/'] |
+#| clickAndWait | //a[@href='/s/clark-on-demand/'] |
+#| clickAndWait | //a[@href='/'] |

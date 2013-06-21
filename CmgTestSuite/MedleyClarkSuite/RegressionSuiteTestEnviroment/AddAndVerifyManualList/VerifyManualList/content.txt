@@ -1,0 +1,19 @@
+!|script|
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | link=Manual lists |
+| user clicks and waits | link=Creation date |
+| user clicks and waits | link=Creation date |
+| user clicks and waits | link=This is an automated test of the MANUAL list input |
+| user clicks | ${viewOnSiteBttn} |
+| pause | 10000 |
+| selectWindow |  !-This is an automated test of the MANUAL list input | test.www.clarkhoward.com-! |
+| user | ensure | existence of text | This is an automated test of the MANUAL list input |
+| user | ensure | existence of text | 3 items |
+| user | ensure | existence of | //div[@id='']/p[1] |
+| user | ensure | existence of | govna piroga | and sends email if not found |
+
+
+#| ensure | isElementMissingSendMail | govna piroga |

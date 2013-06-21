@@ -1,0 +1,26 @@
+!|script|
+|user opens | http://www.${env}.wpxi.com/admin/ |
+|user types |cmgtester7|into |//input[@id='id_username']  |
+|user types |cmgtest3r |into |//input[@id='id_password']  |
+|user clicks and waits|//input[@value='Log in'] | 	
+|user clicks and waits| css=a[href='/admin/list_o_rama/automaticlist/add/'] | 
+|$getUniqueString1=|getUniqueString;|	
+|user types| $getUniqueString1| into|id=id_admin_name |
+|$getUniqueString2=|getUniqueString;|
+|user types| $getUniqueString2| into|id=id_title |
+|user selects|label=www.${env}.wpxi.com| from|id=id_originating_site |
+|user clicks|link=[209] AP| 	
+|note|user types|209|into|id=id_primary_category|
+|user types|pa|into|id=id_search_sites_input|
+|addSelection;|id=id_search_sites_from |label=www.${env}.wpxi.com|
+|user clicks|css=#id_search_sites_from > option[value="3000"] |	
+|addSelection;|id=id_categories_from|label=/AP|
+|user clicks| css=option[value="209"] |	
+|addSelection;|	id=id_categories_from|label=/AP/Aerospace|
+|user clicks|css=option[value="292"] |	
+|addSelection;|id=id_ctypes_from|label=Story|
+|user clicks|css=a[href='javascript: (function(){ SelectBox.move("id_ctypes_from","id_ctypes_to");})()']|
+|user clicks and waits|	name=_continue |	
+|user clicks|link=View on site |
+|user| ensure| existence of text |$getUniqueString2 |	
+|ensure|isElementPresent|css=h1 |

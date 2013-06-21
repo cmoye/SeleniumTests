@@ -1,0 +1,11 @@
+!|script|
+| user opens | http://${clark}/ |
+| pause | 30000|
+|$TRAFFIC= | captureNetworkTraffic | plain |
+|containsSubstring; | $TRAFFIC | ad.afy11.net |
+| user | reject | existence of text | The page could not be found |
+|note   | ensure|isElementPresent|css=div#RP01.cmAd>div>a[href*='ad.afy11.net']>img[src*='im.afy11.net']   |
+|note   | ensureisElementPresent|css=div#RP02.cmAd>div>a[href*='ad.afy11.net']>img[src*='im.afy11.net']   |
+
+
+

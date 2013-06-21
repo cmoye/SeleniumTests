@@ -1,0 +1,15 @@
+!|script|
+|open|http://${clark}/admin/|
+|user types 	|cmgtester |	into |	//input[@name='username']|
+|user types 	|cmgtest3r 	|into 	|//input[@id='id_password']|
+|user clicks and waits |	//input[@type='submit']|
+|user clicks and waits |	//div[@id='events']/table/tbody/tr[3]/td[1]/a|
+|user types 	|automation event |	into 	|id_title|
+|user types |	16528 |	into 	|id_place|
+|user selects 	|label=${wsbradio} |	from |	id_originating_site|
+|pause |	1000|
+|user types 	|408 	|into |	id_primary_category|
+|user clicks |	link=Today|
+|user clicks and waits| 	_continue|
+|user |ensure |	existence of text |	successful |
+#| pause | 500000 |

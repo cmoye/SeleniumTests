@@ -1,0 +1,61 @@
+!|script|
+|user opens |http://${foxreno}/admin |
+|pause |10000 |
+|user types | cmgtester7 |into |//input[@id='id_username'] |
+|user types |cmgtest3r  |into  |//input[@id='id_password'] |
+|user clicks and waits|//input[@value='Log in'] |
+| user opens | http://${foxreno}/admin/list_o_rama/automaticlist/ |
+| user types | national | into | searchbar |
+| user clicks and waits | css=div > input[type=submit] |
+| user clicks and waits | link=Reno, NV |
+| user clicks and waits | link=Latest World News |
+| pause | 5000 |
+| user types | 1 | into | id_days |
+| user clicks and waits | _continue |
+| pause | 7000 |
+| user clicks | link=View on site |
+| pause | 10000 |
+| selectWindow | !-Latest World News |-! ${foxreno} |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 5000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 5000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 5000 |
+| user | ensure | existence of text | Updated |
+| pause | 9000 |
+|$Today=  |getEval |var now=new Date();var month=new Array(12); month[0]="Jan."; month[1]="Feb.";month[2]="March";month[3]="April"; month[4]="May";month[5]="June"; month[6]="July";month[7]="Aug.";month[8]="Sept.";month[9]="Oct."; month[10]="Nov."; month[11]="Dec."; month[now.getMonth()]+" "+ now.getDate()+", "+ now.getFullYear();|
+| pause | 9000 |
+| user  | ensure | existence of text | $Today|
+| pause | 9000 |
+| close |
+| selectWindow | null |
+| pause | 2000 |
+| user types | test | into | id_search_query_0 |
+| user clicks and waits | _continue |
+| pause | 10000 |
+| user clicks | link=View on site |
+| pause | 2000 |
+| selectWindow | !-Latest World News |-! ${foxreno} |
+| pause | 10000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 28000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 18000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 18000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 25000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 2000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 25000 |
+| user opens | http://${foxreno}/list/ap/international/more-world-news-headlines/aCXC/ |
+| pause | 25000 |
+| user | ensure | existence of text | Updated |
+| user | reject | existence of text | The page could not be found |
+| selectWindow | null |
+| pause | 2000 |
+| user types | 0 | into | id_days |
+| user types |  | into | id_search_query_0 |
+| user clicks and waits | _continue |

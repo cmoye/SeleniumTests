@@ -1,0 +1,178 @@
+!|script|
+| user opens | http://${wsbtv}/admin/ |
+| user types | cmgtester5 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | css=a[href='/admin/grids/grid/add/'] |
+| user selects | ${wsbtv} | from | ${selectOriginatingSite} |
+| user types | automated test Internal content | into | ${nameField} |
+| user clicks|//div[@onclick="grids.cell_clicked('-1')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Video | into | //input[@id='id_areas-0-heading'] |
+| user selects | 100% | from | ${gridWidth} |
+| user selects | Video | from |//select[@id='id_areas-0-content_type'] |
+| user selects | Active Video | from | //select[@id='id_areas-0-display_class'] |
+| user clicks | css=img[alt="Lookup"] |
+| user waits for Pop Up | !-Select video | Medley-! | for | 15000 |
+| pause | 5000 |
+| selectWindow |  !-Select video | Medley-! |
+| pause | 5000 |
+| user clicks and waits | link=${wsbtv} |
+| user clicks and waits | link=Live |
+| user clicks | ${firstObjectOnListLink} |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-0']/div/div[3]/input|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-2')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Blog | into | //input[@id='id_areas-1-heading'] |
+| user selects | 70% | from | //select[contains(@id, '1-width')] |
+| user selects | Blog | from | //select[contains(@id,  '1-content_type')] |
+| user selects | Left Photo | from | //select[@id='id_areas-1-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-1-object_id'] |
+| user waits for Pop Up | !-Select blog | Medley-! | for | 15000 |
+| pause | 5000 |
+| selectWindow |  !-Select blog | Medley-! |
+| pause | 5000 |
+| user clicks and waits | link=Public |
+| user clicks | ${firstObjectOnListLink} |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-1']/div/div[3]/input|
+|pause|3000|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-3')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Blog Entry | into | //input[@id='id_areas-2-heading'] |
+| user selects | 30% | from | //select[contains(@id, '2-width')] |
+| user selects | Blog Entry | from | //select[contains(@id,  '2-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-2-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-2-object_id'] |
+| user waits for Pop Up | !-Select blog entry | Medley-! | for | 15000 |
+| pause | 15000 |
+| selectWindow |  !-Select blog entry | Medley-! |
+| pause | 15000 |
+| user clicks and waits | link=2010 |
+| user clicks and waits | ${firstObjectOnListLink} |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-2']/div/div[3]/input|
+|pause|3000|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-4')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Poll | into | //input[@id='id_areas-3-heading'] |
+| user selects | 50% | from | //select[contains(@id, '3-width')] |
+| user selects | Poll | from | //select[contains(@id,  '3-content_type')] |
+| user selects | Left Photo | from | //select[@id='id_areas-3-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-3-object_id'] |
+| user waits for Pop Up | !-Select poll | Medley-! | for | 15000 |
+|pause|15000|
+| selectWindow |  !-Select poll | Medley-! |
+| user clicks and waits | link=${wsbtv} |
+| user clicks | ${firstObjectOnListLink} |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-3']/div/div[3]/input|
+|pause|3000|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-5')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Photo | into | //input[@id='id_areas-4-heading'] |
+| user selects | 50% | from | //select[contains(@id, '4-width')] |
+| user selects | Photo | from | //select[contains(@id,  '4-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-4-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-4-object_id'] |
+| user waits for Pop Up | !-Select photo | Medley-! | for | 15000 |
+|pause | 15000 |
+| selectWindow |  !-Select photo | Medley-! |
+|pause | 10000 |
+| user clicks and waits | link=Any Date |
+| user clicks and waits | link=${wsbtv} |
+| user clicks | ${firstObjectOnListLink} |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-4']/div/div[3]/input|
+|pause|3000|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-6')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Gallery | into | //input[@id='id_areas-5-heading'] |
+| user selects | 70% | from | //select[contains(@id, '5-width')] |
+| user selects | Gallery | from | //select[contains(@id,  '5-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-5-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-5-object_id'] |
+| user waits for Pop Up | !-Select gallery | Medley-! | for | 15000 |
+| selectWindow |  !-Select gallery | Medley-! |
+| user clicks and waits | link=${wsbtv} |
+| user clicks | ${firstObjectOnListLink} |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-5']/div/div[3]/input|
+|pause|3000|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-7')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Flatpage | into | //input[@id='id_areas-6-heading'] |
+| user selects | 100% | from | //select[contains(@id, '6-width')] |
+| user selects | Flatpage | from | //select[contains(@id,  '6-content_type')] |
+| user selects | Left Photo | from | //select[@id='id_areas-6-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-6-object_id'] |
+| user waits for Pop Up | !-Select flatpage | Medley-! | for | 15000 |
+| selectWindow |  !-Select flatpage | Medley-! |
+| user clicks and waits | link=${wsbtv} |
+| user clicks | link=/about-us/speakersbureau/ |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-6']/div/div[3]/input|
+|pause|3000|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-8')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Traffic Tease | into | //input[@id='id_areas-7-heading'] |
+| user selects | 100% | from | //select[contains(@id, '7-width')] |
+| user selects | Special Tease | from | //select[contains(@id,  '7-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-7-object_id'] |
+| user waits for Pop Up | !-Select special tease | Medley-! | for | 15000 |
+| selectWindow |  !-Select special tease | Medley-! |
+| user clicks and waits | link=All |
+| user types | Traffic Map | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| user clicks and waits | link=Traffic Map |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-7']/div/div[3]/input|
+|pause|3000|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-9')"]|
+| pause | 3000 |
+| user types | auto test grid heading name Story | into | //input[@id='id_areas-8-heading'] |
+| user selects | 100% | from | //select[contains(@id, '8-width')] |
+| user selects | Story | from | //select[contains(@id,  '8-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-8-object_id'] |
+| user waits for Pop Up | !-Select story | Medley-! | for | 15000 |
+| pause | 15000 |
+| selectWindow |  !-Select story | Medley-! |
+| pause | 10000 |
+| user clicks and waits | link=All |
+| pause | 8000 |
+| user types | This is an automated test of the story input | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| user clicks and waits | link=This is an automated test of the story input |
+| pause| 3000 |
+| selectWindow | null |
+|user clicks |//div[@id='areas-8']/div/div[3]/input|
+|pause|3000|
+| user clicks and waits | _continue |
+| pause | 30000 |
+| user | ensure | existence of text | automated test Internal content |
+| user | reject | existence of text | The page could not be found |

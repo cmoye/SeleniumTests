@@ -1,0 +1,37 @@
+!|script|
+| user opens | http://www.${env}.wpxi.com/admin/ |
+|user types |cmgtester|into |//input[@id='id_username']  |
+|user types |cmgtest3r |into |//input[@id='id_password']  |
+|user clicks and waits|//input[@value='Log in'] |              
+| user clicks and waits| css=a[href='/admin/list_o_rama/automaticlist/add/'] |
+|note| user clicks and waits | link=Add automatic list |
+|$Time=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm|
+|$Title=|getEval|"Automatic list automation $Time"|
+| user types | $Title| into | id=id_title |
+| user selects | label=www.${env}.wpxi.com | from | id=id_originating_site |
+| user types | 588 | into | id=id_primary_category |
+| user types | /News | into | id=id_categories_input |
+|addSelection;|id=id_categories_from|label=/News|
+|pause| 5000|
+| user clicks | css=option[value="588"] |
+|pause| 10000|
+| user selects | label=Story | from | id=id_ctypes_from |
+|user clicks|css=a[href*='SelectBox.move("id_ctypes_from"']|
+|addSelection;|id=id_ctypes_from|label=Story|
+|pause| 5000|
+| user clicks | css=option[value="292"] |
+|pause| 5000|
+| user selects | label=Publication date (Newest first) | from | id=id_ordering |
+| user selects | label=www.${env}.wpxi.com| from | id=id_search_sites_from |
+|addSelection;|id=id_search_sites_from|label=www.${env}.wpxi.com|
+| user types | qaautomation | into | id=id_search_query_4 |
+| user clicks and waits | name=_continue |
+| user | ensure | existence of text | The automatic list "$Title" was added successfully. You may edit it again below. |
+| user clicks | link=View on site |
+|pause|30000|
+|selectWindow|!-$Title | www.test.wpxi.com-!|
+|note|Here we need to add Pause statement and verify that the story we are expecting is there in the list on site. This is an automated test of the story input 121802am|
+|$FileName=|getEval|"C:\\\\AddNewStoryFile.txt"|
+|$GalleryCheckPoints=|getEval|var file = Components.classes["@mozilla.org/file/local;1"] .createInstance(Components.interfaces.nsILocalFile); file.initWithPath("$FileName");if ( file.exists() == false ) { alert("File does not exist"); }  var is = Components.classes["@mozilla.org/network/file-input-stream;1"] .createInstance( Components.interfaces.nsIFileInputStream ); is.init( file,0x01, 00004, null);var sis = Components.classes["@mozilla.org/scriptableinputstream;1"] .createInstance( Components.interfaces.nsIScriptableInputStream ); sis.init( is );sis.read( sis.available() );|
+|$NewGallery=|getEval|var arrStoreValue="$GalleryCheckPoints".split(",");arrStoreValue[0];|
+|ensure|isElementPresent|css=a:contains($NewGallery)|

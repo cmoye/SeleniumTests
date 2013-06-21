@@ -1,0 +1,41 @@
+!| script |
+| user opens | ${adminURL} |
+| user | ensure | existence of | //title[text()='Log in !-|-! Medley'] |
+| check | getText | //title | Log in !-|-! Medley |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${medleySelectPhotosApp} |
+| user clicks and waits | ${medleyAddPhoto} |
+| user clicks | //input[@id='id_reproduction_allowed'] |
+| user types | This is an automated test of the photo input | into | //input[@id='id_title'] |
+| user types | This is a Caption of the automated test of the photo input | into | //textarea[@id='id_caption'] |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user selects | Enabled | from | //select[@id='id_comment_status'] |
+| user clicks | //a[@id='lookup_id_photographer'] |
+| user waits for Pop Up | id_photographer  | for | 20000 |
+| selectWindow | name=id_photographer |
+| user clicks | //table[@id='result_list']/tbody/tr/th/a |
+| pause | 5000 |
+| selectWindow | !-Add photo | Medley-! |
+| user types | One-off photographer | into | //input[@id='id_one_off_photographer'] |
+| user selects | Staff | from | //select[@id='id_source_credit'] |
+| user selects | test.www.clarkhoward.com | from | //select[@id='id_originating_site'] |
+| user clicks | //select[@id='id_originating_site']//option[@value='10080'] |
+| user clicks | //a[@id='lookup_id_primary_category'] |
+| user waits for Pop Up | id_primary_category | for | 20000 |
+| selectWindow | name=id_primary_category |
+| user clicks | link=[Clark Howard] /Cars |
+| selectWindow | null |
+| user selects | label=[Clark Howard] /Cars | from | //select[@id='id_categories_from'] |
+| user clicks | //form[@id='medleyphoto_form']/div/fieldset[3]/div[4]/div/div/ul/li[1]/a |
+| user selects | Live | from | //select[@id='id_status'] |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | This is a Topic for an automated test of the photo input | into | //textarea[@id='id_topics'] |
+| user types | C:\Documents and Settings\cnettester.CMG\My Documents\Machina.JPG | into | //a[@id='id_photo_link'] |
+| pause | 5000 |
+| user clicks | //input[@name='_save'] |
+| pause | 15000 |
+#| user | ensure | existence of text | Successfully uploaded |

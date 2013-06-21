@@ -1,0 +1,7 @@
+This test is a '''git''' test. Let's see what we can do:
+!| script |
+| user opens | ${baseURL} |
+| user clicks and waits |//div[@id='cmHeaderUserRegistration']/p/a |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |

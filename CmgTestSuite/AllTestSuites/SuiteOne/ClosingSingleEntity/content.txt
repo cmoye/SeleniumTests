@@ -1,0 +1,60 @@
+!|script  |
+|user opens |http://${wsbradio}/admin/ |
+|user types |cmgtester5 |into  |css=input#id_username |
+|user types |cmgtest3r  |into  |css=input#id_password |
+|user clicks and waits |css=input[value='Log in'] |
+|pause|10000|
+| user clicks  | css=a[href="/admin/schoolclosings/specialhours/add/"] |
+|pause|20000|
+|user waits for text  |Add Closings and Delays |
+|user clicks |css=form#specialhours_form>div>fieldset.module>div.form-row>div>ul>li.nobullets>label>input#id_updated_via_0|
+|pause|1000|
+|addSelection;|css=select#id_entities_from.filtered| 	label=Creme de la Creme - Peachtree Corners|
+|user clicks|css=div.selector> ul.selector-chooser>li> a.selector-add|
+|pause|1000|
+|user clicks|css=div>span.datetimeshortcuts>a#calendarlink0>img|
+|pause|5000|
+|user clicks|css=html>body.schoolclosings-specialhours>div#calendarbox0.calendarbox>div.calendar-shortcuts>a:contains('Today')|
+|pause|1000|
+|user clicks|css=div>span.datetimeshortcuts>a#calendarlink1>img|
+|pause|5000|
+|user clicks|css=html>body.schoolclosings-specialhours>div#calendarbox1.calendarbox>div.calendar-shortcuts>a:contains('Today')|
+|pause|1000|
+|user selects| ${wsbradio} |	from |	css=select#id_originating_site|
+|pause|1000|
+|user selects|Closed |	from |	css=select#id_status_code|
+|pause|1000|
+|user clicks|css=input[value='Save and continue editing']|
+|pause|35000|
+|user | ensure | existence of text | was added successfully. You may edit it again below.|
+|pause|5000|
+|user opens |http://${wsbradio}/admin/                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|pause |5000                                                                                                                                                                                            |
+|user clicks and waits |css=a:contains('Log out')                                                                                                                                                                  |
+|user opens | http://${wsbradio}/school-closings/search/|
+|pause|19000|
+|user waits for text | Enter School or Business Name:|
+|user types | Creme de la Creme - Peachtree Corners|into|css=input#cmSearch|
+|user clicks|css=div.cmListHeader>form.cmSearchResultsForm>button|
+|pause|10000|
+|user | reject | existence of text | No results were found.|
+|user | ensure | existence of text | Search Results - "Creme de la Creme - Peachtree Corners"|
+|pause|19000|
+|ensure|isElementPresent|css=a[href='/school-closings/'] |
+|user clicks|css=a[href='/school-closings/']|
+|pause|19000|
+|user | ensure | existence of text | Search Results - All|
+|reject|isElementPresent|css=div.cmListHeader>ul.cmSchoolClosingsAlphaFilter>li.first>a:contains('All')|
+|user clicks|css=a[href='/school-closings/search/?letter=C']|
+|pause|19000|
+|ensure|isTextPresent|Search Results - Begins with "C"|
+|ensure|isElementPresent|css=div.cmListHeader>ul.cmSchoolClosingsAlphaFilter>li.first>a:contains('All')|
+|user clicks | link=School |
+|pause | 19000 |
+|ensure|isElementPresent|css=div.cmListWell>div.cmList>div.cmListItem>h4>a:contains('Creme de la Creme - Peachtree Corners')|
+|user clicks|css=div.cmListWell>div.cmList>div.cmListItem>h4>a:contains('Creme de la Creme - Peachtree Corners')|
+|pause|19000|
+|reject|isElementPresent|css=div.cmListWell>div.cmList>div.cmListItem>h4>a:contains('Creme de la Creme - Peachtree Corners')|
+|ensure|isTextPresent|Creme de la Creme - Peachtree Corners|
+| user | reject | existence of text | The page could not be found |
+|close; |

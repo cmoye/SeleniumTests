@@ -1,0 +1,16 @@
+!|script|
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user opens | http://${clark}/news/clark-howard/homes-real-estate/americans-mortgage-debt-steadily-reducing/nCqDj/ |
+| pause | 10000 |
+| ensure | isElementPresent | link=favorite |
+| $comment= | getUniqueString |
+| user types | $comment | into | id_comment |
+| pause | 7000 |
+| user clicks and waits | //div/form/p[2]/button |
+| pause | 3000 |
+| user opens | http://${clark}/news/clark-howard/homes-real-estate/americans-mortgage-debt-steadily-reducing/nCqDj/ |
+| pause | 5000 |
+| ensure | isElementPresent | link=Edit |

@@ -1,0 +1,31 @@
+!|script|
+| user opens | http://www.fe18.palmbeachpost.com/ |
+| user clicks | css=a:contains('Sign In / Sign Up') |
+|pause|5000|
+| user types | balamn11@gmail.com | into |css=input[id="capture_signIn_traditionalSignIn_emailAddress"]|
+| user types | atlanta | into | css=input[id="capture_signIn_traditionalSignIn_password"] |
+| user clicks | css=input[id="capture_signIn_traditionalSignIn_signInButton"] |
+| pause | 10000|
+| user clicks |css=a:contains('not you?')|
+| pause| 30000|
+|note| user clicks | link=Sign In / Sign Up |
+| user clicks | css=a:contains('Sign In / Sign Up') |
+|pause|5000|
+| user types | balamn11@gmail.com | into |css=input[id="capture_returnTraditional_traditionalSignIn_emailAddress"]|
+| user types | atlanta | into |css=[id="capture_returnTraditional_traditionalSignIn_password"]|
+| user clicks | css=input[id="capture_returnTraditional_traditionalSignIn_signInButton"] |
+| pause | 5000|
+| user clicks | css=a:contains('Member Center') |
+|pause|10000|
+| user clicks| css=a:contains('Choose new photo')|
+|pause|5000|
+| user types | C:\Documents and Settings\All Users\Documents\My Pictures\Sample Pictures\Winter.jpg | into | css=input[id="capture_editProfile_photo_chooser"] |
+| user clicks|css=input[id="capture_editProfile_photo_submit"]|
+| pause|10000|
+| ensure|isElementPresent|css=a:contains('Edit Photo')|
+| ensure|isElementPresent|css=a:contains('Remove photo')|
+| user clicks | css=input[id="capture_editProfile_submitButton"] |
+| pause | 10000|
+| user clicks | css=a:contains('Sign Out') |
+|pause|30000|
+| ensure|isElementPresent|link=Sign In / Sign Up|

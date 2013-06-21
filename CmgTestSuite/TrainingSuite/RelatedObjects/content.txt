@@ -1,0 +1,55 @@
+!|script|
+!include .CmgTestSuite.MedleyClarkSuite.RegressionSuiteTestEnviroment.SuiteOne.AddAndVerifyAstory.SubmitNewsStoryToClarksCars
+!|script|
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | link=Stories |
+| user types | automated | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=This is an automated test of the story input |
+| user selects | label=Poll | from | id_related_objects-relatedobject-from_type-from_id-2-0-to_type |
+| user clicks | //a[@id='lookup_id_related_objects-relatedobject-from_type-from_id-2-0-to_id']/img |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__0__dash__to_id | for | 15000 |
+| selectWindow | name=id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__0__dash__to_id |
+| user clicks and waits | link=exact:What would be Obama next move on healthcare? |
+| selectWindow | null |
+| user clicks | link=Add another Related Object |
+| user selects | label=Blog Entry | from | id_related_objects-relatedobject-from_type-from_id-2-1-to_type |
+| user clicks | //a[@id='lookup_id_related_objects-relatedobject-from_type-from_id-2-1-to_id']/img |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__1__dash__to_id | for | 15000 |
+| selectWindow | name=id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__1__dash__to_id |
+| user clicks and waits | link=2009 |
+| user types | urban | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Urban Meyer steps down at Florida |
+| selectWindow | null |
+| user clicks | link=Add another Related Object |
+| user selects | label=Gallery | from | id_related_objects-relatedobject-from_type-from_id-2-2-to_type |
+| user clicks | //a[@id='lookup_id_related_objects-relatedobject-from_type-from_id-2-2-to_id']/img |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__2__dash__to_id | for | 15000 |
+| selectWindow | name=id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__2__dash__to_id |
+| user clicks and waits | link=test.www.clarkhoward.com |
+| user clicks and waits | link=American Idol: The Final Five |
+| selectWindow | null |
+| user clicks | link=Add another Related Object |
+| user selects | label=Map | from | id_related_objects-relatedobject-from_type-from_id-2-3-to_type |
+| user clicks | //a[@id='lookup_id_related_objects-relatedobject-from_type-from_id-2-3-to_id']/img |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__3__dash__to_id | for | 15000 |
+| selectWindow | name=id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__3__dash__to_id |
+| user types | Centennial | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Centennial Olympic Park |
+| selectWindow | null |
+| user clicks and waits | _continue |
+| pause | 10000 |
+| user clicks | link=View on site |
+| pause | 10000 |
+| selectWindow | !-This is an automated test of the story input | test.www.wsbradio.com-! |
+| pause | 10000 |
+| user | ensure | existence of text | Centennial Olympic Park  |
+| user | ensure | existence of text | What would be Obama next move on healthcare |
+| user | ensure | existence of text | blog  |
+| user | ensure | existence of text | gallery  |
+| pause | 160000 |

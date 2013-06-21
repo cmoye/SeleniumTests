@@ -1,0 +1,53 @@
+!| script                                                                                                                           |
+|user opens            |http://${pbp}/admin/                                                                         |
+|pause                 |10000                                                                                                       |
+|user types            |cmgtester                    |into|//input[@id='id_username']                                               |
+|user types            |cmgtest3r                    |into|//input[@id='id_password']                                               |
+|user clicks and waits |//input[@value='Log in']                                                                                    |
+|pause                 |15000                                                                                                        |
+|user clicks and waits |css=a[href='/admin/photos/medleygallery/']                                                                  |
+|user clicks and waits |link=www.test.palmbeachpost.com|
+|pause|20000|
+|user clicks and waits |link=Live|
+|pause|15000|
+| user clicks and waits | ${firstObjectOnListLink} |
+|$DeleteGallery= |getEval   |var d=new Date();"DeletedAutomation_API_TestGallery" + d.getHours() + d.getMinutes() + d.getSeconds();                         |
+|user types            |$DeleteGallery|into|css=input#id_name                                                    |
+|user types            |209                          |into|css=input#id_primary_category                                            |
+|user types            |314592                       |into                                           |css=input#id_medleygalleryphotos-0-photo                         |
+|user selects | Deleted | from | css=select#id_status |
+|user clicks and waits           |css=input[name='_save']                                                                                 |
+|pause                 |30000                                                                                                       |
+|ensure                |isTextPresent                |The gallery "$DeleteGallery" was changed successfully. |
+|user | ensure | existence of text | Select gallery to change |
+|user opens            |http://www.test.palmbeachpost.com/admin/photos/medleygallery/ |
+|pause                 |30000                                                                                                        |
+|user clicks and waits |link=www.test.palmbeachpost.com|
+|pause|20000|
+|user clicks and waits |link=Live|
+|pause|15000|
+| user clicks and waits| ${firstObjectOnListLink} |
+|$EditGallery=|getEval | var d=new Date();"Test Automation Edited Gallery " + d.getHours() + d.getMinutes() + d.getSeconds();  |
+|user types            |$EditGallery|into|css=input#id_name                                                    |
+|user types            |209                          |into|css=input#id_primary_category                                            |
+|user clicks and waits       |css=input[name='_save']                                                                                 |
+|pause                 |30000                                                                                                       |
+|ensure                |isTextPresent                |The gallery "$EditGallery" was changed successfully. |
+|user | ensure | existence of text | Select gallery to change | 
+|user opens            |http://www.test.palmbeachpost.com/admin/photos/medleygallery/add/ |
+|note |user clicks and waits | link=Add gallery                                                                 |
+|pause                 |30000                                                                                                        |
+|user | ensure | existence of text | Add gallery                                                                                                   |
+|$NewGallery= |getEval         |var d=new Date();"InitialAutomation_API_TestGallery" + d.getHours() + d.getMinutes() + d.getSeconds();                         |
+|user types            |$NewGallery                       |into|css=input#id_name                                                    |
+| user selects | label=${pbp} | from | id_originating_site |
+|user types            |314592                       |into                                           |css=input#id_medleygalleryphotos-0-photo  |
+|user types            |209                          |into|css=input#id_primary_category                                            |
+| pause | 15000|
+|user clicks and waits          |css=input[name='_save']                                                                                 |
+|pause                 |30000                                                                                                       |
+|ensure                |isTextPresent                | The gallery "$NewGallery" was added successfully.  |
+| user | reject | existence of text | The page could not be found |
+|$FileName=|getEval|"C:\\\\GalleryFile.txt"|
+|$GalleryCheckPoints=|getEval|"$NewGallery"+","+"$EditGallery" +","+"$DeleteGallery"|
+|getEval|var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile );file.initWithPath("$FileName"); if (!file.exists()) file.create(0x00, 0644); var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream); outputStream.init(file,0x02,00004,null);outputStream.write("$GalleryCheckPoints","$GalleryCheckPoints".length); outputStream.flush(); outputStream.close();||

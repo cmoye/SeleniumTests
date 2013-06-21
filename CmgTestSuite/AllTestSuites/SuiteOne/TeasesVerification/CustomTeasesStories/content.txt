@@ -1,0 +1,65 @@
+!|script|
+| user opens | http://${wsbradio}/admin/ |
+| user types | cmgtester | into | id=id_username |
+| user types | cmgtest3r | into | id=id_password |
+| user clicks and waits | css=input[type="submit"] |
+| pause|20000|
+| ensure |isElementPresent                             | css=div#user-tools |
+| user clicks and waits | link=Stories |
+| pause|20000|
+| user types | This is an automated test of the story input | into | id=searchbar |
+| user clicks and waits | css=input#searchbar + input |
+| pause|30000|
+| user clicks and waits | link=This is an automated test of the story input |
+| pause|30000|
+| user clicks | css=th > input[type="button"] |
+| pause|20000|
+| user waits for Pop Up | !-Add tease | Medley-! | for | 10000 |
+| selectWindow; | !-Add tease | Medley-! |
+| user types | Custom tease summary here | into | id=tinymce |
+| user clicks | css=img[alt="Lookup"] |
+| pause | 60000 |
+| note|user waits for Pop Up | !-Select photo | Medley-! | for | 10000 |
+| selectWindow; | !-Select photo | Medley-! |
+| pause | 5000|
+| note| user types | k99.1 | into | id=searchbar |
+| note | pause | 5000 |
+| note | user clicks and waits | css=input[type="submit"] |
+| note | pause | 20000 |
+| user clicks and waits | css=table#result_list>tbody>tr.row1>th>a |
+| pause | 20000 |
+| selectWindow; |!-Add tease | Medley-!|
+| user selects |label=www.test.wsbradio.com | from | id=id_originating_site |
+| user types | news | into | id=id_categories_input |
+| pause |5000 |
+| addSelection;|//select[@id='id_categories_from'] |label=/News|
+| user clicks and waits| css=div.selector.stacked > ul.selector-chooser > li > a.selector-add  |
+| pause | 10000 |
+| user clicks and waits |id=id_override_related_objects |
+| user clicks |css=input[value="Copy original related objects"] |
+| user clicks | name=_save |
+| pause | 30000 |
+| user types | Custom tease headline here | into | id=id_headline |
+| user types | v | into |id=id_object_id |
+|pause|10000|
+| user clicks |id=id_headline|
+|pause|10000|
+| selectWindow; | !-Add tease | Medley-! |
+| user types | 660046 | into | id=id_object_id |
+| user selects | label=Story | from | id=id_content_type |
+| pause | 1000 |
+|user selects | label=--- Select one ---| from |css=select[id=id_relatedoverride_set-0-content_type]|
+| pause | 5000 |
+| user selects | label=Story| from | css=select[id=id_relatedoverride_set-0-content_type]|
+| pause | 10000 |
+| user clicks |//a[@id='lookup_id_relatedoverride_set-0-object_id']/img|
+| pause | 20000 |
+| user waits for Pop Up | !-Select story | Medley-! | for | 10000 |
+|selectWindow;| !-Select story | Medley-! | 
+| pause | 10000 |
+|user clicks|//html/body/div/div/div/div/form/div/table/tbody/tr/th/a|
+| pause | 5000 |
+| selectWindow; | !-Add tease | Medley-! |
+| pause | 5000 |
+| user clicks and waits | name=_save |
+|close; |

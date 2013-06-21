@@ -1,0 +1,27 @@
+!|script|
+| user opens |http://www.${env}.wpxi.com/admin/ |
+| user types | cmgtester | into | id_username |
+| user types | cmgtest3r | into | id_password |
+|$Time=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm|
+| user clicks and waits | //input[@value='Log in'] |
+| user clicks and waits | css=a[href='/admin/breaking_news/medleyalert/add/'] |
+| user selects | label=Breaking News | from | id_alert_type |
+| user selects | label=www.${env}.wpxi.com | from | id_originating_site |
+| user selects | label=AP Story | from | id_content_type |
+| user clicks | css=img[alt=Lookup] |
+| user waits for Pop Up | id_object_pk | for | 10000 |
+| pause | 5000 |
+| selectWindow | name=id_object_pk |
+| pause | 15000 |
+| user clicks | //table[@id='result_list']/tbody/tr/th/a |
+| pause | 2000 |
+| selectWindow | null |
+| user types | Automation Breaking News | into | id_site_headline |
+| user clicks | id_site_headline_display |
+| user clicks and waits | _continue |
+| pause | 30000 |
+|$sTime=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm|
+|$URL=|getEval|"http://www.test.wpxi.com?=$sTime"|
+|user opens|$URL|
+| pause | 60000 |
+| ensure | isElementPresent | css=div.cmAlertBoxLink>a |

@@ -1,0 +1,35 @@
+!|script|
+| user opens | http://${wpxi}/admin |
+| user types | cmgtester4 | into | css=input[name='username'] |
+| user types | cmgtest3r | into |css=input#id_password |
+| user clicks and waits | css=input[type='submit'] |
+| user clicks and waits | css=a[href='/admin/sections/topicsection/add/'] |
+| user clicks | css=input#id_title |
+| user types | Automated Topic Section | into | css=input#id_title |
+| user types | Automated Topic Section | into | css=input#id_description |
+| $urlPath= | getUniqueString |
+| user types | /$urlPath/ | into | css=input#id_url_path |
+| user clicks | //img[@alt='Lookup'] |
+| pause | 2000 |
+| user waits for Pop up | id_grid | for | 2000 |
+| pause | 2000 |
+| selectWindow | name=id_grid |
+| pause | 2000 |
+| user types | Automated Topic grid | into | css=input#searchbar |
+| user clicks and waits | css=input#searchbar + input |
+| user clicks and waits | link=Automated Topic grid |
+| pause | 2000 |
+| selectWindow | null |
+| pause | 2000 |
+| user selects | label=${wpxi} | from | id_originating_site |
+| user types | 209 |into| css=input#id_primary_category |
+| user clicks and waits | _continue |
+| user clicks and waits  | ${viewOnSiteBttn} | 
+| selectWindow | !-Automated Topic Section | -!${wpxi} |
+| pause | 2000 |
+| user | reject | existence of text | The page could not be found |
+| user | ensure | existence of text | Automated Topic Section |
+|ensure | isTextPresent | This is an automated test of the story input  |
+|note|ensure | isTextPresent |css=p[class='cmTeaseListItemLink']>a:contains('This is an automated test of the story input')  |
+|note|ensure | isElementPresent |css=p[class='cmTeaseListItemLink']>a:contains('This is an automated test of the story input')  |
+|note| verifyElementPresent |link=This is an automated test of the story input |

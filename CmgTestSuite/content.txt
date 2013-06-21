@@ -1,0 +1,109 @@
+!3 Introduction
+
+
+!contents -R1 -h
+
+!2 Explanation of the files contained in this suite
+The SuiteSelenesseExample.InstallationInstructions contains some general instructions
+to get started with Selenesse.
+The SuiteSelenesseExample.SeleniumIdeFormat contains instructions for using the
+wiki Format in Selenium IDE.
+The SuiteSelenesseExample.SuiteSearch page contains the scenario library used in
+the test and the test itself.
+The SuiteSelenesseExample.SetUp page imports selenesse.jar, then starts an
+instance of the Selenium driver using the SLIM test engine in !-FitNesse.-!
+The SuiteSelenesseExample.TearDown page closes the browser at the end of the test.
+
+The SuiteSelenesseExample.SetUp and SuiteSelenesseExample.TearDown pages
+contain commands obeyed automatically by !-FitNesse-! for each run of the Suite.
+
+In SuiteSelenesseExample.SuiteSearch.TestSearchOneKeyword the box containing the text
+"Search google" is a !-FitNesse-! script that refers to a Scenario in
+SuiteSelenesseExample.SuiteSearch.ScenarioLibrary also named "Search google".
+
+The SuiteSelenesseExample.SuiteSearch.ScenarioLibrary page contains the commands
+to drive Firefox with Selenium and shows several interesting aspects of Selenesse
+that differ from Selenium as it is generally used.
+
+!2 Further information about Selenesse
+We have supplied a pause() method.  It is in the example in case you want to watch
+the browser operate.  All time methods in Selenesse take milliseconds as an argument.
+
+Note the semicolon after the type() method.  In !-FitNesse/SLIM-!, 2-argument methods
+are not allowed under most circumstances.  We have altered !-FitNesse-! such that any
+time you wish to use a Selenium method with a short name and > 1 argument [like type()
+or select()], you are required to put a semicolon after the method name.
+Only methods that take 2 arguments are subject to this restriction.
+
+Also note that Selenesse does not implement any of the Selenium verify* methods.
+Instead Selenesse relies on the ensure() and check() methods native to !-FitNesse-!.
+
+For example, instead of verifyTextPresent you would use:
+| ensure | isTextPresent | selenesse |
+
+Instead of verifyText you would use:
+| check | getText | locator | text |
+
+NOTE: extra pipes at the end of a check() line will cause a "Method not found"
+exception.
+
+Using !-FitNesse-! check() and insure() methods allows more flexibility when deciding
+whether any such assertions should be errors (booleans) or exceptions (voids).
+This has the added advantage of showing the expected result and the actual result
+upon failure, where native Selenium merely reports failure.
+
+The !-FitNesse-! check() method means "to validate".  The Selenium check() method
+means "to make checked, as in a radio button". For this reason, use the command
+"makeChecked" and "makeUnChecked" to drive Selenium in this fashion.
+
+Aside from the changes noted here, Selenesse will pass any other native Selenium
+commands on to Selenium itself and will evaluate the output Selenium returns as
+either pass (green bar), fail (red bar) or exception (yellow message).
+
+Finally, we have a method available that will click an element up to some number
+of times and only return failure if the first click fails. (We have some stubborn
+elements in our application that only respond to multiple clicks from Selenium.)
+You can use this method in one of two ways:
+
+| click | locator | up to | 10 | times |
+| clickUpToTimes; | locator | 10 |
+
+(*) If you want to read about the reasoning behind starting an entirely new project
+with a whole new name, the story is here:
+http://chrismcmahonsblog.blogspot.com/2009/11/ui-test-tool-search.html
+http://chrismcmahonsblog.blogspot.com/2009/12/selenesse-nee-webtest.html
+
+!2 Some exceptions encountered:
+If you get the exception "The instance scriptTableActor. does not exist" it could
+mean: "Could not contact Selenium Server; have you started it on 'localhost:4444'?"
+
+If you get the exception "Could not invoke constructor for !-SlimSeleniumDriver[4]"-!
+make sure the file selenesse.jar is loaded before the test setup e.g. with the
+line: "!path dist/java/*.jar" if the file is contained in that directory.
+
+If you get the exception: "Could not find fixture: import." or "Could not find
+fixture: scenario." and it says in the test result: !-"Test Output Test System:
+fit:fit.FitServer"-! you have to add "!define TEST_SYSTEM {slim}" to the setup,
+as seen below:
+
+!2 Definition of variables for the test suite
+The following variables are used within this example test suite:
+
+Define path to selenesse.jar:
+!path dist/java/*.jar
+Define path to fitnesse.jar and selenium-java-client-driver.jar:
+!path lib/*.jar
+
+!contents -R2 -g -p -f -h
+
+Use Slim scenario tables:
+!define TEST_SYSTEM {slim}
+
+Define where to reach the selenium server:
+!define seleniumHost {localhost}
+!define seleniumPort {4444}
+!define seleniumBrowser {*firefox}
+!define captureTraffic {captureNetworkTraffic=true}
+
+Define the URL where to start the test:
+!define baseURL {http://www.test.clarkhoward.com/}

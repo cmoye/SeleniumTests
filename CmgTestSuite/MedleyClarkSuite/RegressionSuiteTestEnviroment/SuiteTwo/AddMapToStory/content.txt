@@ -1,0 +1,32 @@
+!|script|
+| user opens | http://${wsbradio}/admin/ |
+| user types | cmgtester | into | id_username |
+| user types | cmgtest3r | into | id_password |
+| user clicks and waits | //input[@value='Log in'] |
+| user clicks and waits | //div[@id='news']/table/tbody/tr[8]/td[1]/a |
+| user types | AddingMapToStory | into | id_headline |
+| user selects | label=www.test.wsbradio.com | from | id_originating_site |
+| user types | Miami, New York, Atlanta, Maine | into | //body[@id='tinymce'] |
+| user clicks | link=[209] AP |
+| user clicks | //form[@id='medleystory_form']/div/fieldset[3]/div[4] |
+| user clicks and waits | metadata_suggest_button |
+| pause | 2000 |
+| user | ensure | existence of text | New York |
+| user clicks and waits | id_generate_staticmap |
+| pause | 2000 |
+| user clicks and waits | _continue |
+| pause | 2000 |
+| $MAPID= | getValue | id_related_objects-relatedobject-from_type-from_id-2-0-to_id |
+|ensure 	| isElementPresent| //tr[@id='related_objects-relatedobject-from_type-from_id-2-0']/td[5]/a/strong||
+| user clicks and waits | link=View on site |
+| pause | 3000 |
+| selectWindow; | !-AddingMapToStory | -!${wsbradio} |
+| pause | 5000 |
+| user | ensure | existence of text | AddingMapToStory  |
+| user | ensure | existence of text | From Our News Partners |
+| user clicks and waits | link=View Larger |
+| pause | 3000 |
+|ensure 	| isElementPresent |//body[@id='staticmap_$MAPID']/div/div/div[3]/div[1]/h1||
+#|storeValue;|id_related_objects-relatedobject-from_type-from_id-2-0-to_id|mapid|
+#| $TITLE= | getTitle |
+#| user clicks and waits | //id('map_$MAPID') |

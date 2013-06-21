@@ -1,0 +1,56 @@
+!|script|
+| user opens | http://wheatley.ddtc.cmgdigital.com:5080/ |
+|pause                 | 12000                    |
+| user clicks and waits | link=Login |
+| user types | seleniumautomation1 | into | id=id_username |
+| user types | cox@net1 | into | id=id_api_key |
+| user types | origin.www.test.palmbeachpost.com | into | id=id_domain |
+| user clicks and waits | name=auth_type |
+| $sTime=|getEval|var d=new Date(); var hours;var minutes;var seconds; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();}  ""+hours+minutes+seconds|
+| $sTime1=|getEval|var d=new Date(); var hours;var minutes;var seconds; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();}  hours+":"+minutes+":"+seconds|
+| pause                 |6000                    |
+| $sTime2=|getEval|var d=new Date(); var hours;var minutes;var seconds; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();}  hours+":"+minutes+":"+seconds|
+| $sTitle=|getEval|"Test Automation" + $sTime|
+| pause                 |2000                    |
+| $sDate1=|getEval|var d = new Date(); var year; var month; var date; year = d.getFullYear(); if ((d.getMonth() + 1) <= 9) { month = '0' + (d.getMonth() + 1); } else { month = (d.getMonth() + 1); } if (d.getDate() <= 9) { date = '0' + d.getDate(); } else { date = d.getDate(); } year + "-" + month + "-" + date|
+| pause                 |3000                    |
+| $sDate2=|getEval|var d = new Date(); var year; var month; var date; year = d.getFullYear(); if ((d.getMonth() + 1) <= 9) { month = '0' + (d.getMonth() + 1); } else { month = (d.getMonth() + 1); } if (d.getDate() <= 9) { date = '0' + d.getDate(); } else { date = d.getDate(); } year + "-" + month + "-" + date|
+| $fullDate1=|getEval|'$sDate1'+"T"+'$sTime1'|
+| $fullDate2=|getEval|'$sDate2'+"T"+'$sTime2'|
+| $slugTitle=|getEval|"test-automation-"+$sTime|
+| user clicks and waits | xpath=(//a[contains(text(),'Stories')])[2] |
+| user types | /api/content/v1/category/588/ | into | id=id__new_categories |
+| user types | /api/content/v1/site/3000/ | into | id=id_originating_site |
+| user types | /api/content/v1/category/588/ | into | id=id_primary_category |
+| user types | $fullDate1| into | id=id_pub_date |
+| user types | $fullDate2 | into | id=id_updated_date |
+| user types | /api/content/v1/site/3000/ | into | id=id__new_sites |
+| user types | story summary | into | id=id_social_summary |
+| pause                 |10000                    |
+| user types | story text | into | id=id_story |
+| user types | story label | into | id=id_label |
+| user types | pre-story blurb | into | id=id_pre_story_blurb |
+| user types | post-story blurb | into | id=id_post_story_blurb |
+| user types | $sTitle | into | id=id_title |
+| user types | testing | into | id=id__new_topics |
+| user types | byline source | into | id=id_byline_source |
+| user types | /api/content/v1/staff-member/170/ | into | id=id__new_bylines |
+| user types | one off byline | into | id=id_one_off_byline |
+| user types | one off dateline | into | id=id_one_off_dateline |
+| user types | serp description | into | id=id_serp_description |
+| user types | $slugTitle | into | id=id_slug |
+| user types | social summary | into | xpath=(//input[@id='id_social_summary'])[2] |
+| $vendorId=|getEval|var d=new Date(); "vendorid"+d.getHours() + d.getMinutes() + d.getSeconds();       |
+| user types | $vendorId| into | id=id_vendor_id |
+| user clicks and waits | css=button |
+| pause                 |30000               |
+| user | ensure | existence of text | Status: 201 |
+| pause                 |60000|
+| user opens             | http://www.test.palmbeachpost.com/admin/  |
+| user types            | seleniumautomation1 |into|id_username|
+| user types            | cox@net1 |into|id_password|
+| user clicks and waits | css=input[type="submit"] |
+| user clicks and waits | css=a[href='/admin/news/medleystory/'] |
+| user types | $sTitle | into | id=searchbar |
+| user clicks and waits | css=div > input[type="submit"] |
+| user | ensure | existence of text | $sTitle |

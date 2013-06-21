@@ -1,0 +1,18 @@
+!|script|
+| user opens | http://${wsbtv}/admin/ |
+| user types | cmgtester4 | into | id=id_username |
+| user types | cmgtest3r | into | id=id_password |
+| user clicks and waits | css=input[type="submit"] |
+| pause| 20000 |
+| ensure |isElementPresent | css=div#user-tools |
+| user clicks and waits | link=AP Stories |
+| pause | 20000 |
+| user waits for text  | Select AP Story to change |
+| pause | 10000 |
+| user clicks | ${firstObjectOnListLink} |
+| pause | 10000 |
+| user waits for text  | Change AP Story |
+| user clicks and waits | _save |
+| pause | 20000 |
+| user | ensure | existence of text | AP Story to change |
+| pause | 1000 |

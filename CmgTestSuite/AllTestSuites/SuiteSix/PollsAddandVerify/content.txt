@@ -1,0 +1,29 @@
+!|script|
+| user opens | http://${wsoctv}/admin/ |
+| user types | cmgtester6 | into | id_username |
+| user types | cmgtest3r | into | id_password |
+| user clicks and waits | //input[@value='Log in'] |
+| user clicks and waits | css=a[href='/admin/polls/medleypoll/'] |
+| user clicks and waits | link=${wsoctv} |
+| user types | Should the city raise taxes or institute a monthly trash fee? | into | id=searchbar |
+| user clicks and waits | css=div > input[type="submit"] |
+| user clicks and waits|link=exact:Should the city raise taxes or institute a monthly trash fee?|
+| note | Instead of hard coding the date, replaced the following lines|
+| note |user types | 2013-04-30 | into |css=#id_expire_date_0  |
+| user clicks and waits | css=span.datetimeshortcuts >a:contains('Today') |
+| user types | 23:59:59 | into |css=#id_expire_date_1  |
+| pause | 5000 |
+| user clicks and waits | css=input[name='_continue'] |
+| pause | 5000 |
+| user | ensure | existence of text | was changed successfully |
+| pause | 1000 |
+| user clicks and waits | css=a:contains('View on site') |
+| selectWindow | !-Should the city raise taxes or institute a monthly trash fee? | -!${wsoctv} |
+| user | reject | existence of text | The page could not be found |
+| user clicks | id=poll_choice_6472 |
+| user clicks and waits | css=input[type="submit"] |
+| pause | 50000 |
+| user | ensure | existence of text | Thank you for voting! |
+| pause | 5000 |
+| reject | isElementPresent | css=input[value='Vote']  |
+| user | reject | existence of text | The page could not be found |

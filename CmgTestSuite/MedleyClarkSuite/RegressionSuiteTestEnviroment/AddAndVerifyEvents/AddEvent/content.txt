@@ -1,0 +1,18 @@
+This test adds an Event:
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addEventsBttn} |
+| user types | This is an auto test of the Event input | into | ${titleTextBox} |
+| user types | Downtown Atlanta | into | ${oneOffPlace} |
+| user selects | test.www.clarkhoward.com | from | ${selectAvailableSites} |
+| user clicks | ${primaryCategoryLookupButton} |
+| user waits for Pop Up | id_primary_category | for | 30000 |
+| selectWindow | !-Select category | Medley-! |
+| user clicks and waits | link=News |
+| user types | Events | into | //input[@id='searchbar'] |
+| user clicks and waits | //input[@value='Search'] |
+| selectWindow | null |
+#| user clicks | link=[News] /Events |

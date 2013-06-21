@@ -1,0 +1,52 @@
+!| script |
+| user opens | ${weathersearchURL} |
+| user clicks | //input[@name='q' and @value='Enter ZIP or City, State'] |
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|\032|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|\032|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|\032|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|L|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|a|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|w|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|r|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|e|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|n|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|c|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|e|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|v|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|i|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|l|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|l|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|e|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|\032|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|G|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|A|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|\032|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|3|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|0|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|0|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|4|
+|keyPress;|//input[@name='q' and @value='Enter ZIP or City, State']|4|
+| user clicks and waits | //div[@id='cmWeather']/form/p/button|
+| pause | 15000 |
+| ensure | isTextPresent |Lawrenceville, GA 30044|
+| user clicks | 1_cmToolTipLink |
+| user clicks | 2_cmToolTipLink|
+| user clicks | 3_cmToolTipLink|
+| ensure | isTextPresent | Wind: |
+| ensure | isTextPresent | Pressure: |
+| ensure | isTextPresent | Rain: |
+| ensure | isTextPresent | Chance of Precip |
+| reject | isTextPresent | Atlanta, GA |
+| reject | isTextPresent | N/A |
+| reject | isTextPresent | Humidity: % |
+| reject | isTextPresent | Pressure: in. |
+| reject | isTextPresent | Visibility: mi. |
+| reject | isTextPresent | Dew Point: ° |
+| reject | isTextPresent | Sunrise: a.m. |
+| reject | isTextPresent | Feels Like: ° |
+| reject | isTextPresent | Sunset: p.m. |
+
+
+
+
+

@@ -1,0 +1,55 @@
+!| script |
+| user opens | http://${wpxi}/admin |
+| pause | 5000 |
+|$sTimestamp=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm||
+|$sTimestampHeadline=|getEval|"This is an automated test of the story input $sTimestamp"|
+| user types | cmgtester5 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${medleyAddNewsStory} |
+| user types |$sTimestampHeadline | into | ${storyHeadline} |
+| user types |  This is a test of the subhead field on automation story | into | ${storySubhead} |
+| user selects | Kirk Mellish | from | css=select#id_bylines_from.filtered |
+| pause | 5000 |
+| user clicks | ${storyAddBylinesButton} |
+| pause | 5000 |
+| user types | ONE-OFF BYLINE FIELD| into | ${storyOneOffByline} |
+| user types | Byline Source Here | into | ${storyBylineSource} |
+| user types | Pittsburgh, PA | into | css=input#id_one_off_dateline |
+| user types |  ${AddToStoryText} | into | ${contentTextBox} |
+| user types |  LABEL: SPECIAL REPORT | into | id_label |
+| user types | Editor's note: This is a pre-story blurb about the automation test story. | into | ${storyPrestoryBlurb} |
+| user types | This is a post-story blurb containing information about people who contributed to the automation story. | into | ${storyPoststoryBlurb} |
+| user selects | Enabled | from | ${storyCommentsStatus} |
+| user types | ${AddToStoryinfobox}| into |css=iframe[id='id_info_box_ifr'] |
+| pause | 60000 |
+|selectFrame|id=id_info_box_ifr|
+|user types|${AddToStoryinfobox}| into | id=tinymce|
+|selectWindow;         |null                                                                          |
+| user selects | ${wpxi} | from | ${selectAvailableSites} |
+| user clicks and waits | link=[588] News |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | qaautomation | into | id_topics |
+| user clicks and waits | css=input[name='_continue'] |
+| pause | 40000 |
+| user clicks and waits | ${viewOnSiteBttn} |
+| pause | 30000 |
+| selectWindow | !-$sTimestampHeadline | www.test.wpxi.com-! |
+| pause | 10000 |
+| user | reject | existence of text | The page could not be found |
+| user | ensure | existence of text | $sTimestampHeadline |
+| user | ensure | existence of text | subhead |
+| user | ensure | existence of text | Kirk Mellish |
+| user | ensure | existence of text | ONE-OFF BYLINE|
+| user | ensure | existence of text | Byline Source |
+| user | ensure | existence of text | Pittsburgh, PA |
+| user | ensure | existence of text | This is a story of my life. This is my test for  |
+| user | ensure | existence of text | LABEL|
+| user | ensure | existence of text | pre-story blurb |
+| user | ensure | existence of text | post-story blurb |
+| user | ensure | existence of text | info box |
+|$FileName=|getEval|"C:\\\\AddNewStoryFile.txt"|
+|$AddNewStoryCheckPoints=|getEval|"$sTimestampHeadline"|
+|getEval|var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile );file.initWithPath("$FileName"); if (!file.exists()) file.create(0x00, 0644); var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream); outputStream.init(file,0x02,00004,null);outputStream.write("$AddNewStoryCheckPoints","$AddNewStoryCheckPoints".length); outputStream.flush(); outputStream.close();|

@@ -1,0 +1,146 @@
+!|script|
+| open | ${adminURL} |
+| ensure | isElementPresent | //title[text()='Log in !-|-! Medley'] |
+| check | getText | //title | Log in !-|-! Medley |
+| user types | imelnikov | into | ${medleyLoginName} |
+| user types | Nika1945! | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addGridButton} |
+| user selects | test.www.clarkhoward.com | from | ${selectOriginatingSite} |
+| user types | automated test | into | ${nameField} |
+| user types | auto test grid heading name | into | //input[@id='id_areas-0-heading'] |
+| user selects | 100% | from | ${gridWidth} |
+| user selects | Video | from | ${gridContentType} |
+| user clicks | //a[@id='lookup_id_areas-0-object_id'] |
+| user waits for Pop Up | !-Select video | Medley-! | for | 15000 |
+| selectWindow |  !-Select video | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name 2 | into | //input[@id='id_areas-1-heading'] |
+| user selects | 70% | from | //select[contains(@id, '1-width')] |
+| user selects | Blog | from | //select[contains(@id,  '1-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-1-object_id'] |
+| user waits for Pop Up | !-Select blog | Medley-! | for | 15000 |
+| selectWindow |  !-Select blog | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name 3 | into | //input[@id='id_areas-2-heading'] |
+| user selects | 30% | from | //select[contains(@id, '2-width')] |
+| user selects | Blog Entry | from | //select[contains(@id,  '2-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-2-object_id'] |
+| user waits for Pop Up | !-Select blog entry | Medley-! | for | 15000 |
+| selectWindow |  !-Select blog entry | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name 4 | into | //input[@id='id_areas-3-heading'] |
+| user selects | 50% | from | //select[contains(@id, '3-width')] |
+| user selects | Poll | from | //select[contains(@id,  '3-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-3-object_id'] |
+| user waits for Pop Up | !-Select poll | Medley-! | for | 15000 |
+| selectWindow |  !-Select poll | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name 5 | into | //input[@id='id_areas-4-heading'] |
+| user selects | 50% | from | //select[contains(@id, '4-width')] |
+| user selects | Question Set | from | //select[contains(@id,  '4-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-4-object_id'] |
+| user waits for Pop Up | !-Select question set | Medley-! | for | 15000 |
+| selectWindow |  !-Select question set | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name 6 | into | //input[@id='id_areas-5-heading'] |
+| user selects | 30% | from | //select[contains(@id, '5-width')] |
+| user selects | Photo | from | //select[contains(@id,  '5-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-5-object_id'] |
+| user waits for Pop Up | !-Select photo | Medley-! | for | 15000 |
+| selectWindow |  !-Select photo | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name 7 | into | //input[@id='id_areas-6-heading'] |
+| user selects | 70% | from | //select[contains(@id, '6-width')] |
+| user selects | Gallery | from | //select[contains(@id,  '6-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-6-object_id'] |
+| user waits for Pop Up | !-Select gallery | Medley-! | for | 15000 |
+| selectWindow |  !-Select gallery | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name 8 | into | //input[@id='id_areas-7-heading'] |
+| user selects | 100% | from | //select[contains(@id, '7-width')] |
+| user selects | Flatpage | from | //select[contains(@id,  '7-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-7-object_id'] |
+| user waits for Pop Up | !-Select flatpage | Medley-! | for | 15000 |
+| selectWindow |  !-Select flatpage | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name 9 | into | //input[@id='id_areas-8-heading'] |
+| user selects | 50% | from | //select[contains(@id, '8-width')] |
+| user selects | Staff | from | //select[contains(@id,  '8-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-8-object_id'] |
+| user waits for Pop Up | !-Select staff | Medley-! | for | 15000 |
+| selectWindow |  !-Select staff | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | ${saveButton} |
+| pause | 30000 |
+
+#!| type heading for each | contentheading |
+#| contentheading |
+#| //input[@id='id_areas-2-heading'] |
+#| //input[@id='id_areas-3-heading'] |
+#| //input[@id='id_areas-4-heading'] |
+#| //input[@id='id_areas-5-heading'] |
+#| //input[@id='id_areas-6-heading'] |
+#| //input[@id='id_areas-7-heading'] |
+#| //input[@id='id_areas-8-heading'] |
+
+#!| Select new Width for each | contentsize |
+#| contentsize |
+#| 70% |
+#| 50% |
+#| 30% |
+#| 100% |
+#| 70% |
+#| 50% |
+#| 30% |
+#| 100% |
+
+#!| create new grid with different content types for each | contenttype |
+#| contenttype |
+#| Blog |
+#| Blog Entry |
+#| Poll |
+#| Question Set |
+#| Photo |
+#| Gallery |
+#| Flatpage |
+#| Staff |
+
+#!| for each new content type click its object Id | lookupbutton |
+#| lookupbutton |
+#| //a[@id='lookup_id_areas-1-object_id'] |
+#| //a[@id='lookup_id_areas-2-object_id'] |
+#| //a[@id='lookup_id_areas-3-object_id'] |
+#| //a[@id='lookup_id_areas-4-object_id'] |
+#| //a[@id='lookup_id_areas-5-object_id'] |
+#| //a[@id='lookup_id_areas-6-object_id'] |
+#| //a[@id='lookup_id_areas-7-object_id'] |
+#| //a[@id='lookup_id_areas-8-object_id'] |
+
+#!| for each new content lookup button click user waits for | popupname |
+#| popupname |
+#| !lit?20? |
+#| !lit?21? |
+#| !lit?22? |
+#| !lit?23? |
+#| !lit?24? |
+#| !lit?25? |
+#| !lit?26? |
+#| !lit?27? |

@@ -1,0 +1,8 @@
+!|script|
+| user opens | http://test.www.wsbradio.com |
+| user | ensure | existence of text | 5-Day Forecast |
+| user | ensure | existence of text | WSB-TV Radar |
+| user clicks and waits | link=5-Day Forecast |
+| user | ensure | existence of text | 5-Day Forecast |
+| user | ensure | existence of text | Today's Forecast |
+| user | reject | existence of text | N/A |

@@ -1,0 +1,26 @@
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${medleyAddNewsStory} |
+| user types | This is an automated test of the story input | into | ${storyHeadline} |
+
+
+
+| clickAndWait | //a[@href='photos/medleyphoto/add/'] |
+| click; | //input[@id='id_reproduction_allowed'] |
+| type; | //input[@id='id_title'] | This is an automated test of the photo input |
+| pause | 5000 |
+| type; | //textarea[@id='id_caption'] | This is a Caption of the automated test of the photo input |
+| click; | link=Today |
+| click; | link=Now |
+| select; | //select[@id='id_comment_status'] | Enabled |
+| click; | //a[@id='lookup_id_photographer'] |
+| waitForPopUp; | id_photographer | 20000 |
+| selectWindow | name=id_photographer |
+| click; | //table[@id='result_list']/tbody/tr/th/a |
+| pause | 5000 |
+| selectWindow | !-Add photo | Medley-! |
+| type; | //input[@id='id_one_off_photographer'] | One-off photographer |
+| pause | 10000 |

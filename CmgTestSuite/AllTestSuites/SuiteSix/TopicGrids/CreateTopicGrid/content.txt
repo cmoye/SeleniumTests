@@ -1,0 +1,19 @@
+!|script|
+| user opens | http://${wpxi}/admin/ |
+| user types |	cmgtester4 | into | //input[@name='username'] |
+| user types |cmgtest3r |	into 	|//input[@id='id_password'] |
+| user clicks and waits | //input[@type='submit'] |
+| pause | 1000 |
+| user clicks and waits | //a[contains(@href,'/admin/grids/topicgrid/add/')] |
+| user selects | label=${wpxi} | from | id_originating_site |
+| user types | Automated Topic grid | into | id_name |
+| user clicks | //img[@alt='Lookup'] |
+| user waits for Pop Up | id_topic | for | 2000 |
+| selectWindow | name=id_topic |
+| user types | cmgtest | into | css=input#searchbar |
+| user clicks and waits | css=div#toolbar>form#changelist-search>div>input[value='Search'] |
+| user clicks and waits | link=cmgtest |
+| selectWindow | null |
+| user types |209 |into| css=input#id_primary_category |
+| user clicks and waits | _continue |
+| user | reject | existence of text | The page could not be found |

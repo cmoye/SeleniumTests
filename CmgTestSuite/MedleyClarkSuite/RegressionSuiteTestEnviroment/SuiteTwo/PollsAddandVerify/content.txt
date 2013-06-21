@@ -1,0 +1,22 @@
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester4 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | //div[@id='polls']/table/tbody/tr[2]/th/a |
+| user clicks and waits | link=${clark} |
+| user clicks and waits|link=exact:At what age should mandatory annual driving tests start for seniors?|
+| user types | 2012-03-31 | into |id_expire_date_0  |
+| user clicks and waits | link=[15] Cars |
+| pause | 1000 |
+| user clicks and waits | //input[@name='_continue'] |
+| pause | 1000 |
+| user | ensure | existence of text | was changed successfully |
+| pause | 1000 |
+| user clicks and waits | //a[@class='viewsitelink'] |
+| selectWindow | !-Mandatory annual driving testing for senior citizens | -!${clark} |
+| user clicks and waits | //input[@id='poll_choice_57'] |
+| user clicks and waits | //input[@value='Vote'] |
+| pause | 5000 |
+| user | ensure | existence of text | Thank you for voting! |
+| pause | 5000 |

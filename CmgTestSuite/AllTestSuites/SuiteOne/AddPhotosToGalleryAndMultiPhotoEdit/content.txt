@@ -1,0 +1,95 @@
+!| script |
+| user opens | http://${k99}/admin/ |
+| user types | cmgtester1 | into | id_username |
+| user types | cmgtest3r | into | id_password |
+| user clicks and waits | //input[@value='Log in'] |
+| pause | 10000 |
+| user clicks and waits | css=a[href='/admin/photos/medleyphoto/'] |
+| pause | 50000 |
+| user types | The K99.1FM Celebrity Gallery | into | css=input#searchbar |
+| user clicks and waits |  //form[@id='changelist-search']/div/input[@value='Search'] |
+| user | ensure | existence of text | Results Found |
+| pause | 10000 |
+| user clicks | _selected_action |
+| pause | 1000 |
+| user selects | Edit | from | action |
+| pause | 4000 |
+| user clicks and waits | //button[@title='Run the selected action'] |
+| pause | 20000 |
+| $caption= | getUniqueString |
+| user types | $caption | into | name=form-0-caption |
+| pause | 2000 |
+| user clicks and waits | _save |
+| pause | 2000 |
+| user | ensure | existence of text | Select photo to change |
+| pause | 2000 |
+| user types | The K99.1FM Celebrity Gallery | into | css=input#searchbar |
+| user clicks and waits |  //form[@id='changelist-search']/div/input[@value='Search'] |
+| user | ensure | existence of text | Results Found |
+| pause | 10000 |
+| user clicks and waits | link=The K99.1FM Celebrity Gallery |
+| pause | 5000 |
+| user | ensure | existence of text | Change photo |
+| user | ensure | existence of text | $caption |
+| user types | 	The K99.1FM Celebrity Gallery | into | query |
+| user clicks and waits | css=input[type=submit] |
+| user | ensure | existence of text | Results Found |
+| user clicks and waits | link=Photo |
+| pause | 10000 |
+| user clicks | _selected_action |
+| pause | 1000 |
+| user selects | Add to new gallery | from | action |
+| pause | 4000 |
+| user waits for Pop Up | !-Add gallery | Medley-! | for | 15000 |
+| selectWindow |  !-Add gallery | Medley-! |
+| user types | Automation Test Gallery | into | //input[@id='id_name'] |
+| user types | This is the blurb for Automation Test Gallery | into | //textarea[@id='id_blurb'] |
+| user selects | label=${k99} | from | id_originating_site |
+| user types | 372 | into | //input[@id='id_primary_category']|
+| user clicks and waits | //input[@name='_save'] |
+| pause | 2000 |
+| selectWindow | null |
+| pause | 2000 |
+| user clicks and waits | name=index |
+| pause | 8000 |
+| user | ensure | existence of text | been added to gallery |
+| pause | 2000 |
+| user clicks and waits| link=Home |
+| pause | 5000 |
+| user types | K99.1FM Celebrity Gallery - Aaron Tippin  | into | query |
+| user clicks and waits | css=input[type=submit] |
+| user | ensure | existence of text | Results Found |
+| user clicks and waits | link=Photo |
+| pause | 10000 |
+| user clicks | _selected_action |
+| user selects | Add to existing gallery | from | action |
+| pause | 4000 |
+| user waits for Pop Up | !-Select gallery | Medley-! | for | 15000 |
+| selectWindow |  !-Select gallery | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks and waits | name=index |
+| pause | 2000 |
+| user | ensure | existence of text | added to gallery |
+| user clicks and waits | link=Automation Test Gallery |
+| pause | 1000 |
+| user clicks and waits | //a[@id='lookup_id_medleygalleryphotos-2-photo'] |
+| user waits for Pop Up | !-Select photo | Medley-! | for | 15000 |
+| selectWindow |  !-Select photo | Medley-! |
+| pause | 5000 |
+| user clicks and waits | link=Any Date |
+| pause | 1000 |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| pause | 2000 |
+| user clicks and waits | _continue |
+| pause | 5000 |
+| user | ensure | existence of text | The gallery "Automation Test Gallery" was changed successfully. You may edit it again below. |
+| pause | 2000 |
+| user clicks | css=div#content-main >ul.object-tools > li:last-child >a |
+| pause | 4000 |
+| selectWindow; |  !-Automation Test Gallery | -!${k99} |
+| pause | 10000 |
+| user | ensure | existence of text | K99.1FM Celebrity Gallery |
+| user | ensure | existence of text | Automation Test Gallery |
+| user | reject | existence of text | The page could not be found |

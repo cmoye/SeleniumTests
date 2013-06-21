@@ -1,0 +1,42 @@
+!|script|
+| user opens | http://wheatley.ddtc.cmgdigital.com:5080/ |
+| pause      |  10000                           | 
+| user clicks and waits | link=Login |
+| user types | seleniumautomation1 | into | id=id_username |
+| user types | cox@net1 | into | id=id_api_key |
+| user types | origin.www.test.palmbeachpost.com | into | id=id_domain |
+| user clicks and waits | name=auth_type |
+| user clicks and waits | xpath=(//a[contains(text(),'Photos')])[2] |
+| $sTime1=|getEval|var d=new Date(); var hours;var minutes;var seconds; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();}  hours+":"+minutes+":"+seconds|
+| $sTime2=|getEval|var d=new Date(); var hours;var minutes;var seconds; if(d.getHours()<=9){hours='0'+(d.getHours()+3);} else{hours=(d.getHours()+3);} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();}  hours+":"+minutes+":"+seconds|
+| $sDate=|getEval|var d = new Date(); var year; var month; var date; year = d.getFullYear(); if ((d.getMonth() + 1) <= 9) { month = '0' + (d.getMonth() + 1); } else { month = (d.getMonth() + 1); } if (d.getDate() <= 9) { date = '0' + d.getDate(); } else { date = d.getDate(); } year + "-" + month + "-" + date|
+| $PubDate=|getEval|'$sDate'+"T"+'$sTime1'|
+| $UpdatedDate=|getEval|'$sDate'+"T"+'$sTime2'|
+| $Title=|getEval|"Photo-Write-API-automation-"+  "$PubDate"    |
+| $Vendorid=|getEval| "vendoridphoto" +  "$PubDate"    |
+| user types | C:\Users\Public\Pictures\gentle_purple.jpg | into | name=photo |
+| user types | /api/content/v1/category/588/ | into | id=id__new_categories |
+| user types | /api/content/v1/site/3000/ | into | id=id_originating_site |
+| user types | /api/content/v1/category/588/ | into | id=id_primary_category |
+| user types | $PubDate | into | id=id_pub_date |
+| user types | $UpdatedDate | into | id=id_updated_date |
+| user types | /api/content/v1/site/3000/ | into | id=id__new_sites |
+| user selects | label=Premium | from | id=id_premium |
+| user types | $Title | into | id=id_title |
+| user types | testing | into | id=id__new_topics |
+| user types | blurb | into | id=id_blurb |
+| user types | serp desc | into | id=id_serp_description |
+| user types | social summary  | into | id=id_social_summary |
+| user types | $Vendorid | into | id=id_vendor_id |
+| user clicks and waits | css=button |
+| user | ensure | existence of text | Status: 201 |
+| pause                 |   10000                  |
+| user opens            |  http://www.test.palmbeachpost.com/admin/  |
+| user types | seleniumautomation1 | into | id=id_username |
+| user types | cox@net1 | into | id=id_password |
+| user clicks and waits | css=input[type="submit"] |
+| user clicks and waits | //a[contains(@href,'/admin/photos/medleyphoto/')] |
+| user types | $Title | into | id=searchbar |
+| pause                 |   4000                  |
+| user clicks and waits | css=div > input[type="submit"] |
+| user | ensure | existence of text | $Title |

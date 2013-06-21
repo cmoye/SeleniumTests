@@ -1,0 +1,40 @@
+!|script|
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | link=Automatic lists |
+| user clicks and waits | link=Creation date |
+| user clicks and waits | link=Creation date |
+| user clicks and waits | link=This is an automated test of the automatic list input |
+| user clicks | ${viewOnSiteBttn} |
+| pause | 10000 |
+| selectWindow |  !-This is an automated test of the automatic list input | test.www.clarkhoward.com-! |
+| $autoListUrl= | getLocation |
+| user | ensure | existence of text | This is an automated test of the automatic list input |
+| pause | 5000 |
+| user | ensure | existence of | //meta[contains (@content, 'http://test.www.clarkhoward.com/list/cars/automated-test-automatic-list-input/')] |
+| user clicks and waits | //div[@id='']/div/a/img |
+| user | ensure | existence of | //meta[contains (@content, 'http://test.www.clarkhoward.com/news/cars/automated-test-story-input/')] |
+| user opens | $autoListUrl |
+| user clicks and waits | //a[contains(@href, '/automated-test-story-input/')]//img[contains(@src, 'photos')] |
+| user | ensure | existence of text | This is a story of my life. It begins like this... Once upon a time |
+| user opens | $autoListUrl |
+| user | ensure | existence of text | This is a story of my life. It begins like this... Once upon a time |
+| user clicks and waits | link=This is an automated test of the story input |
+| pause | 5000 |
+| user | ensure | existence of | //meta[contains (@content, 'http://test.www.clarkhoward.com/news/cars/automated-test-story-input/')] |
+| user opens | $autoListUrl |
+| user clicks and waits | //a[@class='cmPaginationNext'] |
+| user | ensure | existence of text | This is an automated test of the automatic list input |
+| user clicks and waits | //a[contains (@href, '/news/ap/')] |
+| pause | 5000 |
+| user | ensure | existence of | //meta[contains (@content, '/news/ap/')] |
+| user opens | $autoListUrl |
+| user clicks and waits | //a[@class='cmPaginationNext'] |
+| pause | 5000 |
+| user clicks and waits | //a[@class='cmPaginationPrevious'] |
+| user clicks and waits | //a[contains(@href, 'http://test.www.clarkhoward.com/news/cars/')] |
+
+#| user | ensure | existence of | //meta[contains (@content, 'http://test.www.clarkhoward.com/photo/')] |
+#| user | ensure | existence of | //meta[contains (@content, '/news/ap/')] |

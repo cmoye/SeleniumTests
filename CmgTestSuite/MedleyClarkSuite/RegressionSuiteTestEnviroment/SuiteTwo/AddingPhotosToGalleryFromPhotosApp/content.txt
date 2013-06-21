@@ -1,0 +1,41 @@
+This script '''tests both the gallery actions from photos app'''. It selects first three photos (after doing a keyword Search for ‘K99.1FM Celebrity Gallery’) and adds to a new gallery. Then, it selects photos 4 and 5 on the page and adds to an existing gallery. It selects the first gallery on the page and adds the selected photos to it.
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester3 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| pause | 5000 |
+| user clicks and waits | //a[contains(@href,'photos/medleyphoto/')] |
+| pause | 2000 |
+| user types | K99.1FM Celebrity Gallery | into | //input[@id='searchbar'] |
+| user clicks and waits | //input[@type='submit'] |
+| pause | 10000 |
+| user clicks | _selected_action |
+| user clicks | //input[@name='_selected_action' and @value='3106']|
+| user clicks | //input[@name='_selected_action' and @value='3105']|
+| pause | 1000 |
+| user selects | Add to new gallery | from | action |
+| pause | 4000 |
+| user waits for Pop Up | !-Add gallery | Medley-! | for | 15000 |
+| selectWindow |  !-Add gallery | Medley-! |
+| user types | Test Gallery | into | //input[@id='id_name'] |
+| user types | This is the blurb for Test Gallery | into | //textarea[@id='id_blurb'] |
+| user selects | ${k99} | from | ${selectAvailableSites} |
+| user types | 372 | into | //input[@id='id_primary_category']|
+| user clicks | //input[@name='_save'] |
+| selectWindow | null |
+| pause | 2000 |
+| user clicks and waits | name=index |
+| pause | 2000 |
+| user | ensure | existence of text | have been added to gallery 'Test Gallery' |
+| pause | 2000 |
+| user clicks | //input[@name='_selected_action' and @value='3104']|
+| user clicks | //input[@name='_selected_action' and @value='3103']|
+| user selects | Add to existing gallery | from | action |
+| user waits for Pop Up | !-Select gallery | Medley-! | for | 15000 |
+| selectWindow |  !-Select gallery | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks and waits | name=index |
+| pause | 2000 |
+| user | ensure | existence of text | added to gallery |

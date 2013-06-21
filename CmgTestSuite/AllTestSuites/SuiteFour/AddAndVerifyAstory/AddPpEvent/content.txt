@@ -1,0 +1,18 @@
+!|script|
+|user opens |http://${wdbo}/admin/|
+|pause |	10000|
+|user types 	|cmgtester4 |	into |	css=input#id_username|
+|user types 	|cmgtest3r 	|into 	|css=input#id_password|
+|user clicks and waits |	css=input[type='submit']|
+|user clicks and waits |	css=a[href='/admin/events/medleyevent/add/']|
+|user types 	|automation event |	into 	|css=input#id_title|
+|user types |	16528 |	into 	|css=#id_place|
+|user selects 	|label=${wdbo} |	from |	css=#id_originating_site|
+|pause |	10000|
+|user types 	|408 	|into |	css=#id_primary_category|
+|user clicks |	link=Today|
+|user clicks and waits| 	css=input[name='_continue']|
+| pause | 5000 |
+|user |ensure |	existence of text |	successful |
+|user | reject | existence of text | The page could not be found |
+|pause | 5000 |

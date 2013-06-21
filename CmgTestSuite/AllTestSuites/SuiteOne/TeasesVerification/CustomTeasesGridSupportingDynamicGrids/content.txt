@@ -1,0 +1,62 @@
+!|script|
+| user opens | http://${wsbradio}/admin/ |
+| user types | cmgtester | into | id=id_username |
+| user types | cmgtest3r | into | id=id_password |
+| user clicks and waits | css=input[type="submit"] |
+| pause|20000|
+| ensure |isElementPresent                             | css=div#user-tools |
+| user clicks and waits | xpath=(//a[contains(text(),'Grids')])[2] |
+| user clicks and waits | link=www.test.wsbradio.com |
+|user clicks and waits |link=jamie dupree |
+|user clicks |link=Add another Grid Area|
+|pause | 3000 |
+| note |user selects | label=Story | from | css=select[id=id_areas-20-content_type]|
+| user clicks|//div[@onclick="grids.cell_clicked('-1')"]|
+| pause | 3000 |
+|$maxId=|getEval| javascript{var a=this.browserbot.getUserWindow().document.getElementsByTagName('select');var counter=-1;for(i=0;i<a.length;i++){if(a[i].name.indexOf('-content_type')>=0){counter++;}}}|
+|note|selectFrame;|id=_preview_target|
+|$storyId=|getEval|"areas-"+$maxId+"-content_type"|
+|user selects|label=Story|from|name=$storyId|
+|$lookUpId=|getEval|"#lookup_id_areas-"+$maxId+"-object_id>img[alt='Lookup']"|
+| user clicks | css= $lookUpId|
+| user waits for Pop Up |!-Select story | Medley-! | for | 10000 |
+| pause | 30000|
+| selectWindow; | !-Select story | Medley-! |
+| user clicks and waits |link=This is an automated test of the story input |
+|pause| 5000|
+| selectWindow; | null |
+|pause|3000|
+| user clicks | css=$lookUpId |
+| user waits for Pop Up |!-Select story | Medley-! | for | 10000 |
+|pause|30000|
+| selectWindow; | !-Select story | Medley-!|
+|pause|3000|
+| user types | automated | into | id=searchbar |
+| user clicks and waits | css=input[type="submit"] |
+| user clicks and waits | link=This is an automated test of the story input |
+| selectWindow; | null |
+|pause|3000|
+|$headingId=|getEval|"areas-"+$maxId+"-heading"|
+|user types|Test automation|into|name=$headingId|
+|$saveId=|getEval|"areas-"+$maxId+""|
+|$saveMain=|getEval|"//div[@id='$saveId']/div/div[3]/input"|
+|user clicks|$saveMain|
+|pause|30000|
+| user clicks and waits | name=_continue |
+| user clicks |${viewOnSiteBttn} |
+|pause|60000|
+| selectWindow; | !-Jamie Dupree | www.test.wsbradio.com-! |
+| ensure | isElementPresent|  link=About Jamie Dupree|
+| ensure | isElementPresent |link=Jamie Dupree's Washington Insider|
+| selectWindow; | null |
+|note| user clicks ||
+| selectWindow; | !-Jamie Dupree | www.test.wsbradio.com-! |
+|pause| 5000|
+|user clicks and waits |link=Jamie Dupree's Washington Insider|
+|pause|20000|
+| ensure | isTextPresent|Jamie Dupree's Washington Insider|
+| selectWindow; | null |
+| ensure | isTextPresent|The grid "jamie dupree" was changed successfully. You may edit it again below.|
+|user clicks|name=_save|
+|pause| 20000|
+|close; |

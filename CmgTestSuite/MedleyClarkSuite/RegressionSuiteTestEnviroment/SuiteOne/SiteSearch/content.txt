@@ -1,0 +1,6 @@
+!|script|
+| user opens | http://${wsbradio} |
+| user types | Atlanta | into | q |
+| user clicks and waits | //button[@type='submit'] |
+| user | ensure | existence of text | Results 1 - 20 |
+

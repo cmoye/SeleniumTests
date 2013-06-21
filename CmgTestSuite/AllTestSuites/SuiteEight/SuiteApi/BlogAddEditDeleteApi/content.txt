@@ -1,0 +1,117 @@
+!| script                                                                                                                                                                |
+|user opens            | ${palmbeachpostadmin}                                                                                                            |
+|pause                 |10000                                                                                                                                            |
+|user types            |cmgtester                              |into             |//input[@id='id_username']                                                       |
+|user types            |cmgtest3r                                     |into             |//input[@id='id_password']                                                       |
+|user clicks and waits |//input[@value='Log in']                                                                                                                         |
+|pause                 |9000                                                                                                                                             |
+|user clicks and waits |css=a[href='/admin/weblogs/medleyblog/add/']                                                                                          |
+|pause                 |2000                                                                                                                                             |
+|user waits for text   |Add blog                                                                                                                                         |
+|note|pause                 |10000                                                                                                                                            |
+|$blog=              |getEval                                     |var d=new Date();"Test Automation Blog" + d.getHours() + d.getMinutes() + d.getSeconds();                                                                                   |
+|user types            |$blog                           |into             |//input[@id='id_title']                                                          |
+|user selects and waits|Enabled                                      |from             |//select[@name='comment_status']                                                 |
+|user types            |New Automation_Blog_TagLine                    |into             |//input[@id='id_tagline']                                                        |
+|user types            |New Automation_Blog_Description               |into             |//textarea[@id='id_description']                                                 |
+|makeChecked           |//input[@id='id_is_staff_blog']                                                                                                                  |
+|addSelection;         |//select[@id='id_bylines_from']              |label=Jamie Dupree                                                                                 |
+|user clicks           |link=Add                                                                                                                                         |
+|pause                 |1000                                                                                                                                             |
+|user selects and waits|www.test.palmbeachpost.com                  |from             |//select[@name='originating_site']                                               |
+|user types            |209                                          |into             |id_primary_category                                                              |
+|user clicks           |link=[209] AP                                                                                                                                    |
+|pause                 |5000                                                                                                                                            |
+|addSelection;         |//select[@id='id_categories_from']           |label=/AP                                                                                          |
+|user clicks           |//form[@id='medleyblog_form']/div/fieldset[3]/div[4]/div/div/ul/li[1]/a                                                                          |                                                                                                                                          |
+|user clicks and waits          |//input[@name='_continue']                                                                                                                       |
+|pause                 |15000                                                                                                                                            |
+|note|selectWindow;|!-Change blog | Medley-!|
+|user                  |ensure                                       |existence of text| was added successfully. You may edit it again below.|
+|user clicks and waits|css=div[class='breadcrumbs']>a:contains('Blogs')|
+|note|pause|30000|
+|note|selectWindow;|!-Select blog to change | Medley-!|
+|user clicks and waits|css=a:contains('Add blog')|
+|note|pause|30000|
+|note|selectWindow;|!-Add blog | Medley-!|
+|$EditBlog=              |getEval                                     |var d=new Date();"Test Blog Automation" + d.getHours() + d.getMinutes() + d.getSeconds();                                                                                   |
+|user types            |$EditBlog|into             |//input[@id='id_title']                                                          |
+|user selects and waits|Enabled                                      |from             |//select[@name='comment_status']                                                 |
+|user types            |Automation_NewBlog_TagLine                    |into             |//input[@id='id_tagline']                                                        |
+|user types            |Automation_NewBlog_Description               |into             |//textarea[@id='id_description']                                                 |
+|makeChecked           |//input[@id='id_is_staff_blog']                                                                                                                  |
+|addSelection;         |//select[@id='id_bylines_from']              |label=Jamie Dupree                                                                                 |
+|user clicks           |link=Add                                                                                                                                         |
+|pause                 |1000                                                                                                                                             |
+|user selects and waits|www.test.palmbeachpost.com                  |from             |//select[@name='originating_site']                                               |
+|user types            |209                                          |into             |id_primary_category                                                              |
+|user clicks           |link=[209] AP                                                                                                                                    |
+|pause                 |10000                                                                                                                                            |
+|addSelection;         |//select[@id='id_categories_from']           |label=/AP                                                                                          |
+|user clicks           |//form[@id='medleyblog_form']/div/fieldset[3]/div[4]/div/div/ul/li[1]/a                                                                          |                                                                                                                                          |
+|user clicks and waits          |//input[@name='_continue']                                                                                                                       |
+|pause                 |15000                                                                                                                                            |
+|selectWindow;|!-Change blog | Medley-!|
+|user                  |ensure                                       |existence of text| was added successfully. You may edit it again below.|
+|user clicks and waits|css=div[class='breadcrumbs']>a:contains('Blogs')|
+|note|pause|30000|
+|note|selectWindow;|!-Select blog to change | Medley-!|
+|user clicks and waits|css=a:contains('Add blog')|
+|note|pause|30000|
+|note|selectWindow;|!-Add blog | Medley-!|
+|$DeleteBlog=              |getEval                                     |var d=new Date();"Test Blog Automation" + d.getHours() + d.getMinutes() + d.getSeconds();                                                                                   |
+|user types            |$DeleteBlog|into             |//input[@id='id_title']                                                          |
+|user selects and waits|Enabled                                      |from             |//select[@name='comment_status']                                                 |
+|user types            |Automation_NewBlog_TagLine                    |into             |//input[@id='id_tagline']                                                        |
+|user types            |Automation_NewBlog_Description               |into             |//textarea[@id='id_description']                                                 |
+|makeChecked           |//input[@id='id_is_staff_blog']                                                                                                                  |
+|addSelection;         |//select[@id='id_bylines_from']              |label=Jamie Dupree                                                                                 |
+|user clicks           |link=Add                                                                                                                                         |
+|pause                 |1000                                                                                                                                             |
+|user selects and waits|www.test.palmbeachpost.com              |from             |//select[@name='originating_site']                                               |
+|user types            |209                                          |into             |id_primary_category                                                              |
+|user clicks           |link=[209] AP                                                                                                                                    |
+|pause                 |5000                                                                                                                                            |
+|addSelection;         |//select[@id='id_categories_from']           |label=/AP                                                                                          |
+|user clicks           |//form[@id='medleyblog_form']/div/fieldset[3]/div[4]/div/div/ul/li[1]/a                                                                          |                                                                                                                                          |
+|user clicks and waits          |//input[@name='_continue']                                                                                                                       |
+|pause                 |15000                                                                                                                                            |
+|note|selectWindow;|!-Change blog | Medley-!|
+|user                  |ensure                                       |existence of text| was added successfully. You may edit it again below.|
+|user clicks and waits|css=div[class='breadcrumbs']>a:contains('Blogs')|
+|note|pause|30000|
+|note|selectWindow;|!-Select blog to change | Medley-!|
+|$EditedBlogName= |getEval | var d=new Date();"Test Edited Blog Automation" + d.getHours() + d.getMinutes() + d.getSeconds(); |
+|user clicks and waits          |link=$EditBlog|
+|note|pause                 |10000                                                                                                                                            |
+|user waits for text   |Change blog                                                                                                                                         |
+|note|pause                 |10000                                                                                                                                            |
+|user types            |$EditedBlogName|into             |//input[@id='id_title']                                                          |
+|user selects and waits|Enabled                                      |from             |//select[@name='comment_status']                                                 |
+|user types            |Automation_NewBlog_TagLine_Edited                    |into             |//input[@id='id_tagline']                                                        |
+|user types            |Automation_NewBlog_Description_Edited                                   |into             |//textarea[@id='id_description']                                                 |
+|makeChecked           |//input[@id='id_is_staff_blog']                                                                                                                  |
+|addSelection;         |//select[@id='id_bylines_from']              |label=Astra                                                                                 |
+|user clicks           |link=Add                                                                                                                                         |
+|pause                 |1000                                                                                                                                             |
+|user types            |870                                          |into             |id_primary_category                                                              |
+|user clicks           |link=[870] AP Import                                                                                                                                   |
+|pause                 |5000                                                                                                                                            |
+|addSelection;         |//select[@id='id_categories_from']           |label=/AP/Business                                                                                          |
+|user clicks           |//form[@id='medleyblog_form']/div/fieldset[3]/div[4]/div/div/ul/li[1]/a                                                                          |                                                                                                                                          |
+|user clicks and waits          |//input[@name='_continue']                                                                                                                       |
+|pause                 |15000                                                                                                                                            |
+|user                  |ensure                                       |existence of text| was changed successfully. You may edit it again below.|
+|user opens            |http://www.test.palmbeachpost.com/admin/weblogs/medleyblog/                                                                                                            |
+|pause|10000|
+|user clicks and waits          |link=$DeleteBlog                                                                                                                       |
+|note|pause                 |15000                                                                                                                                            |
+| user selects | Removed by staff | from | css=select#id_display |
+|user clicks and waits          |//input[@name='_continue']                                                                                                                       |
+|pause                 |10000                                                                                                                                            |
+|user waits for text   |Change blog                                                                                                                                         |
+|user                  |ensure                                       |existence of text| was changed successfully. You may edit it again below.|
+| user | reject | existence of text | The page could not be found |
+|$FileName=|getEval|"C:\\\\BlogFile.txt"|
+|$GalleryCheckPoints=|getEval|"$blog"+","+"$EditedBlogName" +","+"$DeleteBlog"|
+|getEval|var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile );file.initWithPath("$FileName"); if (!file.exists()) file.create(0x00, 0644); var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream); outputStream.init(file,0x02,00004,null);outputStream.write("$GalleryCheckPoints","$GalleryCheckPoints".length); outputStream.flush(); outputStream.close();||

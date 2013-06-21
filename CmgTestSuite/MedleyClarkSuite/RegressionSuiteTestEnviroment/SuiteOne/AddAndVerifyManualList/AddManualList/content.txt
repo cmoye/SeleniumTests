@@ -1,0 +1,39 @@
+!|script|
+| open | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addManualListBttn} |
+| user types | This is an automated test of the MANUAL list input | into | ${titleTextBox} |
+| user selects | ${clark} | from | ${selectOriginatingSite} |
+| user clicks and waits | link=[15] Cars |
+| user clicks and waits | link=[17] Buying |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | 1 | into | ${inputOrderBox1} |
+| user selects | Event | from | ${inputContentType1} |
+| user clicks | ${objectIdLookupBttn1} |
+| user waits for Pop Up | !-Select event | Medley-! | for | 15000 |
+| selectWindow | !-Select event | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user types | 2 | into | ${inputOrderBox2} |
+| user selects | Event | from | ${inputContentType2} |
+| user clicks | ${objectIdLookupBttn2} |
+| user waits for Pop Up | !-Select event | Medley-! | for | 15000 |
+| selectWindow | !-Select event | Medley-! |
+| user clicks | ${2ndObjectOnListLink} |
+| selectWindow | null |
+| user types | 3 | into | ${inputOrderBox3} |
+| user selects | Event | from | ${inputContentType3} |
+| user clicks | ${objectIdLookupBttn3} |
+| user waits for Pop Up | !-Select event | Medley-! | for | 15000 |
+| selectWindow | !-Select event | Medley-! |
+| user clicks | ${3rdObjectOnListLink} |
+| selectWindow | null |
+| pause | 1000 |
+| user clicks | //input[@name='_save'] |
+| pause | 40000 |
+| user | ensure | existence of text | was added successfully. |
+| pause | 40000 |

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<properties>
+	<Files>true</Files>
+	<Properties>true</Properties>
+	<RecentChanges>true</RecentChanges>
+	<Refactor>true</Refactor>
+	<Search>true</Search>
+	<Suite/>
+	<Versions>true</Versions>
+	<WhereUsed>true</WhereUsed>
+	<WikiImport>
+		<Source>http://selenium.ddtc.cmgdigital.com:8181/CmgTestSuite.AllTestSuites.SuiteThree.GlobalUserRegistration</Source>
+		<LastRemoteModification>20120815102608</LastRemoteModification>
+	</WikiImport>
+</properties>

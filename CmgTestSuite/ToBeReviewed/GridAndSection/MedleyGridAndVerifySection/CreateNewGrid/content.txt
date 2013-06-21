@@ -1,0 +1,141 @@
+!|script|
+| user opens | http://www.${env}.daytondailynews.com/admin/ |
+| pause | 5000 |
+| user types | cmgtester1@coxinc.com | into |id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | cmgtest3r | into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+| pause | 15000|
+| user clicks and waits | css=a[href='/admin/grids/grid/add/'] |
+| user selects | www.${env}.daytondailynews.com | from | ${selectOriginatingSite} |
+| $sTime1=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm|
+| user types | Automated Medley Grid $sTime1 | into | ${nameField} |
+| user clicks|//div[@onclick="grids.cell_clicked('-1')"]|
+| pause | 3000 |
+| user types | Video $sTime1 | into | //input[@id='id_areas-0-heading'] |
+| user selects | 100% | from | ${gridWidth} |
+| user selects | Video | from |//select[@id='id_areas-0-content_type'] |
+| user selects | Active Video | from | //select[@id='id_areas-0-display_class'] |
+| user clicks | css=img[alt="Lookup"] |
+| user waits for Pop Up | !-Select video | Medley-! | for | 15000 |
+| pause | 5000 |
+| selectWindow |  !-Select video | Medley-! |
+| pause | 8000 |
+| user clicks and waits | link=www.${env}.daytondailynews.com |
+| user clicks and waits | link=Live |
+| user clicks | ${firstObjectOnListLink} |
+|pause|3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-0']/div/div[3]/input|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-2')"]|
+| pause | 3000 |
+| user types | AutoList $sTime1 | into | //input[@id='id_areas-1-heading'] |
+| user selects | 50% | from | //select[contains(@id, '1-width')] |
+| user selects | Automatic List | from | //select[contains(@id,  '1-content_type')] |
+| user selects | Headline Only | from | //select[@id='id_areas-1-display_class'] |
+| user types | 5 | into | //input[@id='id_areas-1-list_tease_count'] |
+| user clicks | //a[@id='lookup_id_areas-1-object_id'] |
+| user waits for Pop Up | !-Select automatic list | Medley-! | for | 15000 |
+| pause | 5000 |
+| selectWindow |  !-Select automatic list | Medley-! |
+| pause | 5000 |
+| user types | WHIOTV All Local News auto list | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause | 3000 |
+| user clicks | ${firstObjectOnListLink} |
+|pause|3000|
+| selectWindow | null |
+| user clicks |//div[@id='areas-1']/div/div[3]/input|
+| pause|3000|
+| user clicks | link=Add another Grid Area |
+| pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-3')"]|
+| pause | 3000 |
+| user types | Manual List $sTime1 | into | //input[@id='id_areas-2-heading'] |
+| user selects | 50% | from | //select[contains(@id, '2-width')] |
+| user selects | Manual List | from | //select[contains(@id,  '2-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-2-object_id'] |
+| user selects | Headline Only | from | //select[@id='id_areas-2-display_class'] |
+| user types | 5 | into | //input[@id='id_areas-2-list_tease_count'] |
+| user waits for Pop Up | !-Select manual list | Medley-! | for | 20000 |
+| pause | 20000 |
+| selectWindow |  !-Select manual list | Medley-! |
+| pause | 10000 |
+| user types | Breast cancer testing, treatment information | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks |//div[@id='areas-2']/div/div[3]/input|
+| pause|3000|
+| user clicks | link=Add another Grid Area |
+| pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-4')"]|
+| pause | 3000 |
+| user types | Blog Entry $sTime1 | into | //input[@id='id_areas-3-heading'] |
+| user selects | 70% | from | //select[contains(@id, '3-width')] |
+| user selects | Blog Entry | from | //select[contains(@id,  '3-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-3-object_id'] |
+| user waits for Pop Up | !-Select blog entry | Medley-! | for | 15000 |
+|pause|15000|
+| selectWindow |  !-Select blog entry | Medley-! |
+| user types | Lawmakers tangle over Benghazi attacks hearing | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| user clicks and waits | link=All |
+| user clicks | ${firstObjectOnListLink} |
+|pause |3000|
+| selectWindow | null |
+|user clicks |//div[@id='areas-3']/div/div[3]/input|
+|pause|3000|
+| user clicks | link=Add another Grid Area |
+|pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-5')"]|
+| pause | 3000 |
+| user types | Gallery $sTime1 | into | //input[@id='id_areas-4-heading'] |
+| user selects | 30% | from | //select[contains(@id, '4-width')] |
+| user selects | Gallery | from | //select[contains(@id,  '4-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-4-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-4-object_id'] |
+| user waits for Pop Up | !-Select gallery | Medley-! | for | 15000 |
+|pause | 15000 |
+| selectWindow |  !-Select gallery | Medley-! |
+|pause | 10000 |
+| user clicks and waits | link=www.${env}.daytondailynews.com |
+| user types | Montgomery County jail inmates | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| user clicks | ${firstObjectOnListLink} |
+| pause|3000|
+| selectWindow | null |
+| user clicks |//div[@id='areas-4']/div/div[3]/input|
+| pause|3000|
+| user clicks | link=Add another Grid Area |
+| pause|3000|
+| user clicks|//div[@onclick="grids.cell_clicked('-6')"]|
+| pause | 3000 |
+| user types | Story $sTime1 | into | //input[@id='id_areas-5-heading'] |
+| user selects | 100% | from | //select[contains(@id, '5-width')] |
+| user selects | Story | from | //select[contains(@id,  '5-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-5-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-5-object_id'] |
+| user waits for Pop Up | !-Select story | Medley-! | for | 15000 |
+| pause | 20000 |
+| selectWindow |  !-Select story | Medley-! |
+| pause | 10000 |
+| user types | This is my Automation Story | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks and waits | link=All |
+| pause | 3000 |
+| user clicks | ${firstObjectOnListLink} | 
+| selectWindow | null |
+| user clicks |//div[@id='areas-5']/div/div[3]/input|
+| pause|10000|
+| user clicks and waits | _continue |
+| pause | 30000 |
+| user | ensure | existence of text | Automated Medley Grid $sTime1 |
+| user | reject | existence of text | The page could not be found |
+|$FileName=|getEval|"C:\\\\CreateNewGrid .txt"|
+|getEval|var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile );file.initWithPath("$FileName"); if (!file.exists()) file.create(0x00, 0644); var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream); outputStream.init(file,0x02,00004,null);outputStream.write("$sTime1","$sTime1".length); outputStream.flush(); outputStream.close();||
+
+

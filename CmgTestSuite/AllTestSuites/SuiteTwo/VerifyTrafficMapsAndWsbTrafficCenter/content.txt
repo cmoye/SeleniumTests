@@ -1,0 +1,32 @@
+!|script  |
+|user opens | http://${wsbradio}/s/traffic/|
+|pause |30000 |
+|note|ensure|isElementPresent|css=div.cmBreadcrumb>ul>li>a:contains("Home")|
+|note|ensure|isElementPresent|css=div.cmBreadcrumb>ul>li>a:contains("News")|
+|note|ensure|isElementPresent|css=div.cmBreadcrumb>ul>li>a:contains("Traffic")|
+|ensure|isElementPresent|css=div#cmTraffic>div.gmnoprint>div>div:contains("Map")|
+|ensure|isElementPresent|css=div#cmTraffic>div.gmnoprint>div>div:contains("Satellite")|
+|ensure|isElementPresent|css=div#cmTraffic>div.gmnoprint>div>div>img|
+|ensure|isElementPresent|css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>a:contains("News/Talk WSB Traffic")|
+|note|ensure|isElementPresent|css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>ul.cmSubNav>li.cmSubNavMenu>a:contains("INCIDENTS")|
+|note|ensure|isElementPresent|css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>ul.cmSubNav>li.cmSubNavMenu>a:contains("Peach Pass info")|
+|note|ensure|isElementPresent|css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>ul.cmSubNav>li.cmSubNavMenu>a:contains("GDOT Road Closure Info")|
+|ensure|isElementPresent|css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>ul.cmSubNav>li.cmSubNavMenu>a:contains("Capt. Herb's Traffic Red Alerts")|
+| user clicks  |css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>ul.cmSubNav>li.cmSubNavMenu>a:contains("WSB 24hr Traffic Center") |
+|pause|20000|
+|user|ensure|existence of text|News/Talk WSB 24-hour Traffic Center|
+|pause|5000|
+| user clicks  | css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>ul.cmSubNav>li.cmSubNavMenu>a:contains("Capt. Herb's Traffic Red Alerts") |
+|pause|5000|
+|user | ensure | existence of text | Capt. Herb's Traffic Red Alerts|
+|pause|5000|
+|note| user clicks  |css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>ul.cmSubNav>li.cmSubNavMenu>a:contains("Peach Pass info") |
+|note|pause|10000|
+|note|ensure|isElementPresent|css=div:contains("return to")>a:contains("${wsbradio}")|
+|note|pause|5000|
+|note|user clicks and waits|link=${wsbradio}|
+|pause|10000|
+|note| user clicks  |css=div.cmHeaderWrap>div.cmNavigation>ul.cmSiteNav>li.cmPrimaryNavMenu>ul.cmSubNav>li.cmSubNavMenu>a:contains("GDOT Road Closure Info") |
+| user | reject | existence of text | The page could not be found |
+| pause | 20000|
+|close;  |

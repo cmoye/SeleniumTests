@@ -1,0 +1,33 @@
+!contents
+!contents
+!| script |
+| user opens | http://www.test.pbpulse.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | Full Site |
+| user opens | http://test.pbpulse.com/fullsite?return=%2F |
+| pause | 3000 |
+| user opens | http://www.test.pbpulse.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | View mobile site |
+| user clicks and waits | link=View mobile site |
+| user | ensure | existence of text | Full Site |
+| user opens | http://test.pbpulse.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | Full Site |
+| user opens | http://test.pbpulse.com/fullsite?return=%2F |
+| pause | 3000 |
+| user opens | http://www.test.pbpulse.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | View mobile site |
+| user clicks and waits | link=View mobile site |
+| user | ensure | existence of text | Full Site |
+| user opens | http://m.test.pbpulse.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | Full Site |
+| user opens | http://test.pbpulse.com/fullsite?return=%2F |
+| pause | 3000 |
+| user opens | http://www.test.pbpulse.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | View mobile site |
+| user clicks and waits | link=View mobile site |
+| user | ensure | existence of text | Full Site |

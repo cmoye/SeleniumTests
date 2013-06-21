@@ -1,0 +1,22 @@
+!|script|
+| user opens | http://wheatley.cmgdigital.com:5080 |
+| user types | apitestclient | into | id_username |
+| user types | 0c0972e9b453926c4233cc572c4c4a88052cad41 | into | id_api_key |
+| user clicks and waits | document.forms[0].elements['auth_type'][1] |
+| user opens | http://wheatley.cmgdigital.com:5080/wraps/iframe?domain=www.test.wsbradio.com&wrap_id=12 |
+| pause | 5000 |
+| $TRAFFIC= | captureNetworkTraffic | plain |
+| containsSubstring; | $TRAFFIC | events=event1 |
+| containsSubstring; | $TRAFFIC | v7=24 |
+| containsSubstring; | $TRAFFIC | v12=1057 |
+| containsSubstring; | $TRAFFIC | c16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c13=contests |
+| containsSubstring; | $TRAFFIC | v13=contests |
+| containsSubstring; | $TRAFFIC | v16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c22=section%20front |
+| containsSubstring; | $TRAFFIC | v22=section%20front |
+| containsSubstring; | $TRAFFIC | c42=wsb-am |
+| containsSubstring; | $TRAFFIC | v42=wsb-am |
+| containsSubstring; | $TRAFFIC | c43=newstalk |
+| containsSubstring; | $TRAFFIC | v43=newstalk |
+

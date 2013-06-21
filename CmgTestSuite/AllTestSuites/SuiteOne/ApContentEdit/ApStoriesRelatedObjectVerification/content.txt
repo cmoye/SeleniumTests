@@ -1,0 +1,36 @@
+!|script|
+|user opens            |${ajcadmin}                                                                                                       |
+|pause                 |10000                                                                                                                                            |
+|user types            |cmgtester                              |into             |//input[@id='id_username']                                                       |
+|user types            |cmgtest3r                                     |into             |//input[@id='id_password']                                                       |
+| user clicks and waits | css=input[type="submit"] |
+|pause                 |9000                                                                                                                                             |
+|user clicks and waits |css=a[href='/admin/apjobs/apstory/']                                                                                          |
+|pause                 |2000        |
+| user clicks and waits | link=Live |
+|pause                 |20000        |
+| user clicks and waits | css=#result_list> tbody> tr.row1> th> a|
+|pause                 |20000        |
+|$headLine=|getEval|this.browserbot.getCurrentWindow().document.getElementById('id_headline').value; |
+|$a=|getText|id=id_headline|
+| user selects | label=AP Photo | from | id=id_related_objects-relatedobject-from_type-from_id-2-0-to_type |
+| user clicks | css=img[alt="Lookup"] |
+| pause| 20000|
+|selectWindow|!-Select AP Photo | Medley-!|
+| $Caption=|getText| //table[@id='result_list']/tbody/tr/td[2]|
+|note| $Img=|getHtml|css=table#result_list>tbody>tr.row2>td>a>b|
+|$Img=|getEval|var src;var a=this.browserbot.getCurrentWindow().document.getElementsByTagName('img'); for(i=0;i<a.length;i++){if(a[i].width=="90"){src=a[i].src; break;}}|
+|$ImgSrc=|getEval| var a= "$Img"; a=a.substring(a.lastIndexOf('/')+1);|
+| user clicks| css=#result_list> tbody> tr.row1>th>a|
+|pause | 10000|
+|selectWindow|null|
+| user clicks and waits | name=_continue |
+|$Src=|getEval|var src;var counter=0;var a=this.browserbot.getCurrentWindow().document.getElementsByTagName('a'); for(i=0;i<a.length;i++){if(a[i].innerHTML.indexOf("View on")>=0){counter++; src=a[i].href; if(counter==2){break;}}}||
+|$SiteSrc=|getEval| var a= "$Src"; a=a.substring(a.indexOf('/')+2);|
+|$SiteSrcMain=|getEval| var a= "$SiteSrc"; a=a.substring(0,a.indexOf('/'));|
+| user clicks and waits | ${viewOnSiteBttn} |
+|note| user waits for Pop Up | id_topic | for | 30000|
+|pause| 30000|
+|selectWindow | !-$headLine | $SiteSrcMain-!|
+|ensure|isElementPresent|css=img[src*='$ImgSrc']|
+|user| ensure| existence of text|$Caption|

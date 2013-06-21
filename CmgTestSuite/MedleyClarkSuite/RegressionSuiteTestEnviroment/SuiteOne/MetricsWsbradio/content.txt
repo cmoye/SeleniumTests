@@ -1,0 +1,24 @@
+!| script |
+| user opens | http://${wsbradio}/s/news/local/ |
+| $TRAFFIC= | captureNetworkTraffic | plain |
+| containsSubstring; | $TRAFFIC | Omniture DC/2.0.0 |
+| containsSubstring; | $TRAFFIC | pageName=%2Fre%2F314%2F113%2Fs%2Fnews%2Flocal%2F|
+| containsSubstring; | $TRAFFIC | events=event1 |
+| containsSubstring; | $TRAFFIC | h1=ga%3A%20atlanta%7Cradio%7Cwsb-am |
+| containsSubstring; | $TRAFFIC | h2=radio%7Cga%3A%20atlanta%7Cwsb-am |
+| containsSubstring; | $TRAFFIC | c1=1057 |
+| containsSubstring; | $TRAFFIC | c7=24 |
+| containsSubstring; | $TRAFFIC | v7=24 |
+| containsSubstring; | $TRAFFIC | v12=1057 |
+| containsSubstring; | $TRAFFIC | c16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c13=wsb%20radio%20local%20news |
+| containsSubstring; | $TRAFFIC | v13=wsb%20radio%20local%20news |
+| containsSubstring; | $TRAFFIC | v16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c20=1 |
+| containsSubstring; | $TRAFFIC | v20=1 |
+| containsSubstring; | $TRAFFIC | c22=section%20front |
+| containsSubstring; | $TRAFFIC | v22=section%20front |
+| containsSubstring; | $TRAFFIC | c42=wsb-am |
+| containsSubstring; | $TRAFFIC | v42=wsb-am |
+| containsSubstring; | $TRAFFIC | c43=newstalk |
+| containsSubstring; | $TRAFFIC | v43=newstalk |

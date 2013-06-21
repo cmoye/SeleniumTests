@@ -1,0 +1,14 @@
+!| script |
+| user opens | http://intranet.cmgdigital.com/display/howto/Submit+a+Support+Ticket |
+| user selects | Normal support request | from | //select[@name='issuetype'] |
+| user types | ! THIS IS AN AUTOMATED TEST | into | //input[@name='summary'] |
+| user types | This is an automated test of the Support Ticket input. No action required. | into | //textarea[@name='description'] |
+| user types | http://intranet.cmgdigital.com/display/howto/Submit+a+Support+Ticket | into | //textarea[@name='Sites'] |
+| user types | Auto Test User | into | //input[@name='name'] |
+| user types | autotest@cmgdigital.com | into | //input[@validation='email'] |
+| user types | 678-777-8899 | into | //input[@name='userphone'] |
+| pause | 15000 |
+| user | ensure | existence of | bla bla bla | and sends email if not found |
+
+#| user clicks | //input[@value='Submit'] |
+

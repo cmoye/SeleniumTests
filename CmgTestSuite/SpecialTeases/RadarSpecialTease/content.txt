@@ -1,0 +1,59 @@
+!| script |
+| user opens | http://${region}.www.cmgdefault.com/admin/ |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| pause | 5000 |
+| user clicks and waits | ${medleyLoginButton} |
+| pause | 5000 |
+| user clicks and waits | //div[@id='teases']/table/tbody/tr[1]/td[1]/a |
+| pause | 5000 |
+| $radarTeaseName= | getUniqueString |
+| user types | $radarTeaseName | into | id_name|
+| user types | weather/#interactive-radar | into | id_link |
+| user types | includes/teases/teases/specialtease/radar.html| into | id_template_name |
+| user selects | label=${region}.www.cmgdefault.com | from | id_originating_site |
+|addSelection;|id_sites_from|label=test.www.wsbradio.com|
+| user clicks | link=Add |
+| user clicks and waits | _save |
+| pause | 5000 |
+| ensure | isElementPresent | link=$radarTeaseName |
+| user clicks and waits | link=Home|
+| pause | 5000 |
+| user clicks and waits | //div[@id='grids']/table/tbody/tr[1]/td[2]/a|
+| pause | 5000 |
+| user types |AP Georgia / Region Grid WSBradio |into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| pause | 15000 |
+| user clicks and waits | link=AP Georgia / Region Grid WSBradio |
+| pause | 15000 |
+| user clicks and waits  | link=Add another Grid Area |
+| pause | 15000 |
+| user clicks | id_areas-2-heading |
+| user types | Test Radar Tease | into | id_areas-2-heading |
+| user selects | label=Special Tease | from | id_areas-2-content_type |
+| user clicks | //a[@id='lookup_id_areas-2-object_id']/img |
+| user waits for Pop Up | !-Select special tease | Medley-! | for | 120000 |
+| pause | 5000 |
+| selectWindow | !-Select special tease | Medley-! |
+| pause | 5000 |
+| user clicks  and waits | link=$radarTeaseName |
+| pause | 5000 |
+| selectWindow | null |
+| user clicks and waits | _save |
+| user clicks and waits | link=Log out |
+| user opens | http://${region}.www.wsbradio.com/s/news/state-region// |
+| pause | 15000 |
+| ensure | isTextPresent | Test Radar Tease |
+| user opens | http://${region}.www.cmgdefault.com/admin/ |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| pause | 5000 |
+| user clicks and waits | ${medleyLoginButton} |
+| pause | 5000 |
+| user clicks and waits | //div[@id='grids']/table/tbody/tr[1]/td[2]/a |
+| user types | AP Georgia / Region Grid WSBradio | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=AP Georgia / Region Grid WSBradio |
+| user clicks | areas-2-delete-link |
+| user clicks and waits | _save |
+| user clicks and waits |link=Log out|

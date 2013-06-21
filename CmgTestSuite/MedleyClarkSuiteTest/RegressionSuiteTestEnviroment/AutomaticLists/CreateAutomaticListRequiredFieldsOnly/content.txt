@@ -1,0 +1,25 @@
+!|script|
+| open | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addAutomaticListBttn} |
+| user types | This is an automated test of the automatic list input | into | ${titleTextBox} |
+| user selects | test.www.clarkhoward.com | from | ${selectOriginatingSite} |
+| user clicks and waits | link=[15] Cars |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | 26 | into | ${inputNumberOfResults} |
+| user types | 1 | into | ${inputNumberOfDays} |
+| user selects | test.www.clarkhoward.com | from | ${selectSearchSites} |
+| user clicks | ${addSearchSitesBttn} |
+| user selects | /clark-howard/Cars/Buying | from | ${selectAvailableCategories} |
+| user clicks | ${addCategoriesButton} |
+| user selects | Story | from | ${selectContentType} |
+| user clicks | ${addContentTypeBttn} |
+| user clicks and waits | ${saveButton} |
+| pause | 10000 |
+| user | ensure | existence of | //title[text()='Select automatic list to change !-|-! Medley'] |
+
+

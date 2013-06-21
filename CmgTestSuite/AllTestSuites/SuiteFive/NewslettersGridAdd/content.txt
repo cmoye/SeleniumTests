@@ -1,0 +1,32 @@
+!|script|
+| user opens | http://${wsbtv}/admin/ |
+| user types | cmgtester5 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | css=a[href='/admin/newsletters/newslettergrid/add/'] |
+| user selects | ${wsbtv} | from | ${selectOriginatingSite} |
+|$TTime=| getEval |var now=new Date();var Sign="AM";var hours = now.getHours();var minutes = now.getMinutes();var sec = now.getSeconds();if(sec < 10){sec ="0"+ sec };if(hours < 10){hours="0"+hours};if (minutes < 10){minutes = "0" + minutes};(hours+":"+minutes +":"+sec);|
+| user types | Automated newsletter grid $TTime | into | ${nameField} |
+| user selects | Newsletter Free Form | from | ${gridContentType} |
+| user clicks | //a[@id='lookup_id_areas-0-object_id'] |
+| user waits for Pop Up | id_areas__dash__0__dash__object_id | for | 15000 |
+| selectWindow |  !-Select newsletter free form | Medley-! |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Newsletter Grid Area |
+| user types | Entertainment Headlines | into | //input[@id='id_areas-1-heading'] |
+| user selects | 70% | from | //select[contains(@id, '1-width')] |
+| user selects | Automatic List | from | //select[contains(@id,  '1-content_type')] |
+| user selects | Headline Only | from | //select[@id='id_areas-1-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-1-object_id'] |
+| user waits for Pop Up | !-Select automatic list | Medley-! | for | 15000 |
+| pause | 5000 |
+| selectWindow |  !-Select automatic list | Medley-! |
+| pause | 5000 |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks and waits| css=input[name='_continue'] |
+| pause | 23000 |
+| user | ensure | existence of text | Change newsletter grid |
+| user | ensure | existence of text | was added successfully. You may edit it again below. |
+| pause | 1000 |

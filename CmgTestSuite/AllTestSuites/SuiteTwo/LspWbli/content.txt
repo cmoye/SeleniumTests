@@ -1,0 +1,7 @@
+!|script|
+| user opens | http://${1015thepoint}/lsp/ |
+|pause | 8000|
+| user clicks and waits | css=html body#cmBaseBody.cmBody div.cmMainContainer div.cmContainer9 div.cmBodyWrap div.cmCol6 div.cmPlaylist ul.cmPlaylistItems li div.cmPlaylistContent strong a |
+|pause | 3000|
+| user | ensure | existence of text | comment |
+| user | reject | existence of text | The page could not be found |

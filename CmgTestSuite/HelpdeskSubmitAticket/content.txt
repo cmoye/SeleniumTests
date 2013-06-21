@@ -1,0 +1,3 @@
+Requirements for this test are found in the following ticket: https://jira.cmgdigital.com/browse/CMSAUTO-32
+
+!contents -R2 -g -p -f -h

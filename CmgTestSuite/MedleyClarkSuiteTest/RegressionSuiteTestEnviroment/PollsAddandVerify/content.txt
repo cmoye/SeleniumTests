@@ -1,0 +1,30 @@
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | //div[@id='polls']/table/tbody/tr[2]/th/a |
+| user clicks and waits | //div[@id=('changelist-filter')]/x:ul[1]/x:li[50]/x:a |
+| user clicks and waits | link=exact:At what age should mandatory annual driving tests start for seniors?|
+| user types | 2012-03-31 | into |id_expire_date_0  |
+| user clicks and waits | link=[15] Cars |
+| pause | 1000 |
+| user clicks and waits | //input[@name='_continue'] |
+| pause | 1000 |
+| user | ensure | existence of text | was changed successfully |
+| pause | 1000 |
+| user clicks and waits | //a[@class='viewsitelink'] |
+| user opens | http://test.www.clarkhoward.com/polls/2010/dec/poll/what-age-should-mandatory-annual-driving-tests-sta/ |
+| pause | 3000 |
+| user clicks and waits | //input[@id='poll_choice_56'] |
+| pause | 2000 |
+| user clicks and waits | //input[@value='Vote'] |
+| pause | 1000 |
+| user | ensure | existence of text | Thank you for voting! |
+| pause | 1000 |
+
+
+
+
+
+ 

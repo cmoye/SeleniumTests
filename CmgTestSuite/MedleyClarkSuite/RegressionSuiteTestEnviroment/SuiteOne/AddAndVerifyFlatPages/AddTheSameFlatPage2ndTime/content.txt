@@ -1,0 +1,33 @@
+This test verifies when a user '''attempts to add''' the flatpage that was already added with existing URL:
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addFlatPageBttn} |
+| user types | 1This is an automated test of the flatpage input | into | ${inputFlatNickname} |
+| user types | 1This is a Title of the automated test of the flatpage input | into | ${titleTextBox} |
+| user types | /flatpageURL1/ | into | ${urlPathTextBox} |
+| user types |  This is a text that goes on the flatpage: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. | into | ${contentTextBox} |
+| user selects | Header, Footer & Right Rail | from | ${selectFlatPageTemplate} |
+| user selects | ${clark} | from | ${selectOriginatingSite} |
+| user clicks and waits | link=[15] Cars |
+| user clicks and waits | link=[17] Buying |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | This is a page title of the auto test of the flat page input | into | ${pageTitle} |
+| user types | This is an automated test topic | into | ${topicsTextbox} |
+| pause | 5000 |
+| user clicks | //input[@name='_save'] |
+| pause | 25000 |
+| user | ensure | existence of text | The URL is already in use for the site(s) specified. |
+
+#| user clicks | link=Add another Tease |
+#| user selects |  test.www.clarkhoward.com | from | ${selectOriginatingSite2} |
+#| user selects |  Photo | from | ${storyLeadRelatedObjectContentType} |
+#| user clicks | ${storyObjectIdLookupButton} |
+#| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__0__dash__to_id | for | 30000 |
+#| selectWindow | !lit?0? |
+#| user clicks | ${selectPhotoFirstTitleOnTheList} |
+#| selectWindow | null |

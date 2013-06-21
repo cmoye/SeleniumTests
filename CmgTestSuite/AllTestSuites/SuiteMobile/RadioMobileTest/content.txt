@@ -1,0 +1,20 @@
+!| script |
+| user opens | http://www.test.wsbradio.com/ |
+| pause | 3000 |
+| ensure | isElementPresent | link=View full site |
+| user clicks and waits | link=View full site |
+| user | ensure | existence of text | View mobile site |
+| user clicks and waits | link=View mobile site |
+| user | ensure | existence of text | View full site |
+| user opens | http://test.wsbradio.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | View full site |
+#| user opens | http://test.wsbradio.com/videos | 
+#| pause | 5000 |
+#| user | ensure | existence of text | Follow us on  |
+#| user clicks and waits | //x:div[3]/x:div[1]/x:div[1]/x:ul/x:li[1]/x:a |
+#| user | ensure | existence of text | View full site |
+#| user opens | http://test.clarkhoward.com/ |
+#| pause | 4000 |
+#| user | reject | existence of text | Follow Clark Howard on |
+ 

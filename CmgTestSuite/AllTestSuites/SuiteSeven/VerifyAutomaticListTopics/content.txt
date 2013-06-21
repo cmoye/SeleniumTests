@@ -1,0 +1,7 @@
+!|script|
+| user opens | http://${pbp}/list/news/national-news-top/aDYR/|
+| pause | 5000 |
+|$Today= |getEval |var now=new Date();var month=new Array(12); month[0]="Jan."; month[1]="Feb.";month[2]="March";month[3]="April"; month[4]="May";month[5]="June"; month[6]="July";month[7]="Aug.";month[8]="Sept.";month[9]="Oct."; month[10]="Nov."; month[11]="Dec."; month[now.getMonth()]+" "+ now.getDate()+", "+ now.getFullYear();|
+| selectWindow |  !-National spotlight | www.test.palmbeachpost.com-! |
+|ensure| isElementPresent | css=ul[class='footer']>li:contains($Today)|
+| user | reject | existence of text | The page could not be found |

@@ -1,0 +1,16 @@
+!|script|
+| user opens | http://${wsbradio}/admin/ |
+| user types |	cmgtester 	| into |	//input[@name='username'] 	|
+|user types 	|cmgtest3r |	into 	|//input[@id='id_password'] |
+|user clicks and waits |	//input[@type='submit']|
+| pause | 1000 |
+| user clicks and waits | //div[@id='grids']/table/tbody/tr[2]/td[1]/a |
+| user selects | label=www.test.wsbradio.com | from | id_originating_site |
+| user types | automatedgrid | into | id_name |
+| user clicks | //img[@alt='Lookup'] |
+| user waits for Pop Up | id_topic | for | 2000 |
+| selectWindow | name=id_topic |
+| user clicks and waits | link=cmgtest |
+| selectWindow | null |
+| user clicks | link=[209] AP |
+| user clicks and waits | _continue |

@@ -1,0 +1,37 @@
+!| script |
+| open | ${adminURL} |
+| user types | imelnikov | into | ${medleyLoginName} |
+| user types | Nika1945! | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| pause | 2000 |
+| clickAndWait | //a[@href='news/medleystory/add/'] |
+| pause | 2000 |
+| type; | //input[@id='id_headline'] | This is an automated test of the story input |
+| type; | //input[@id='id_print_headline'] | This is a Print headline of the automated test of the story input |
+| type; | //input[@id='id_subhead'] | Let's see if this works |
+| pause | 2000 |
+| check | getText | //input[@id='id_slug'] | automated-test-story-input |
+| select; | //select[@id='id_bylines_from'] | Kiranmai Guduru |
+| click; | //form[@id='medleystory_form']/div/fieldset[1]/div[5]/div/div/ul/li[1]/a |
+| pause | 5000 |
+| type; | //input[@id='id_one_off_byline'] | IAM Tester |
+| type; | //input[@id='id_byline_source'] | Telegraph Agency of Zanzibar |
+| select; | //select[@id='id_dateline'] | Atlanta, GA |
+| type; | //body[@id='tinymce'] | This is a story of my life. It begins like this... Once upon a time |
+| type; | //input[@id='id_pre_story_blurb'] | Editor's note: |
+| type; | //input[@id='id_post_story_blurb'] | Lorne Cameron & Lynn Orr contributed to this story. |
+| select; | //select[@id='id_comment_status'] | Enabled |
+| select; | //select[@id='id_originating_site'] | test.www.clarkhoward.com |
+| click; | //form[@id='medleystory_form']/div/fieldset[3]/div[2]/div/div/ul/li[1]/a |
+| type; | //input[@id='id_primary_category'] | 12 |
+| select; | //select[@id='id_categories_from'] | [Clark Howard] /Business & Entrepreneurs | |
+| click; | //form[@id='medleystory_form']/div/fieldset[3]/div[4]/div/div/ul/li[1]/a |
+| pause | 10000 |
+| select; | //select[@id='id_status'] | Live |
+| click; | link=Today |
+| click; | link=Now |
+| type; | //textarea[@id='id_topics'] | This is an automated test topic |
+| select; | //select[@id='id_related_objects-relatedobject-from_type-from_id-0-to_type'] | Photo |
+| type; | //input[@id='id_related_objects-relatedobject-from_type-from_id-0-to_id'] | 816 |
+| pause | 10000 |
+#| clickAndWait | //input[@name='_save'] |

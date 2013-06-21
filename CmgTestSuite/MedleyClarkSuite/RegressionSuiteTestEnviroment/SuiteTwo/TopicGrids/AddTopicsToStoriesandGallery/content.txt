@@ -1,0 +1,21 @@
+!|script|
+| user opens | http://${wsbradio}/admin/ |
+| user types |	cmgtester 	| into |	//input[@name='username'] 	|
+|user types 	|cmgtest3r |	into 	|//input[@id='id_password'] |
+|user clicks and waits |	//input[@type='submit']|
+| pause | 1000 |
+| user clicks and waits | link=Stories |
+| user types | automate | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=This is an automated test of the story input |
+| pause | 2000 |
+| user types | cmgtest | into | id_topics |
+| user clicks and waits | _continue |
+| user clicks and waits | link=Home |
+| user clicks and waits | link=Galleries |
+| user types | test | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Test Gallery |
+| pause | 2000 |
+| user types | cmgtest | into | id_topics |
+| user clicks and waits | _continue |

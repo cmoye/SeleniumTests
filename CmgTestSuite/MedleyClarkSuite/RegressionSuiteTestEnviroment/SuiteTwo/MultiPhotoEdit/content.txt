@@ -1,0 +1,45 @@
+!| script |
+| user opens | http://${clark}/admin/photos/medleyphoto/ |
+| user types | clarkonly | into | ${medleyLoginName} |
+| user types | test | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| pause | 1000 |
+| user clicks and waits | link=${clark} |
+| pause | 4000 |
+| user types |    Clark Howard's 2011 Habitat for Humanity Build | into | //input[@id='searchbar'] |
+| user clicks and waits | //input[@type='submit'] |
+| pause | 10000 |
+| user clicks and waits | _selected_action |
+| pause | 1000 |
+| user selects | Edit | from | action |
+| pause | 4000 |
+| user clicks and waits | name=index |
+| pause | 20000 |
+| user types | K99.1FM Celebrity Gallery | into | //input[@id='id_form-0-title'] |
+| pause | 2000 |
+| user clicks and waits | _save |
+| pause | 2000 |
+| user | ensure | existence of | //title[text()='Select photo to change !-|-! Medley'] |
+| pause | 2000 |
+| user types | K99.1FM Celebrity Gallery | into | //input[@id='searchbar'] |
+| user clicks and waits | //input[@type='submit'] |
+| pause | 10000 |
+| user clicks and waits | _selected_action |
+| user clicks and waits | //input[@name='_selected_action' and @value='3107']|
+| user clicks and waits | //input[@name='_selected_action' and @value='3106']|
+| pause | 1000 |
+| user selects | Edit | from | action |
+| pause | 4000 |
+| user clicks and waits | name=index |
+| pause | 20000 |
+| user | ensure | existence of text | You can not edit 2 of the 3 selected photos. |
+| pause | 2000 |
+| user types | Clark Howard's 2011 Habitat for Humanity Build | into | //input[@id='id_form-0-title'] |
+| pause | 2000 |
+| user types | This is my test caption | into | //textarea[@id='id_form-0-caption'] |
+| pause | 2000 |
+| user clicks and waits | _save |
+| pause | 2000 |
+| user | ensure | existence of | //title[text()='Select photo to change !-|-! Medley'] |
+| user | ensure | existence of text | 1 photo was changed successfully. |
+| pause | 2000 |

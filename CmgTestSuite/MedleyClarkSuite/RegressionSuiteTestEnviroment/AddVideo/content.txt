@@ -1,0 +1,17 @@
+!|script|
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | //div[@id='videos']/table/tbody/tr[2]/th/a |
+| user clicks and waits | link=Add video |
+| user types | http://link.brightcove.com/services/player/bcpid774331384001?bctid=950163509001 | into | id_player_url |
+| user types | This is an automated input video | into | id_title |
+| user types | description of test video | into | id_description |
+| user selects | label=test.www.wsbradio.com | from | id_originating_site |
+| user types | 588 | into | id_primary_category |
+| user types | test topic | into | id_topics |
+| user clicks and waits | _continue |
+| user | ensure | existence of text | The video "This is an automated input video" was added successfully. You may edit it again below. |
+| user clicks | link=View on site |
+| user | ensure | existence of text | This is an automated input video |

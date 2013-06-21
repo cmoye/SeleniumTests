@@ -1,0 +1,10 @@
+!|script|
+| user opens | http://${wsbradio} |
+| user | ensure | existence of text | 7-Day Forecast |
+| user | ensure | existence of text | WSB-TV Radar |
+| user clicks and waits | link=7-Day Forecast |
+| pause | 2000 |
+| user | ensure | existence of text | 5-Day Forecast |
+| pause | 2000 |
+| user | ensure | existence of text | Today's Forecast |
+| user | reject | existence of text | N/A |

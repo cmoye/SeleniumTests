@@ -1,0 +1,10 @@
+!|script|
+|open|http://${wdbo}/events|
+|pause |	10000|
+|user types |	automation |	into 	|css=input#id_q|
+|user clicks and waits| 	css=input#id_q + button |
+|user clicks and waits |	link=automation event |
+|user |	ensure |	existence of text 	| Where |
+|user clicks and waits  |	link=Zuffys Place |
+|user |	ensure |	existence of text |	Boulevard |
+| user | reject | existence of text | The page could not be found |

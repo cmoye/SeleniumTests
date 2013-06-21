@@ -1,0 +1,9 @@
+!|script|
+| user opens | http://test.www.clarkhoward.com/ |
+| user | ensure | existence of | //div[@id='PB01']//script[contains(@src, 'http://ad.afy11.net/srad.js')] |
+| user | ensure | existence of | //div[@id='HP01']//script[contains(@src, 'http://ad.afy11.net/srad.js')] |
+| user | ensure | existence of | //div[@id='RP01']//script[contains(@src, 'http://ad.afy11.net/srad.js')] |
+| user | ensure | existence of | //div[@id='RP02']//script[contains(@src, 'http://ad.afy11.net/srad.js')] |
+| user | ensure | existence of | //div[@id='RP03']//script[contains(@src, 'http://ad.afy11.net/srad.js')] |
+| user | ensure | existence of | //div[@id='RP04']//script[contains(@src, 'http://ad.afy11.net/srad.js')] |
+| user | ensure | existence of | //div[@id='RP05']//script[contains(@src, 'http://ad.afy11.net/srad.js')] |

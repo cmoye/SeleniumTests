@@ -1,0 +1,18 @@
+!|script                                                                                                           |
+|user opens           |http://${wsbradio}/admin/                                                                   |
+|user types           |cmgtester5                                  |into             |id_username                  |
+|user types           |cmgtest3r                                   |into             |id_password                  |
+|user clicks and waits|css=input[type=submit]                                                                      |
+|user types           |anthony                                     |into             |query                        |
+|user clicks and waits|css=input[type=submit]                                                                      |
+|user                 |ensure                                      |existence of text|Results Found                |
+|user clicks and waits|link=Automatic list                                                                         |
+|user types           |atlanta braves                              |into             |query                        |
+|user clicks and waits|css=input[type=submit]                                                                      |
+|user clicks and waits|link=Story                                                                                  |
+|user types           |Atlanta Braves P Derek Lowe charged with DUI|into             |query                        |
+|user clicks and waits|css=input[type=submit]                                                                      |
+|pause                |90000                                                                                       |
+|user                 |ensure                                      |existence of text|glob:*Results Found          |
+|user                 |ensure                                      |existence of text|regexp:[0-9999] Results Found|
+| user | reject | existence of text | The page could not be found |

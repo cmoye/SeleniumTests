@@ -1,0 +1,43 @@
+This script '''adds a gallery with 3 photos'''
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | //a[contains(@href,'photos/medleygallery/add/')] |
+| pause | 5000 |
+| user types | Test Gallery | into | //input[@id='id_name'] |
+| user types | This is the blurb for Test Gallery | into | //textarea[@id='id_blurb'] |
+| user selects | ${k99} | from | ${selectAvailableSites} |
+| user types | 372 | into | //input[@id='id_primary_category']|
+| user clicks | //a[@id='lookup_id_medleygalleryphotos-0-photo'] |
+| user waits for Pop Up | !-Select photo | Medley-! | for | 15000 |
+| selectWindow |  !-Select photo | Medley-! |
+| user types | K99.1FM Celebrity Gallery | into | //input[@id='searchbar'] |
+| user clicks and waits | //input[@type='submit'] |
+| pause | 10000 |
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Gallery Photo |
+| user clicks | //a[@id='lookup_id_medleygalleryphotos-1-photo'] |
+| user waits for Pop Up | !-Select photo | Medley-! | for | 15000 |
+| selectWindow |  !-Select photo | Medley-! |
+| user clicks and waits | link=${k99} |
+| user clicks | ${2ndObjectOnListLink} |
+| selectWindow | null |
+| user clicks | link=Add another Gallery Photo |
+| user clicks | //a[@id='lookup_id_medleygalleryphotos-2-photo'] |
+| user waits for Pop Up | !-Select photo | Medley-! | for | 15000 |
+| selectWindow |  !-Select photo | Medley-! |
+| user clicks and waits | link=${k99} |
+| user clicks | ${3rdObjectOnListLink} |
+| selectWindow | null |
+| pause | 2000 |
+| user clicks and waits | _continue |
+| pause | 3000 |
+| user | ensure | existence of text | The gallery "Test Gallery" was added successfully. You may edit it again below. |
+| pause | 2000 |
+| user clicks and waits | //a[@class='viewsitelink'] |
+| selectWindow |  !-Test Gallery | -!${k99} |
+| user | ensure | existence of text | K99.1FM Celebrity Gallery |
+| pause | 5000 |

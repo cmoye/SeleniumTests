@@ -1,0 +1,27 @@
+!| script |
+|user opens | http://www.test.boortz.com/weblogs/nealz-nuze/2012/may/08/hey-moochers-pay-attention-decisions/ |
+|pause |5000 |
+|user | ensure | existence of text | Hey moochers! Pay attention to decisions |
+|user | ensure | existence of text | If you would like to post a comment please Sign in or Register |
+|user clicks | link=Report Abuse |
+|pause |9000 |
+|user | ensure | existence of text |You must be logged in to flag comments. |
+|user types | twittertest8@rediffmail.com | into | css=input[id='capture_signIn_traditionalSignIn_emailAddress'] |
+|user types | atlanta | into | css=input#capture_signIn_traditionalSignIn_password |
+|user clicks and waits | css=input[id='capture_signIn_traditionalSignIn_signInButton']  |
+|pause |10000 |
+|user | ensure | existence of text | Hey moochers! Pay attention to decisions |
+|user | ensure | existence of text | Post comment |
+|user clicks | link=last >> |
+|note | user clicks | css=a[@class=report_abuse][2] |
+|pause |10000 |
+|$uTestData= | getEval | javascript{var tags=""; var elementTag= this.browserbot.getCurrentWindow().document.getElementsByTagName('A');for(i=0;i<elementTag.length;i++){if(elementTag[i].className=='report_abuse'){tag=elementTag[i].getAttribute('data-cid');}}} |
+|ensure | isElementPresent | //a[@data-cid=$uTestData] |
+|user clicks| //a[@data-cid=$uTestData]|
+|pause | 20000 |
+|user | ensure |existence of text | Please select a reason for flagging this comment|
+|pause |5000 |
+|user clicks | name=reason |
+|pause |15000 |
+|user clicks | css=option[value="vulgar"] |
+|user clicks | css=button.cmModerationFlagRemoveBtn |

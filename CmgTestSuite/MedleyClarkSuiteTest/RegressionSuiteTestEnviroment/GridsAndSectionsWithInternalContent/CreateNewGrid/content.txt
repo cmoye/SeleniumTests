@@ -1,0 +1,169 @@
+This test creates a new grid. It places on the grid the following objects: video, blog, blog entry, poll, question set, gallery, and flat page.  Staff was removed, as there are no staff tracking to clarkhoward.com in prodution.
+
+!|script|
+| user opens | http://${region}.www.clarkhoward.com/admin/ |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addGridButton} |
+| user selects | ${region}.www.clarkhoward.com | from | ${selectOriginatingSite} |
+| user types | automated test Internal content | into | ${nameField} |
+| user types | auto test grid heading name Video | into | //input[@id='id_areas-0-heading'] |
+| user selects | 100% | from | //select[contains(@id, '0-width')] |
+| user selects | Video | from | //select[contains(@id,  '0-content_type')] |
+| user selects | Active Video | from | //select[@id='id_areas-0-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-0-object_id'] |
+| user waits for Pop Up | !-Select video | Medley-! | for | 120000 |
+| selectWindow |  !-Select video | Medley-! |
+| user clicks and waits | link=${region}.www.clarkhoward.com |
+| user types | Has Your Name and Email Been Exposed? | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Has Your Name and Email Been Exposed? |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name Blog | into | //input[@id='id_areas-1-heading'] |
+| user selects | 70% | from | //select[contains(@id, '1-width')] |
+| user selects | Blog | from | //select[contains(@id,  '1-content_type')] |
+| user selects | Left Photo | from | //select[@id='id_areas-1-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-1-object_id'] |
+| user waits for Pop Up | !-Select blog | Medley-! | for | 120000 |
+| pause | 5000 |
+| selectWindow |  !-Select blog | Medley-! |
+| pause | 5000 |
+| user clicks and waits | link=${region}.www.clarkhoward.com |
+| user types | Save It! | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Save It! |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name Blog Entry | into | //input[@id='id_areas-2-heading'] |
+| user selects | 30% | from | //select[contains(@id, '2-width')] |
+| user selects | Blog Entry | from | //select[contains(@id,  '2-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-2-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-2-object_id'] |
+| user waits for Pop Up | !-Select blog entry | Medley-! | for | 120000 |
+| pause | 15000 |
+| selectWindow |  !-Select blog entry | Medley-! |
+| pause | 15000 |
+| user types | Biofuel Dialogue | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Biofuel Dialogue |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name Poll | into | //input[@id='id_areas-3-heading'] |
+| user selects | 50% | from | //select[contains(@id, '3-width')] |
+| user selects | Poll | from | //select[contains(@id,  '3-content_type')] |
+| user selects | Left Photo | from | //select[@id='id_areas-3-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-3-object_id'] |
+| user waits for Pop Up | !-Select poll | Medley-! | for | 120000 |
+| selectWindow |  !-Select poll | Medley-! |
+| user clicks and waits | link=${region}.www.clarkhoward.com |
+| user types | What's your favorite warehouse club | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=exact:What's your favorite warehouse club? |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name Q-n Set | into | //input[@id='id_areas-4-heading'] |
+| user selects | 50% | from | //select[contains(@id, '4-width')] |
+| user selects | Question Set | from | //select[contains(@id,  '4-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-4-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-4-object_id'] |
+| user waits for Pop Up | !-Select question set | Medley-! | for | 120000 |
+| selectWindow |  !-Select question set | Medley-! |
+| user clicks and waits | link=${region}.www.clarkhoward.com |
+| user types | Travel | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Travel |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name Photo | into | //input[@id='id_areas-5-heading'] |
+| user selects | 30% | from | //select[contains(@id, '5-width')] |
+| user selects | Photo | from | //select[contains(@id,  '5-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-5-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-5-object_id'] |
+| user waits for Pop Up | !-Select photo | Medley-! | for | 120000 |
+| selectWindow |  !-Select photo | Medley-! |
+| user clicks and waits | link=${region}.www.clarkhoward.com |
+| user types | Laurel Canyon | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Laurel Canyon |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name Gallery | into | //input[@id='id_areas-6-heading'] |
+| user selects | 70% | from | //select[contains(@id, '6-width')] |
+| user selects | Gallery | from | //select[contains(@id,  '6-content_type')] |
+| user selects | Top Photo | from | //select[@id='id_areas-6-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-6-object_id'] |
+| user waits for Pop Up | !-Select gallery | Medley-! | for | 120000 |
+| selectWindow |  !-Select gallery | Medley-! |
+| user clicks and waits | link=${region}.www.clarkhoward.com |
+| user types | trip to Japan 2009 | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=Clarks trip to Japan 2009 |
+| selectWindow | null |
+| user clicks | link=Add another Grid Area |
+| user types | auto test grid heading name Flatpage | into | //input[@id='id_areas-7-heading'] |
+| user selects | 100% | from | //select[contains(@id, '7-width')] |
+| user selects | Flatpage | from | //select[contains(@id,  '7-content_type')] |
+| user selects | Left Photo | from | //select[@id='id_areas-7-display_class'] |
+| user clicks | //a[@id='lookup_id_areas-7-object_id'] |
+| user waits for Pop Up | !-Select flatpage | Medley-! | for | 120000 |
+| selectWindow |  !-Select flatpage | Medley-! |
+| user clicks and waits | link=${region}.www.clarkhoward.com |
+| user types | prescription-plan-guide | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=/prescription-plan-guide/ |
+| selectWindow | null |
+| user clicks | ${saveButton} |
+| pause | 15000 |
+| ensure | isElementPresent | //title[text()='Select grid to change !-|-! Medley'] |
+| check | getText | //title | Select grid to change !-|-! Medley |
+
+#!| type heading for each | contentheading |
+#| contentheading |
+#| //input[@id='id_areas-2-heading'] |
+#| //input[@id='id_areas-3-heading'] |
+#| //input[@id='id_areas-4-heading'] |
+#| //input[@id='id_areas-5-heading'] |
+#| //input[@id='id_areas-6-heading'] |
+#| //input[@id='id_areas-7-heading'] |
+
+#!| Select new Width for each | contentsize |
+#| contentsize |
+#| 70% |
+#| 50% |
+#| 30% |
+#| 100% |
+#| 70% |
+#| 50% |
+#| 30% |
+
+#!| create new grid with different content types for each | contenttype |
+#| contenttype |
+#| Blog |
+#| Blog Entry |
+#| Poll |
+#| Question Set |
+#| Photo |
+#| Gallery |
+#| Flatpage |
+
+#!| for each new content type click its object Id | lookupbutton |
+#| lookupbutton |
+#| //a[@id='lookup_id_areas-1-object_id'] |
+#| //a[@id='lookup_id_areas-2-object_id'] |
+#| //a[@id='lookup_id_areas-3-object_id'] |
+#| //a[@id='lookup_id_areas-4-object_id'] |
+#| //a[@id='lookup_id_areas-5-object_id'] |
+#| //a[@id='lookup_id_areas-6-object_id'] |
+#| //a[@id='lookup_id_areas-7-object_id'] |
+
+#!| for each new content lookup button click user waits for | popupname |
+#| popupname |
+#| !lit?20? |
+#| !lit?21? |
+#| !lit?22? |
+#| !lit?23? |
+#| !lit?24? |
+#| !lit?25? |
+#| !-literal(26) not found.-! |

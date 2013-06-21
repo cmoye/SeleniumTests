@@ -1,0 +1,68 @@
+!|script|
+|$FileName=|getEval|"C:\\\\CreatePremiumGrid .txt"|
+|$Time=|getEval|var file = Components.classes["@mozilla.org/file/local;1"] .createInstance(Components.interfaces.nsILocalFile); file.initWithPath("$FileName");if ( file.exists() == false ) { alert("File does not exist"); }  var is = Components.classes["@mozilla.org/network/file-input-stream;1"] .createInstance( Components.interfaces.nsIFileInputStream ); is.init( file,0x01, 00004, null);var sis = Components.classes["@mozilla.org/scriptableinputstream;1"] .createInstance( Components.interfaces.nsIScriptableInputStream ); sis.init( is );sis.read( sis.available() );|
+| user opens | http://www.${env}.mydaytondailynews.com/admin/ |
+| pause | 5000 |
+| user types |	mjindal | into | //input[@name='username'] |
+| user types | password1 |	into 	|//input[@id='id_password'] |
+| user clicks and waits | //input[@type='submit'] |
+| pause | 1000|
+| user clicks and waits | css=a[href='/admin/sections/section/'] |
+| user clicks and waits | link=Automated Section for Premium Grid $Time |
+| user clicks | link=View on site |
+| pause | 25000 |
+| selectWindow |  !-Automated Section for Premium Grid $Time | -!www.${env}.myajc.com |
+| pause | 10000 |
+| $currentSectionURL= | getLocation |
+| pause | 10000 |
+| user | ensure | existence of text | Premium Story $Time |
+| user | ensure | existence of text | Related Content |
+| ensure | isElementPresent| link=Who would wear these pants? |
+| user | ensure | existence of text | THE STORY IN PHOTOS - Gallery $Time |
+| user | ensure | existence of text | More AutoList $Time |
+| user | ensure | existence of text | Inside MYajc.com $Time » |
+| user | ensure | existence of text | AP Story $Time |
+| user | ensure | existence of text | Interviews - Blog Entry $Time |
+| user | ensure | existence of text | Video $Time |
+| user | ensure | existence of text | More College Recruiting Autolist $Time |
+| user | ensure | existence of text | More Nation & World News $Time |
+| ensure | isElementPresent| link=DNA confirms remains belong to missing college student Jmaal Keyes |
+| ensure | isElementPresent| css=img[src*='WSB.jpg'] |
+| ensure | isElementPresent| css=img[src*='SPORTS_GLF-NELSON_3_DA-1.JPG'] |
+| ensure | isElementPresent| link=Van Gundy, Budenholzer have been interviewed |
+| user clicks | css=div.thumb-nav-next > span |
+| user clicks | css=div.thumb-nav-prev > span |
+| user clicks and waits| link=Van Gundy, Budenholzer have been interviewed |
+| $TITLE= | getTitle |
+| check|getEval|var Diff="False";var a='$TITLE';  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| pause | 25000 |
+| user clicks and waits| link=Premium Middle Georgia College student from metro Atlanta missing for nearly 2 weeks |
+| $TITLE= | getTitle |
+| check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user | ensure | existence of text | Premium Middle Georgia College student from metro Atlanta missing for nearly 2 weeks |
+| user | ensure | existence of text | By Mike Morris - The Atlanta Journal-Constitution |
+| user | ensure | existence of text | Read the complete story... |
+| user | reject | existence of text | The freshman was reported missing by his family four days later. |
+| ensure | isElementPresent| css=div.janusNotAuthorized |
+| user opens | $currentSectionURL |
+| pause | 25000 |
+| user clicks and waits| link=Who would wear these pants? |
+| $TITLE= | getTitle |
+| check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user | ensure | existence of text | Best sports photos from May 16 |
+| user clicks | css=#thumb-nav-next > span |
+| user clicks | css=#thumb-nav-prev > span |
+| user opens | $currentSectionURL |
+| pause | 25000 |
+| user clicks and waits| link=More College Recruiting Autolist $Time »  |
+| $TITLE= | getTitle |
+| check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| pause | 25000 |
+| user clicks and waits| link=More Nation & World News $Time » |
+| user | ensure | existence of text | Nation & World |
+| $SiteDate= | getText | css=p.list-item-timestamp |                                                                                                                                                                                                                                                                                                                                                               |
+| $TimeStamp= | getEval | var diff; var today = new Date(); var oldDate = "$SiteDate"; oldDate = oldDate.replace("Updated: ", ""); oldDate = oldDate.replace("a.m. ", "AM"); oldDate = oldDate.replace("p.m. ", "PM"); var time = oldDate.substr(0, oldDate.indexOf("M") + 1); var date = oldDate.substr(oldDate.indexOf("M") + 1); oldDate = new Date(date + " " + time); diff = Math.abs((today.getTime() - oldDate.getTime()) / 1000 / 60); |
+| check|getEval | $TimeStamp>45 | false |
+| pause | 10000 |

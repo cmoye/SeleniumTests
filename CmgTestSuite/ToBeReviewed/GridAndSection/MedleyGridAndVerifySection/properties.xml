@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<properties>
+	<Files>true</Files>
+	<Properties>true</Properties>
+	<RecentChanges>true</RecentChanges>
+	<Refactor>true</Refactor>
+	<Search>true</Search>
+	<Suite/>
+	<Versions>true</Versions>
+	<WhereUsed>true</WhereUsed>
+	<WikiImport>
+		<Source>http://ec2-107-20-252-110.compute-1.amazonaws.com:8181/CmgTestSuite.QaAutomation.GridAndSection.MedleyGridAndVerifySection</Source>
+		<LastRemoteModification>20130611105328</LastRemoteModification>
+	</WikiImport>
+</properties>

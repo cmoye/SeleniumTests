@@ -1,0 +1,42 @@
+!|script|
+| user opens | http://www.test.wsbradio.com/ |
+|pause|65000|
+|user clicks  | css=div#cmJanrainAuthLinks>p.cmUserAnonymous>a.cmOpenJanrainModal  |
+|pause|5000|
+| user types | balamn11@gmail.com | into |id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | cox@atl| into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+| pause | 5000|
+| user clicks and waits | link=Member Center |
+|user clicks | link=Subscriptions |
+|pause |10000  |
+|user  |ensure |existence of text | Manage Email Subscriptions  |
+|$SubscribeID=|getEval|var id;var a= this.browserbot.getUserWindow().document.getElementsByTagName('input');for(var i=0;i<a.length;i++){if(a[i].id.indexOf('subscribe')==0){id=a[i].id;break;}}|
+|user clicks |css=input[id=$SubscribeID] |
+|user clicks and waits |css=input[value='Update'] |
+|pause |10000  |
+|user  |ensure |existence of text |Current Subscriptions |
+|$UnSubscribeID=|getEval|var id;var a= this.browserbot.getUserWindow().document.getElementsByTagName('input');for(var i=0;i<a.length;i++){if(a[i].id.indexOf('unsubscribe')==0){id=a[i].id;break;}}|
+|user clicks |css=input[id=$UnSubscribeID] |
+|user clicks and waits |css=input[value='Update'] |
+|pause |10000  |
+|user  |ensure |existence of text |Not Subscribed |
+|pause |10000  |
+| user | reject | existence of text | The page could not be found |
+| user clicks|link=My Account|
+|pause|10000|
+|$Address=|getEval|var d=new Date(); "Street "+d.getHours()+d.getMinutes()+d.getSeconds();|
+| user types | $Address | into | id=capture_editProfile_addressDrop_streetaddress |
+|$rndNum=|getEval|Math.floor((Math.random()*10)+1);|
+|user types|$rndNum|into|id=capture_editProfile_birthdate_dateselectmonth |
+|user selects | label=May | from | id=capture_editProfile_birthdate_dateselectmonth |
+|pause|3000|
+|user types|$rndNum|into|id=capture_editProfile_addressDrop_stateprovince |
+|pause|3000|
+| user selects | index=$rndNum | from |id=capture_editProfile_addressDrop_stateprovince |
+| user clicks | id=capture_editProfile_submitButton |
+| pause | 10000|
+|ensure|isElementPresent|link=Newsletters|
+|user clicks|link=Sign Out|
+|pause|10000|
+|note| ensure|isElementPresent|link=Sign In / Sign Up|

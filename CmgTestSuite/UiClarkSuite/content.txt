@@ -1,0 +1,12 @@
+!3 This is a Suite for IAMs new tests
+!path dist/java/*.jar
+Define path to fitnesse.jar and selenium-java-client-driver.jar:
+!path lib/*.jar
+
+Use Slim scenario tables:
+!define TEST_SYSTEM {slim}
+
+Define the URL where to start the test:
+!define baseURL {http://test.www.clarkhoward.com/}
+
+!contents -R2 -g -p -f -h

@@ -1,0 +1,16 @@
+!| script                                                                                                                                                              |
+|pause                 |3000                                                                                                                                         |
+|$FileName=|getEval|"C:\\\\StoryFile.txt"|
+|$StoryCheckPoints=|getEval|var file = Components.classes["@mozilla.org/file/local;1"] .createInstance(Components.interfaces.nsILocalFile); file.initWithPath("$FileName");if ( file.exists() == false ) { alert("File does not exist"); }  var is = Components.classes["@mozilla.org/network/file-input-stream;1"] .createInstance( Components.interfaces.nsIFileInputStream ); is.init( file,0x01, 00004, null);var sis = Components.classes["@mozilla.org/scriptableinputstream;1"] .createInstance( Components.interfaces.nsIScriptableInputStream ); sis.init( is );sis.read( sis.available() );|
+|$Story=|getEval|var arrStoreValue="$StoryCheckPoints".split(",");arrStoreValue[0];|
+|$EditedStory=|getEval|var arrStoreValue="$StoryCheckPoints".split(",");arrStoreValue[1];|
+|$DeleteStory=|getEval|var arrStoreValue="$StoryCheckPoints".split(",");arrStoreValue[2];|
+|user opens |http://${wsbradio}/api/content/v1/story/?format=xml |
+|pause|15000|
+|note|selectWindow;|!-MedleyStory-!|
+|note|ensure                |isTextPresent                                                       | $Story                                                      |
+|ensure|isElementPresent|css=a:contains($Story)|
+|ensure|isElementPresent |css=a:contains($EditedStory)  |
+|check|isElementPresent                                                       |link=$DeleteStory|false                                                  |
+|note| ensure                |isTextPresent                                                       | $EditedStory                                           |
+| user | reject | existence of text | The page could not be found |

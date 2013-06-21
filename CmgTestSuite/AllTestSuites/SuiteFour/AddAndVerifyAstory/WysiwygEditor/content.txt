@@ -1,0 +1,25 @@
+!|script|
+| user opens | http://${wpxi}/admin/ |
+| user types | cmgtester4 | into | id_username |
+| user types | cmgtest3r | into | id_password |
+| user clicks and waits | //input[@value='Log in'] |
+| user clicks and waits | 	css=a[href='/admin/news/medleystory/'] |
+| user types | This is an automated test of the story input | into | css=input#searchbar |
+| pause | 6000 |
+| user clicks and waits | css=input#searchbar + input |
+| pause | 40000 |
+| user clicks and waits | link=This is an automated test of the story input |
+| user clicks | css=span.mceIcon.mce_code |
+| pause | 10000 |
+| user types | <p>This is a story of my life. This is my test for WYSIWYG editor</p> | into | htmlSource |
+| user clicks and waits | insert |
+| user clicks and waits | _continue |
+| pause | 10000 |
+| user clicks | link=View on site |
+| pause | 10000 |
+| selectWindow | !-This is an automated test of the story input | -! ${wpxi} |
+| pause | 10000 |
+| user | reject | existence of text | The page could not be found |
+| user | reject | existence of text | <p> |
+| pause| 10000 |
+| note | user | ensure | existence of text | This is a story of my life. This is my test for WYSIWYG editor |

@@ -1,0 +1,15 @@
+#!|scenario| check the automated test of the story input exists in each | section |
+| open | @section |
+| ensure | isTextPresent | This is a story of my life. It begins like this... Once upon a time |
+| ensure | isElementPresent | //a[contains(@href, '/automated-test-story-input/')]//img[contains(@src, 'photos')] |
+| user clicks and waits | link=This is an automated test of the story input |
+
+
+!| check the automated test of the story input exists in each | section |
+| section |
+| ${baseURL}categories/clark-howard/business-entrepreneurs/ |
+| ${baseURL}categories/clark-howard/business-entrepreneurs/inventions-patents/ |
+| ${baseURL}categories/clark-howard/cars/ |
+| ${VM13}categories/clark-howard/business-entrepreneurs/ |
+| ${VM13}categories/clark-howard/business-entrepreneurs/inventions-patents/ |
+| ${VM13}categories/clark-howard/cars/ |

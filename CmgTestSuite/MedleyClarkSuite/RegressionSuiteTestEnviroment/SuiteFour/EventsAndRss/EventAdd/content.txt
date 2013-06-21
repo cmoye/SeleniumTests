@@ -1,0 +1,8 @@
+!|script|
+|open 	|http://${wsbradio}/events|
+|user types |	automation |	into 	|id_q|
+|user clicks and waits| 	//div[2]/form/button |
+|user clicks and waits |	link=automation event |
+|user |	ensure |	existence of text 	| Where |
+|user clicks and waits  |	link=Zuffys Place |
+|user |	ensure |	existence of text |	Boulevard |

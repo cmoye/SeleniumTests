@@ -1,0 +1,18 @@
+!|script |
+|user opens | http://${krmg}/admin |
+|pause | 10000 |
+|user types | cmgtester2 |into  | //input[@id='id_username'] |
+|user types | cmgtest3r |into | //input[@id='id_password']|
+|user clicks and waits| //input[@value='Log in'] |
+|pause |5000 |
+|user clicks and waits| //a[@href="/admin/videos/vendorvideo/"]  |
+|pause |5000  |
+|user waits for text | Select video to change  |
+|pause |10000 |
+|user clicks and waits |//table[@id='result_list']/tbody/tr[9]/th/a|
+|pause |15000  |
+|user waits for text  |Change video |
+|check |getText |css=div[class='form-row mobile_url']>div>label|Mobile url: |
+|ensure |isElementPresent|css=div[class='form-row mobile_url']>div>p:contains('http://') |
+|check |isElementPresent|input#id_mobile_url |false |
+| user | reject | existence of text | The page could not be found |

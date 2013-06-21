@@ -1,0 +1,41 @@
+!| script |
+| open | ${adminURL} |
+| type; | //input[@id='id_username'] | imelnikov |
+| type; | //input[@id='id_password'] | Nika1945! |
+| clickAndWait | //input[@type='submit'] |
+| clickAndWait | //a[@href='photos/medleyphoto/add/'] |
+| click; | //input[@id='id_reproduction_allowed'] |
+| type; | //input[@id='id_title'] | This is an automated test of the photo input |
+| pause | 5000 |
+| type; | //textarea[@id='id_caption'] | This is a Caption of the automated test of the photo input |
+| click; | link=Today |
+| click; | link=Now |
+| select; | //select[@id='id_comment_status'] | Enabled |
+| click; | //a[@id='lookup_id_photographer'] |
+| waitForPopUp; | id_photographer | 20000 |
+| selectWindow | name=id_photographer |
+| click; | //table[@id='result_list']/tbody/tr/th/a |
+| pause | 5000 |
+| selectWindow | !-Add photo | Medley-! |
+| type; | //input[@id='id_one_off_photographer'] | One-off photographer |
+| pause | 10000 |
+| select; | //select[@id='id_source_credit'] | Staff |
+| select; | //select[@id='id_originating_site'] | test.www.clarkhoward.com |
+| click; | //select[@id='id_originating_site']//option[@value='10080'] |
+| pause | 5000 |
+| click; | //a[@id='lookup_id_primary_category'] |
+| waitForPopUp; | id_primary_category | 20000 |
+| selectWindow | name=id_primary_category |
+| click; | link=[Clark Howard] /Cars/Accidents |
+| selectWindow | null |
+| select; | //select[@id='id_categories_from'] | label=[Clark Howard] /Cars/Accidents |
+| click; | //form[@id='medleyphoto_form']/div/fieldset[3]/div[4]/div/div/ul/li[1]/a |
+| pause | 5000 |
+| select; | //select[@id='id_status'] | Live |
+| click; | link=Today |
+| click; | link=Now |
+| type; | //textarea[@id='id_topics'] | This is a Topic for an automated test of the photo input |
+| type; | //a[@id='id_photo_link'] | C:\Documents and Settings\cnettester.CMG\My Documents\Machina.JPG |
+| pause | 10000 |
+| click; | //input[@name='_save'] |
+| pause | 30000 |

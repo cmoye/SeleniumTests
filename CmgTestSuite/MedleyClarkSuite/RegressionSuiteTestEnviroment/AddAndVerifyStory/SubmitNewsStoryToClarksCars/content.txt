@@ -1,0 +1,40 @@
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${medleyAddNewsStory} |
+| user types | This is an automated test of the story input | into | ${storyHeadline} |
+| user types |  This is a Print headline of the automated test of the story input | into | ${storyPrintHeadline} |
+| user types |  Let's see if this works | into | ${storySubhead} |
+| user selects | Kirk Mellish | from | ${storyAvailableBylines} |
+| user clicks | ${storyAddBylinesButton} |
+| user types | IAM Tester | into | ${storyOneOffByline} |
+| user types | Telegraph Agency of Zanzibar | into | ${storyBylineSource} |
+| user selects | Atlanta, GA | from | ${storyDateline} |
+| user types |  This is a story of my life. It begins like this... Once upon a time | into | ${contentTextBox} |
+| user types | Editor's note: | into | ${storyPrestoryBlurb} |
+| user types | Lorne Cameron & Lynn Orr contributed to this story. | into | ${storyPoststoryBlurb} |
+| user selects | Enabled | from | ${storyCommentsStatus} |
+| user selects | test.www.clarkhoward.com | from | ${selectAvailableSites} |
+| user clicks | ${primaryCategoryLookupButton} |
+| user waits for Pop Up | id_primary_category | for | 30000 |
+| selectWindow | !-Select category | Medley-! |
+| user clicks | link=[Clark Howard] /Cars |
+| selectWindow | null |
+| user selects | [Clark Howard] /Cars/Buying | from | ${selectAvailableCategories} |
+| user clicks | ${addCategoriesButton} |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | This is an automated test topic | into | ${topicsTextbox} |
+| user selects |  Photo | from | ${storyLeadRelatedObjectContentType} |
+| user clicks | ${storyObjectIdLookupButton} |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__0__dash__to_id | for | 30000 |
+| selectWindow | !-Select photo | Medley-! |
+| user clicks | ${selectPhotoFirstTitleOnTheList} |
+| selectWindow | null |
+| pause | 5000 |
+| user clicks | //input[@name='_save'] |
+| pause | 25000 |
+| user | ensure | existence of | //title[text()='Select story to change !-|-! Medley'] |

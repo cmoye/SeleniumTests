@@ -1,0 +1,31 @@
+!|script|
+| user opens| http://www.${env}.statesman.com/news/entertainment/books-literature/patterson-delivers-an-homage-to-her-familys-ranch/nXnQ6/ |
+| pause | 1000 |
+| user | ensure | existence of text | Patterson delivers an homage to her family’s ranch |
+| user | ensure | existence of text | By Mike Cox |
+| user | ensure | existence of text | This story continues on our new premium website for subscribers, MyStatesman.com. |
+| user | ensure | existence of text | Willie Nelson is no degreed historian, but he knows Texas and its people. |
+| user | reject | existence of text | Texas A&M University Press, $25 |
+| ensure | isElementPresent| css=div.janusNotAuthorized |
+| reject | isElementPresent| css=img[src*='51TuqfaKwiL.jpg'] |
+| user clicks | css=div#cmJanrainAuthLinks>p.cmUserAnonymous>a.cmOpenJanrainModal |
+|pause|5000|
+|user types| cmg.medhini+erwin@gmail.com |into|id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | password1 | into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+|pause|20000|
+| $TITLE= | getTitle |
+| user | ensure | existence of text | Patterson delivers an homage to her family’s ranch |
+| user | ensure | existence of text | By Mike Cox |
+| user | ensure | existence of text | This story continues on our new premium website for subscribers, MyStatesman.com. |
+| user | reject | existence of text | This book, which has plenty of vintage and current photos, |
+| user clicks and waits | link=Continue reading/get access here » |
+| pause | 5000 |
+| $TITLE= | getTitle |
+| user | ensure | existence of text | Patterson delivers an homage to her family’s ranch |
+| user | ensure | existence of text | Willie Nelson is no degreed historian, but he knows Texas and its people. |
+| user | ensure | existence of text | By Mike Cox - Special to the American-Statesman |
+| user | ensure | existence of text | This book, which has plenty of vintage and current photos, |
+| user | ensure | existence of text | Texas A&M University Press, $25 |
+| ensure | isElementPresent| css=img[src*='51TuqfaKwiL.jpg'] |
+| ensure | isElementPresent| css=div.comment-tab.btn-group |

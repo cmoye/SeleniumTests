@@ -1,0 +1,55 @@
+!|script|
+| user opens | http://www.${env}.foxreno.com/admin/ |
+| user types | cmgtester7 | into | css=input#id_username |
+| user types | cmgtest3r | into | css=input#id_password |
+| user clicks and waits |css=input[type='submit'] |
+| pause| 15000 |
+| user clicks and waits | css=a[href='/admin/list_o_rama/manuallist/add/'] |
+| pause| 20000|
+| $UniqueString= |getEval  |var d=new Date();"automated manual list " + d.getHours() + d.getMinutes() + d.getSeconds();|
+| user types | $UniqueString| into | css=input#id_title |
+| user selects | label=www.${env}.foxreno.com | from | css=select#id_originating_site |
+| user types | 588 | into | css=input#id_primary_category |
+| user selects | label=Story | from | css=select#id_listitem_set-0-content_type |
+| user clicks | css=img[alt=Lookup] |
+| user waits for Pop up | id_listitem_set__dash__0__dash__object_id | for | 3000 |
+| selectWindow; | name=id_listitem_set__dash__0__dash__object_id |
+| pause | 10000 | 
+| user types | This is an automated test of the story input | into | id=searchbar|
+| user  clicks and waits|css=input[value=Search]|
+| pause|3000|
+| user  clicks and waits| link=All |
+| user clicks  | css=table#result_list>tbody>tr:first-child>th:first-child>a |
+| selectWindow; | null |
+| user selects | label=Section | from | css=select#id_listitem_set-1-content_type |
+| user clicks | css=#lookup_id_listitem_set-1-object_id > img[alt=Lookup] |
+| user waits for Pop Up | id_listitem_set__dash__1__dash__object_id | for | 3000 |
+| selectWindow; | name=id_listitem_set__dash__1__dash__object_id |
+| pause | 10000 |
+| user clicks and waits|link=Live|
+| user clicks and waits|link=www.${env}.foxreno.com |
+| $Section=|getText| //table[@id='result_list']/tbody/tr/th|
+| user clicks  | css=table#result_list>tbody>tr:first-child>th:first-child>a |
+| selectWindow; | null |
+| user selects | label=Video | from | css=select#id_listitem_set-2-content_type |
+| user clicks | css=#lookup_id_listitem_set-2-object_id > img[alt=Lookup] |
+| user waits for Pop Up | id_listitem_set__dash__2__dash__object_id | for | 3000 |
+| selectWindow;| name=id_listitem_set__dash__2__dash__object_id |
+| pause | 10000 |
+|user clicks and waits|link=www.${env}.foxreno.com|
+| $Video=|getText| //table[@id='result_list']/tbody/tr/th/a|
+| $VideoTrim=|getEval|"$Video".replace(' -','');|
+| $VideoTrim=|getEval|var a="$Video"; a=a.replace(' -','');|
+|note| $VideoTrim=|getEval| var a="$Video".replace(' -','');|
+| user clicks |css=table#result_list>tbody>tr:first-child>th:first-child>a |
+| selectWindow; | null |
+| user clicks and waits | css=input[name='_continue']|
+| pause| 45000|
+| user clicks and waits | css=div#content-main >ul.object-tools > li:last-child >a |
+| selectWindow; | !-$UniqueString | -!${foxreno} |
+| pause | 5000 |
+| user | ensure | existence of text | $UniqueString  |
+| user | ensure | existence of text | This is an automated test of the story input |
+| ensure | isElementPresent | link=$VideoTrim|
+| ensure | isElementPresent | link=$Section |
+| user | reject | existence of text | The page could not be found |

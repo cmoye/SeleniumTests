@@ -1,0 +1,57 @@
+!| script                                                                                                                                                                                                                                                                                                                                |
+|user opens            |http://www.test.wsbradio.com/admin/                                                                                                                                                                                                                                                                              |
+|pause                 |12000                                                                                                                                                                                                                                                                                                            |
+|user types            |cmgtester                                                                                                                                                                                                          |into            |//input[@id='id_username']                                                  |
+|user types            |cmgtest3r                                                                                                                                                                                                          |into            |//input[@id='id_password']                                                  |
+|user clicks and waits |//input[@value='Log in']                                                                                                                                                                                                                                                                                         |
+|pause                 |5000                                                                                                                                                                                                                                                                                                             |
+|user clicks and waits |css=a[href='/admin/plate/wrap/add/']                                                                                                                                                                                                                                                                             |
+|pause                 |5000                                                                                                                                                                                                                                                                                                             |
+|user waits for text   |Add wrap                                                                                                                                                                                                                                                                                                         |
+|pause                 |5000                                                                                                                                                                                                                                                                                                            |
+|$wrap=                |getEval                                                                                                                                                                                                            |var d=new Date();"Automation_API_TestWrap" + d.getHours() + d.getMinutes() + d.getSeconds();|
+|user types            |$wrap                                                                                                                                                                                                              |into            |css=input#id_name                                                           |
+|user selects and waits|label=www.test.wsbradio.com                                                                                                                                                                                        |from            |css=select#id_site                                                          |
+|$urlPath=             |getEval                                                                                                                                                                                                            |"/s/vendor/upickem/"                                                                 |
+|user types            |$urlPath                                                                                                                                                                                                           |into            |css=input#id_url_path                                                       |
+|user selects and waits|label=Hourly                                                                                                                                                                                                       |from            |css=select#id_update_frequency                                              |
+|makeChecked           |css=input#id_is_published                                                                                                                                                                                                                                                                                        |
+|user clicks           |css=a#id_block_overrides_node_add                                                                                                                                                                                                                                                                                |
+|user types            |center_content_well                                                                                                                                                                                                |into            |            css=div[class='id_block_overrides_node']>label>input           |
+|user types            |<script type="text/javascript">if(_cmHeaderUserRegistration = document.getElementById('cmHeaderUserRegistration')){ _cmHeaderUserRegistration.style.display = 'none'; }</script><div class="cmCol6">{UPICKEM}</div>|into            |css=div[class='id_block_overrides_node']>textarea                           |
+|user clicks and waits           |css=input[name='_continue']                                                                                                                              |
+|pause                 |2000                                                                                                                                                    |
+|ensure                |isTextPresent                              |The wrap "$wrap" was added successfully. You may edit it again below.                                      |
+|user opens            |http://www.test.wsbradio.com/admin/plate/wrap/                                                                                                     |
+|pause                 |45000                                                                                                                                                    |
+|selectWindow;         |!-Select wrap to change | Medley-!                                                                                                     |
+|user waits for text   |Select wrap to change                                                                                                                                   |
+|user clicks and waits |css=a:contains('www.test.wsbradio.com')|
+|pause|2000|
+|$EditWrap=           |getText                                    |//table/tbody/tr[2]/th/a                                                                                     |
+|$DeleteWrap=           |getText                                    |//table/tbody/tr[3]/th/a                                                                                     |
+|$EditWrapName=       |getUniqueString                                                                                                                                          |
+|user clicks and waits |link=$EditWrap                                                                                                                                          |
+|pause                 |1500                                                                                                                                                    |
+|selectWindow;         |!-Change wrap | Medley-!                                                                                                     |
+|user waits for text   |Change wrap                                                                                                                                             |
+|user types            |$EditWrapName                             |into                        |css=input#id_name                                                           |
+|makeChecked|css=input#id_is_mobile|
+|user clicks and waits           |css=input[name='_continue']                                                                                                                              |
+|pause                 |2000                                                                                                                                                    |
+|selectWindow;         |!-Select wrap to change | Medley-!                                                                                                     |
+|ensure                |isTextPresent                              |The wrap "$EditWrapName" was changed successfully. You may edit it again below.                                                          |
+|check                 |isChecked                                    |css=input#id_is_mobile      |true                                                   |
+| user opens | http://www.test.clarkhoward.com/api/wraps/v1/wrap/61/?format=html |
+| pause | 10000 |
+| $TRAFFIC= | captureNetworkTraffic | plain |
+| containsSubstring; | $TRAFFIC | events=event1 |
+| containsSubstring; | $TRAFFIC | v7=24 |
+| containsSubstring; | $TRAFFIC | v12=1057 |
+| containsSubstring; | $TRAFFIC | c16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c13=contests |
+| containsSubstring; | $TRAFFIC | v13=contests |
+| containsSubstring; | $TRAFFIC | v16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c22=section%20front |
+| containsSubstring; | $TRAFFIC | v22=section%20front |
+| user | reject | existence of text | The page could not be found |

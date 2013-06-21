@@ -1,0 +1,39 @@
+This test adds a Flatpage with a '''new URL created each time''' -you may run it regardless of existing data:
+!| script |
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addFlatPageBttn} |
+| user types | 1This is an automated test of the flatpage input | into | ${inputFlatNickname} |
+| user types | 1This is a Title of the automated test of the flatpage input | into | ${titleTextBox} |
+| $urlPath= | getUniqueString |
+| user types | /$urlPath/ | into | ${urlPathTextBox} |
+| user types |  This is a text that goes on the flatpage: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. | into | ${contentTextBox} |
+| user selects | Header, Footer & Right Rail | from | ${selectFlatPageTemplate} |
+| user selects | test.www.clarkhoward.com | from | ${selectOriginatingSite} |
+| user clicks | ${primaryCategoryLookupButton} |
+| user waits for Pop Up | id_primary_category | for | 30000 |
+| selectWindow | !-Select category | Medley-! |
+| user clicks | link=[Clark Howard] /Cars |
+| selectWindow | null |
+| user selects | [Clark Howard] /Cars/Buying | from | ${selectAvailableCategories} |
+| user clicks | ${addCategoriesButton} |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | This is a page title of the auto test of the flat page input | into | ${pageTitle} |
+| user types | This is an automated test topic | into | ${topicsTextbox} |
+| pause | 5000 |
+| user clicks | //input[@name='_save'] |
+| pause | 5000 |
+| user | ensure | existence of text | was added successfully. |
+
+#| user clicks | link=Add another Tease |
+#| user selects |  test.www.clarkhoward.com | from | ${selectOriginatingSite2} |
+#| user selects |  Photo | from | ${storyLeadRelatedObjectContentType} |
+#| user clicks | ${storyObjectIdLookupButton} |
+#| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__0__dash__to_id | for | 30000 |
+#| selectWindow | !-Select photo | Medley-! |
+#| user clicks | ${selectPhotoFirstTitleOnTheList} |
+#| selectWindow | null |

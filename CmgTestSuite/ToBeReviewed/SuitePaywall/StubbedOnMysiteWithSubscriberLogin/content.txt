@@ -1,0 +1,19 @@
+!|script|
+| user opens| http://www.${env}.mypalmbeachpost.com/news/entertainment/sushi-impresses-at-juno-beachs-china-tokyo/nXspN/ |
+| user | ensure | existence of text | Sushi impresses at Juno Beach’s China Tokyo |
+| user | ensure | existence of text | By Sy O'Neill - Palm Beach Post Staff Writer |
+| user | ensure | existence of text | Read the complete story... |
+| user | ensure | existence of text | MENU |
+| user | reject | existence of text | If the kids like the cuisine, bring something home for them. Teriyaki chicken and rice would be a good choice. |
+| ensure | isElementPresent| css=div.janusNotAuthorized |
+| user clicks | css=div#cmJanrainAuthLinks>p.cmUserAnonymous>a.cmOpenJanrainModal |
+|pause|5000|
+|user types| cmg.medhini+rapaport@gmail.com |into|id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | password1 | into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+|pause|20000|
+| user | ensure | existence of text | Sushi impresses at Juno Beach’s China Tokyo |
+| user | ensure | existence of text | If the kids like the cuisine, bring something home for them. Teriyaki chicken and rice would be a good choice. |
+| user | ensure | existence of text | Hours: M-F, 11 a.m.-10 p.m.; Sat.-Sun., 3-10 p.m. |
+| ensure | isElementPresent| css=img[src*='china-tokyo.jpg'] |
+

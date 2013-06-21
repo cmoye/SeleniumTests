@@ -1,0 +1,30 @@
+!|script|
+| user opens | http://${wpxi}/admin |
+| pause | 15000 |
+| user types | cmgtester4 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addAutomaticListBttn} |
+| user types | This is an automated test of the automatic list input | into | css=#id_title |
+| user selects | ${wpxi} | from | ${selectOriginatingSite} |
+| user clicks and waits | link=[588] News |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | 26 | into | ${inputNumberOfResults} |
+| user types | 1 | into | ${inputNumberOfDays} |
+| user clicks | ${addSearchSitesBttn} |
+| user selects | /News | from | ${selectAvailableCategories} |
+| user clicks | ${addCategoriesButton} |
+| user selects | Update date (Newest first) | from | css=select#id_ordering |
+| user selects | Story | from | ${selectContentType} |
+| user clicks | ${addContentTypeBttn} |
+| user clicks and waits | css=input[name='_continue'] |
+| pause | 10000 |
+| user | ensure | existence of text | The automatic list "This is an automated test of the automatic list input" was added successfully. You may edit it again below. |
+| user clicks and waits | css=a:contains('View on site') |
+| selectWindow | !-This is an automated test of the automatic list input | -!${wpxi} |
+| pause | 2000 |
+| user | ensure | existence of text | This is an automated test of the automatic list input |
+| user | reject | existence of text | The page could not be found |
+#| user types | barack obama | into | //input[@id='id_search_query_3'] |

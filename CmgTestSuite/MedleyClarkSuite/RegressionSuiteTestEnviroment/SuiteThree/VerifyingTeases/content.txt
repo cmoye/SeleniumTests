@@ -1,0 +1,96 @@
+!| script                                                                                                                                          |
+|note                  |Verify Add Teases                                                                                                          |
+|user opens            |http://test.www.clarkhoward.com/admin                                                                                      |
+|pause                 |10000                                                                                                                      |
+|user types            |bala.guntipal                        |into    |//input[@id='id_username']                                                  |
+|user types            |qatest1                              |into    |//input[@id='id_password']                                                  |
+|user clicks and waits |//input[@value='Log in']                                                                                                   |
+|pause                 |5000                                                                                                                       |
+|user waits for text   |Site administration                                                                                                        |
+|user clicks and waits |//a[@href='apjobs/apstory/add/']                                                                                           |
+|pause                 |5000                                                                                                                       |
+|user waits for text   |Add AP Story                                                                                                               |
+|pause                 |10000                                                                                                                      |
+|user types            |Bala_NewStory_Jun18                  |into    |//input[@id='id_headline']                                                  |
+|user types            |Bala_NewPrintHeadline_Jun18          |into    |//input[@id='id_print_headline']                                            |
+|user types            |Bala_NewSubHeadline_Jun18            |into    |//input[@id='id_subhead']                                                   |
+|addSelection;         |//select[@id='id_bylines_from']      |label=Jamie Dupree                                                                   |
+|user clicks           |link=Add                                                                                                                   |
+|pause                 |1000                                                                                                                       |
+|user types            |Bala_Newoneoffdateline_Jun18         |into    |//input[@id='id_one_off_dateline']                                          |
+|user types            |Bala_Newoneoffdateline_Jun18         |into    |//body[@id='tinymce']                                                       |
+|user selects and waits|Enabled                              |from    |//select[@name='comment_status']                                            |
+|user selects and waits|test.www.1015thepoint.com            |from    |//select[@name='originating_site']                                          |
+|addSelection;         |//select[@id='id_sites_from']        |label=test.www.clarkhoward.com                                                       |
+|user clicks           |//form[@id='medleyblog_form']/div/fieldset[3]/div[2]/div/div/ul/li[1]/a                                                    |
+|addSelection;         |//select[@id='id_sites_from']        |label=test.www.boortz.com                                                            |
+|user clicks           |//form[@id='medleyblog_form']/div/fieldset[3]/div[2]/div/div/ul/li[1]/a                                                    |
+|user types            |209                                  |into    |id_primary_category                                                         |
+|user clicks           |link=[209] AP                                                                                                              |
+|pause                 |10000                                                                                                                      |
+|addSelection;         |//select[@id='id_categories_from']   |label=/AP                                                                            |
+|user clicks           |//form[@id='medleyblog_form']/div/fieldset[3]/div[4]/div/div/ul/li[1]/a                                                    |
+|user selects and waits|Live                                 |from    |//select[@name='id_status']                                                 |
+|user types            |bala_test_Ap Story  jun11 page title |into    |//input[@id='id_custom_page_title']                                         |
+|user types            |Story topics                         |into    |//textarea[@id='id_topics']                                                 |
+|user types            |bala_test_Ap Story search Description|into    |//input[@id='id_serp_description']                                          |
+|user types            |bala_test_Ap Story Social Summary    |into    |//input[@id='id_social_summary']                                            |
+|user selects          |label=AP Photo                       |from    |//select[@id='id_related_objects-relatedobject-from_type-from_id-0-to_type']|
+|user clicks           |//img[@alt='Lookup']                                                                                                       |
+|pause                 |10000                                                                                                                      |
+|user waits for Pop Up |!-Select AP Photo                    |Medley-!|for                                  |15000                                 |
+|selectWindow;         |!-Select AP Photo                    |Medley-!                                                                             |
+|user clicks and waits |//table[@id='result_list']/tbody/tr[1]/th/a                                                                                |
+|pause                 |10000                                                                                                                      |
+|selectWindow;         |null                                                                                                                       |
+|user clicks           |//input[@name='_continue']                                                                                                 |
+|pause                 |10000                                                                                                                      |
+
+
+
+
+
+
+|user                 |ensure                                 |existence of text|The blog "Bala_NewBlog_Jun9" was added successfully. You may edit it again below.|
+|pause                |10000                                                                                                                                      |
+|user clicks          |link=View on test.www.clarkhoward.com                                                                                                      |
+|pause                |10000                                                                                                                                      |
+|selectWindow;        |!-bala_test_blog entry jun11 page title|test.www.clarkhoward.com-!                                                                         |
+|user                 |ensure                                 |existence of text|Bala_NewBlog_Jun9                                                                |
+|close;                                                                                                                                                           |
+|selectWindow;        |null                                                                                                                                       |
+|user clicks          |link=View on test.www.boortz.com                                                                                                           |
+|pause                |10000                                                                                                                                      |
+|selectWindow;        |!-bala_test_blog entry jun11 page title|test.www.boortz.com-!                                                                              |
+|user                 |ensure                                 |existence of text|Bala_NewBlog_Jun9                                                                |
+|close;                                                                                                                                                           |
+|selectWindow;        |null                                                                                                                                       |
+|user clicks          |link=View on test.www.1015thepoint.com                                                                                                     |
+|pause                |10000                                                                                                                                      |
+|selectWindow;        |!-bala_test_blog entry jun11 page title|test.www.1015thepoint.com-!                                                                        |
+|user                 |ensure                                 |existence of text|Bala_NewBlog_Jun9                                                                |
+|ensure               |isElementPresent                       |//div[@class='cmBreadcrumb']/ul/li/a[@href='/']                                                    |
+|ensure               |isElementPresent                       |//div[@class='cmBreadcrumb']/ul/li/a[@href='/categories/ap/']                                      |
+|user clicks and waits|link=AP                                                                                                                                    |
+|user                 |ensure                                 |existence of text|Categories within AP                                                             |
+|user opens           |http://test.www.1015thepoint.com/weblogs/bala_newblog_jun9/                                                                                |
+|pause                |15000                                                                                                                                      |
+|selectWindow;        |!-bala_test_blog entry jun11 page title|test.www.1015thepoint.com-!                                                                        |
+|user clicks and waits|link=17                                                                                                                                    |
+|user                 |ensure                                 |existence of text|Bala_NewBlog_Jun9 Archive for Friday, June 17, 2011                              |
+|ensure               |isElementPresent                       |//div[@class='cmBreadcrumb']/ul/li/a[@href='/']                                                    |
+|ensure               |isElementPresent                       |//div[@class='cmBreadcrumb']/ul/li/a['Weblogs']                                                    |
+|ensure               |isElementPresent                       |//div[@class='cmBreadcrumb']/ul/li/a[@href='/weblogs/bala_newblog_jun9/']                          |
+|ensure               |isElementPresent                       |//div[@class='cmBreadcrumb']/ul/li/a['2011']                                                       |
+|ensure               |isElementPresent                       |//div[@class='cmBreadcrumb']/ul/li['17']                                                           |
+|reject               |isElementPresent                       |//div[@class='cmBreadcrumb']/ul/li/a[@href='/categories/ap/']                                      |
+|user clicks and waits|//div[1]/div/div[3]/div[1]/h1/span/a                                                                                                       |
+|close;                                                                                                                                                           |
+|selectWindow;        |null                                                                                                                                       |
+|pause                |10000                                                                                                                                      |
+|user clicks and waits|link=Delete                            |                                                                                                   |
+|pause                |5000                                                                                                                                       |
+|user waits for text  |Are you sure?                                                                                                                              |
+|user clicks and waits|//input[@value="Yes, I'm sure"]                                                                                                            |
+|pause                |10000                                                                                                                                      |
+|user                 |ensure                                 |existence of text|The blog "Bala_NewBlog_Jun9" was deleted successfully.                           |

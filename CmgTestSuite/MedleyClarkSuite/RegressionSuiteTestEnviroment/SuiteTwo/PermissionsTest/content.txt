@@ -1,0 +1,26 @@
+!|script|
+| user opens | /admin/ |
+| user types | clarkonly | into | id_username |
+| user types | test | into | id_password |
+| user clicks and waits | //input[@value='Log in'] |
+| user clicks and waits | link=Stories |
+| user types | West Cobb Deals With Rash of Car Break-Ins  | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=West Cobb Deals With Rash of Car Break-Ins |
+| user | ensure | existence of text | (None) |
+| user clicks and waits | link=Stories |
+| user clicks and waits | link=Add story |
+| pause | 2000 |
+| user types | ClarkonlyStory | into | id_headline |
+| pause | 2000 |
+| user types | Clark Story | into | //body[@id='tinymce'] |
+| user selects | label=${clark} | from | id_originating_site |
+| pause | 2000 |
+| user clicks | link=[15] Cars |
+| pause | 2000 |
+| user clicks and waits | _continue |
+| pause | 2000 |
+| user | ensure | existence of text | successful |
+| pause | 2000 |
+
+ 

@@ -1,0 +1,33 @@
+!|script|
+| open | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${addAutomaticListBttn} |
+| user types | This is an automated test of the automatic list input | into | ${titleTextBox} |
+| user selects | ${wsbradio} | from | ${selectOriginatingSite} |
+| user clicks and waits | link=[588] News |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | 26 | into | ${inputNumberOfResults} |
+| user types | 1 | into | ${inputNumberOfDays} |
+| user clicks | ${addSearchSitesBttn} |
+| user selects | /News | from | ${selectAvailableCategories} |
+| user clicks | ${addCategoriesButton} |
+| user selects | Update date (Newest first) | from | //select[@id='id_ordering'] |
+| user selects | Story | from | ${selectContentType} |
+| user clicks | ${addContentTypeBttn} |
+| user clicks and waits | _continue |
+| pause | 10000 |
+| user | ensure | existence of text | The automatic list "This is an automated test of the automatic list input" was added successfully. You may edit it again below. |
+| user clicks and waits | //a[@class='viewsitelink'] |
+| selectWindow | !-This is an automated test of the automatic list input | -!${wsbradio} |
+| pause | 2000 |
+| user | ensure | existence of text | This is a story of my life |
+
+#| user types | barack obama | into | //input[@id='id_search_query_3'] |
+
+
+
+ 

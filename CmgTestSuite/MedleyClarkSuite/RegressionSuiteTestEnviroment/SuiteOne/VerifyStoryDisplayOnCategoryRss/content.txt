@@ -1,0 +1,4 @@
+!| script |
+| user opens | http://${wsbradio}/feeds/categories/news/ |
+| user clicks and waits | link=This is an automated test of the story input |
+| user | ensure | existence of text | This is an automated test of the story input |

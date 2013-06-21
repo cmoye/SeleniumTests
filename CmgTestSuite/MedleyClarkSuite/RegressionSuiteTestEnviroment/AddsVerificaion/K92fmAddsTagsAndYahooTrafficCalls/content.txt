@@ -1,0 +1,10 @@
+!|script|
+| user opens | http://test.www.k92fm.com/ |
+| user | ensure | existence of | //div[@id='PB01'] |
+| user | ensure | existence of | //a[contains(@href, 'http://clicks.beap.ad.yieldmanager.net/')] |
+| user | ensure | existence of | //div[@id='HP01']//a[contains(@href, 'http://clicks.beap.ad.yieldmanager.net/')] |
+| user | ensure | existence of | //div[@id='RP01']//a[contains(@href, 'http://clicks.beap.ad.yieldmanager.net/')] |
+| user | ensure | existence of | //div[@id='RP02']//a[contains(@href, 'http://clicks.beap.ad.yieldmanager.net/')] |
+| user | ensure | existence of | //div[@id='RP03']//a[contains(@href, 'http://clicks.beap.ad.yieldmanager.net/')] |
+| user | ensure | existence of | //div[@id='RP04']//a[contains(@href, 'http://clicks.beap.ad.yieldmanager.net/')] |
+| user | ensure | existence of | //div[@id='RP05']//a[contains(@href, 'http://clicks.beap.ad.yieldmanager.net/')] |

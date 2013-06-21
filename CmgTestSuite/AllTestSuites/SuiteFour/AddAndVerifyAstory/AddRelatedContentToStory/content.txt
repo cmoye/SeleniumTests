@@ -1,0 +1,78 @@
+!| script |
+| user opens | http://${wpxi}/admin |
+| pause | 15000 |
+|$FileName=|getEval|"C:\\\\AddNewStoryFile.txt"|
+|$GalleryCheckPoints=|getEval|var file = Components.classes["@mozilla.org/file/local;1"] .createInstance(Components.interfaces.nsILocalFile); file.initWithPath("$FileName");if ( file.exists() == false ) { alert("File does not exist"); }  var is = Components.classes["@mozilla.org/network/file-input-stream;1"] .createInstance( Components.interfaces.nsIFileInputStream ); is.init( file,0x01, 00004, null);var sis = Components.classes["@mozilla.org/scriptableinputstream;1"] .createInstance( Components.interfaces.nsIScriptableInputStream ); sis.init( is );sis.read( sis.available() );|
+|$NewGallery=|getEval|var arrStoreValue="$GalleryCheckPoints".split(",");arrStoreValue[0];|
+| user types | cmgtester5 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | link=$NewGallery |
+| user selects |  Photo | from | ${storyLeadRelatedObjectContentType} |
+| user clicks | ${storyObjectIdLookupButton} |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__0__dash__to_id | for | 30000 |
+| selectWindow | !-Select photo | Medley-! |
+| user clicks | ${selectPhotoFirstTitleOnTheList} |
+| selectWindow | null |
+| pause | 5000 |
+| user selects | label=Poll | from | css=#id_related_objects-relatedobject-from_type-from_id-2-0-to_type |
+| user clicks | css=a#lookup_id_related_objects-relatedobject-from_type-from_id-2-0-to_id |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__0__dash__to_id | for | 15000 |
+| selectWindow | name=id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__0__dash__to_id |
+|note| user types | Do you abide by the water restrictions | into | css=input#searchbar |
+|note| user clicks and waits | css=input#searchbar + input |
+|note| user clicks and waits | link=Do you abide by the water restrictions? |
+| $Poll=|getText|css=table#result_list>tbody>tr.row1>th>a|
+| user clicks | css=table#result_list>tbody>tr.row1>th>a |
+| pause | 10000 |
+| selectWindow | null |
+| user clicks | link=Add another Related Object |
+| user selects | label=Blog Entry | from | css=#id_related_objects-relatedobject-from_type-from_id-2-1-to_type |
+| user clicks | css=a#lookup_id_related_objects-relatedobject-from_type-from_id-2-1-to_id |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__1__dash__to_id | for | 15000 |
+| selectWindow | name=id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__1__dash__to_id |
+|note| user clicks and waits | link=2009 |
+|note| user types | Protecting Your Plants From The Cold | into | css=input#searchbar |
+|note| user clicks and waits | css=input#searchbar + input |
+|note| user clicks and waits | link=Protecting Your Plants From The Cold |
+| $BlogEntry=|getText|css=table#result_list>tbody>tr.row1>th>a|
+| user clicks | css=table#result_list>tbody>tr.row1>th>a |
+| pause | 10000 |
+| selectWindow | null |
+| user clicks | link=Add another Related Object |
+| user selects | label=Gallery | from | css=#id_related_objects-relatedobject-from_type-from_id-2-2-to_type |
+| pause | 10000 |
+| user clicks | css=a#lookup_id_related_objects-relatedobject-from_type-from_id-2-2-to_id |
+| pause | 10000 |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__2__dash__to_id | for | 15000 |
+| pause | 10000 |
+| selectWindow | name=id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__2__dash__to_id |
+|note| user types | Peacemaker Docks at Peanut Island | into | css=input#searchbar |
+|note| user clicks and waits | css=input#searchbar + input |
+|note| user clicks and waits | link=Peacemaker Docks at Peanut Island |
+| $Gallery=|getText|css=table#result_list>tbody>tr.row1>th>a|
+| user clicks | css=table#result_list>tbody>tr.row1>th>a |
+| pause | 10000 |
+| selectWindow | null |
+| user clicks | link=Add another Related Object |
+| user selects | label=Map | from | css=#id_related_objects-relatedobject-from_type-from_id-2-3-to_type |
+| user clicks | css=a#lookup_id_related_objects-relatedobject-from_type-from_id-2-3-to_id |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__3__dash__to_id | for | 15000 |
+| selectWindow | name=id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__2__dash__3__dash__to_id |
+| user types | Automation | into | css=input#searchbar |
+| user clicks and waits | css=input#searchbar + input |
+| user clicks and waits | link=All |
+| user clicks | link=Automation Adding Map To Story |
+| pause | 10000 |
+| selectWindow | null |
+| user clicks and waits | css=input[name='_continue'] |
+| pause | 10000 |
+| user clicks and waits | css=div#content-main >ul.object-tools > li:last-child >a |
+| pause | 10000 |
+| selectWindow | !-$NewGallery | -!${wpxi} |
+| pause | 15000 |
+| user | reject | existence of text | The page could not be found |
+| user | ensure | existence of text | Automation Adding Map To Story  |
+| user | ensure | existence of text | $Poll |
+| user | ensure | existence of text | $BlogEntry |
+| user | ensure | existence of text | $Gallery |

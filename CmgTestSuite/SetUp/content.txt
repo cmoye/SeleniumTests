@@ -1,0 +1,193 @@
+!|import  |
+|selenesse|
+
+#!|script                                                                                            |
+|start | Slim Selenium Driver|${seleniumHost}|${seleniumPort}|${seleniumBrowser}|${baseURL}|${captureTraffic}|
+|setTimeoutSeconds|60                                                                               |
+
+#!path lib/*.jar
+#!|com.neuri.webfixture.Webtest|
+#!|script
+#!|import  |
+#|selenesse|
+#!path lib/*.jar
+#!|com.neuri.webfixture.Webtest|
+
+Define where to reach the selenium server:
+!define seleniumHost {localhost}
+!define seleniumPort {4444}
+!define seleniumBrowser {*firefox}
+
+Define the URL where to start the test:
+!define env {test}
+!define site {wzzk}
+!define wdbo {www.test.wdbo.com}
+!define clark {www.test.clarkhoward.com}
+!define wsbradio {www.test.wsbradio.com}
+!define wsoctv {www.test.wsoctv.com}
+!define k99 {www.test.k99online.com}
+!define wsbtv {www.test.wsbtv.com}
+!define k92 {www.test.k92fm.com}
+!define kissrocks {www.test.kissrocks.com}
+!define 1015thepoint {www.test.wbli.com}
+!define 1015point {www.test.1015thepoint.com}
+!define 1037river {www.test.1037river.com}
+!define accessatlanta {www.test.accessatlanta.com}
+!define boortz {www.test.boortz.com}
+!define ohioradio {www.test.newstalkradiowhio.com}
+!define wftv {www.test.wftv.com}
+!define coxmediagroup {www.test.coxmediagroup.com}
+!define whiotv {www.test.whiotv.com}
+!define wpxi {www.test.wpxi.com}
+!define pbp {www.test.palmbeachpost.com}
+!define wdbo {www.test.wdbo.com}
+!define kirotv {www.test.kirotv.com}
+!define foxreno {www.test.foxreno.com}
+!define krater96 {www.test.krater96.com}
+!define palmbeachpostadmin {http://www.test.palmbeachpost.com/admin/}
+!define ajc {www.test.ajc.com}
+
+Change this when changing region prior to running Clark Medley Regression Tests for Grids and Sections
+
+!define Wndw {!-automated test to see if Grids with internal content display... | test.www.clarkhoward.com-!}
+
+!define baseURL {http://www.test.clarkhoward.com/}
+!define adminURL {http://www.test.clarkhoward.com/admin/}
+!define test {test.www.clarkhoward.com}
+!define VM10 {vm10.www.clarkhoward.com}
+!define VM13 {vm13.www.clarkhoward.com}
+!define VM11 {vm11.www.clarkhoward.com}
+!define VM5  {vm5.www.clarkhoward.com}
+!define wsbRadioURL {http://test.www.wsbradio.com/}
+!define weathersearchURL {http://vm2.www.wsbtv.com/weather/}
+
+
+Defined by bala for  '''Automation Testing:'''
+!define wsbRadioadminURL {http://www.test.wsbradio.com/admin/}
+!define adminuser {bala.guntipal}
+!define adminPassword {commitmentqa}
+!define PublishClarkhoward {www.test.clarkhoward.com}
+!define PublishWsbtv {www.test.wsbtv.com}
+!define selectAvailableSitesToPublish {//select[@id='id_sites_from']}
+!define seleniumIEBrowser {*iexplore}
+
+
+Define '''test variables''' here:
+!define radioAndTvBttn {//a[@href='/s/radio-tv/']}
+
+
+Define variables for '''Medley general objects and links, etc:'''
+!define medleyLoginName {//input[@name='username']}
+!define medleyLoginPassword {//input[@id='id_password']}
+!define medleyLoginButton {//input[@type='submit']}
+
+!define selectOriginatingSite {//select[@id='id_originating_site']}
+!define selectOriginatingSite2 {//select[contains(@id, 'id-0-originating_site')]}
+
+!define nameField {//input[@id='id_name']}
+!define titleTextBox {//input[@name='title']}
+!define descriptionTextBox {//input[@name='description']}
+!define urlPathTextBox {//input[contains(@name, 'url')]}
+!define contentTextBox {//body[@id='tinymce']}
+
+!define firstObjectOnListLink {//table[@id='result_list']/tbody/tr[1]/th/a}
+!define 2ndObjectOnListLink {//table[@id='result_list']/tbody/tr[2]/th/a}
+!define 3rdObjectOnListLink {//table[@id='result_list']/tbody/tr[3]/th/a}
+
+!define saveButton {//input[@name='_save']}
+!define saveAndContinueEditingBttn {//input[@value='Save and continue editing']}
+!define viewOnSiteBttn {css=div#content-main >ul.object-tools > li:last-child >a}
+
+
+Define variables for '''Publish Settings:'''
+!define selectAvailableSites {//select[@id='id_originating_site']}
+!define addSitesButton {//a[contains(@href, 'id_sites_from') and @class='selector-add']}
+!define primaryCategoryLookupButton {//a[@id='lookup_id_primary_category']}
+!define selectAvailableCategories {//select[@id='id_categories_from']}
+!define addCategoriesButton {//a[contains(@href, 'id_categories_from') and @class='selector-add']}
+!define statusSelect {//select[@id='id_status']}
+
+Define variables for '''Metadata:'''
+!define topicsTextbox {//textarea[@id='id_topics']}
+!define pageTitle {//input[contains(@id, 'page_title')]}
+
+Define variables for Medley '''Search Parameters:'''
+!define inputNumberOfResults {//input[@name='results']}
+
+Define variables for Medley '''News App:'''
+!define medleyAddNewsStory {//a[contains(@href, 'medleystory/add/')]}
+!define medleyChangeNewsStory {//a[@class='changelink' and @href='news/medleystory/']}
+!define medleySelectStoriesLink {link=Stories}
+!define medleySelectNewsApp {link=News}
+
+!define storyHeadline {//input[@id='id_headline']}
+!define storyPrintHeadline {//input[@id='id_print_headline']}
+!define storySubhead {//input[@id='id_subhead']}
+!define storyAvailableBylines {//select[@id='id_bylines_from']}
+!define storyAddBylinesButton {//a[contains(@href, 'id_bylines_from') and @class='selector-add']}
+!define storyOneOffByline {//input[@id='id_one_off_byline']}
+!define storyBylineSource {//input[@id='id_byline_source']}
+!define storyDateline {//select[@id='id_dateline']}
+!define storyPrestoryBlurb {//input[@id='id_pre_story_blurb']}
+!define storyPoststoryBlurb {//input[@id='id_post_story_blurb']}
+!define storyLeadRelatedObjectContentType {//select[@id='id_related_objects-relatedobject-from_type-from_id-0-to_type']}
+!define storyObjectIdLookupButton {//a[contains(@id, 'lookup_id_related_objects')]}
+!define storyCommentsStatus {//select[@id='id_comment_status']}
+
+
+!define medleyAddPhoto {//a[contains(@href, 'medleyphoto/add/')]}
+!define medleyChangePhoto {//a[@class='changelink' and @href='photos/medleyphoto/']}
+!define medleySelectPhotosApp {link=Photos}
+!define selectPhotoFirstTitleOnTheList {//a[contains(@href, '/photos/medleyphoto/')]}
+
+Define variables for Medley '''Flat page:'''
+!define addFlatPageBttn {//a[contains(@href, 'myflatpage/add/')]}
+!define inputFlatNickname {//input[@name='admin_name']}
+!define selectFlatPageTemplate {//select[@id='id_flatpage_template']}
+
+Define variables for Medley '''Grids App:'''
+!define addGridButton {//a[@href='grids/grid/add/']}
+!define gridHeadingName {//input[contains(@id, 'heading')]}
+!define 2NdgridHeadingName {//input[@id='id_areas-1-heading']}
+!define gridWidth {//select[contains(@id, 'width')]}
+!define gridContentType {//select[contains(@id,  'content_type')]}
+!define gridObjectIdLookupBttn {//a[@id='lookup_id_areas-0-object_id']}
+!define addAnotherGridArea {//div[@class='add-row cmCol2 cmFirst']}
+
+Define variables for Medley '''Sections App:'''
+!define addSectionsBttn {//a[@href='sections/section/add/']}
+!define lookupGridIdBttn {//a[@id='lookup_id_grid']}
+
+Define variables for Medley '''Automatic Lists:'''
+!define addAutomaticListBttn {//a[contains(@href, 'automaticlist/add/')]}
+!define inputNumberOfDays {//input[@id='id_days']}
+!define selectSearchSites {//select[@id='id_search_sites_from']}
+!define addSearchSitesBttn {//a[contains(@href, 'id_search_sites_from') and @class='selector-add']}
+!define selectContentType {//select[@id='id_ctypes_from']}
+!define addContentTypeBttn {//a[contains(@href, 'id_ctypes_from') and @class='selector-add']}
+!define sortOrderBy1 {//select[@id='id_order_field1']}
+!define inputIncludeKeywords {//input[@id='id_keywords']}
+
+Define variables for Medley '''Events App:'''
+!define addEventsBttn {//a[contains(@href, 'medleyevent/add/')]}
+!define oneOffPlace {//input[@name='one_off_place']}
+
+Define variables for Medley '''Manual Lists:'''
+!define addManualListBttn {//a[contains(@href, 'manuallist/add/')]}
+
+!define inputOrderBox1 {//input[@name='listitem_set-0-order']}
+!define inputContentType1 {//select[@id='id_listitem_set-0-content_type']}
+!define objectIdLookupBttn1 {//a[@id='lookup_id_listitem_set-0-object_id']}
+
+!define inputOrderBox2 {//input[@name='listitem_set-1-order']}
+!define inputContentType2 {//select[@id='id_listitem_set-1-content_type']}
+!define objectIdLookupBttn2 {//a[@id='lookup_id_listitem_set-1-object_id']}
+
+!define inputOrderBox3 {//input[@name='listitem_set-2-order']}
+!define inputContentType3 {//select[@id='id_listitem_set-2-content_type']}
+!define objectIdLookupBttn3 {//a[@id='lookup_id_listitem_set-2-object_id']}
+!define AddToStoryText {This is a story of my life. This is my test for WYSIWYG editor. Lorem Ipsum is simply dummy text of the printing and typesetting industry.     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.     Contrary to popular belief, Lorem Ipsum isn’t simply random text — it has roots in a piece of classical Latin literature from 45 B.C., making it over 2,000 years old.     Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of Cicero’s "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil, written in 45 B.C.     This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum — "Lorem ipsum dolor sit amet …" — comes from a line in section 1.10.32.     It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using “Content here, content here,” making it look like readable English.     Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for “lorem ipsum” will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like.}  
+
+!define AddToStoryinfobox {This is an info box.  It contains details about the automation story, such as location, ticket prices and contact information.}
+
+#|Start Browser|firefox|With Selenium Console On|localhost|At Port|4444|And Scripts At|localhost:8181|

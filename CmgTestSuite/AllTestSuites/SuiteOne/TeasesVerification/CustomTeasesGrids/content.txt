@@ -1,0 +1,61 @@
+!|script|
+| user opens | http://${wsbradio}/admin/ |
+| user types | cmgtester | into | id=id_username |
+| user types | cmgtest3r | into | id=id_password |
+| user clicks and waits | css=input[type="submit"] |
+| pause|10000|
+| ensure |isElementPresent                             | css=div#user-tools |
+| user clicks and waits | xpath=(//a[contains(text(),'Grids')])[2] |
+| user clicks and waits | link=www.test.wsbradio.com |
+|user clicks and waits |link=jamie dupree |
+|user clicks | link=Add another Grid Area |
+|pause | 3000 |
+| user selects | label=Story | from | css=select[id=id_areas-20-content_type]|
+| pause | 3000 |
+| user clicks | css=#lookup_id_areas-20-object_id>img[alt="Lookup"] |
+| user waits for Pop Up |!-Select story | Medley-! | for | 10000 |
+| pause | 30000|
+| selectWindow; | !-Select story | Medley-! |
+| user clicks and waits |link=This is an automated test of the story input |
+|pause| 5000|
+| selectWindow; | null |
+|pause|3000|
+| user clicks | css=#lookup_id_areas-20-object_id > img[alt="Lookup"] |
+| user waits for Pop Up |!-Select story | Medley-! | for | 10000 |
+|pause|30000|
+| selectWindow; | !-Select story | Medley-!|
+|pause|3000|
+| user types | automated | into | id=searchbar |
+| user clicks and waits | css=input[type="submit"] |
+| user clicks and waits | link=This is an automated test of the story input |
+| selectWindow; | null |
+|pause|3000|
+| user clicks and waits | name=_continue |
+| user clicks | link=View on site |
+|pause|30000|
+| selectWindow; | !-Jamie Dupree | www.test.wsbradio.com-! |
+| ensure | isElementPresent|  link=About Jamie Dupree|
+| ensure | isElementPresent |link=Jamie Dupree's Washington Insider|
+| selectWindow; | null |
+| user clicks |areas-20-delete-link|
+| selectWindow; | !-Jamie Dupree | www.test.wsbradio.com-! |
+|pause| 5000|
+|user clicks and waits |link=Jamie Dupree's Washington Insider|
+|pause|20000|
+| ensure | isTextPresent|Jamie Dupree's Washington Insider|
+| selectWindow; | null |
+| user clicks and waits| name=_continue |
+|user clicks | link=Add another Grid Area |
+|pause|5000|
+| user selects | label=Story | from | css=select[id=id_areas-20-content_type]|
+| pause| 3000|
+| user types |660046| into | id=id_areas-20-object_id |
+| user clicks| name=_continue |
+| pause| 50000|
+| ensure | isTextPresent|The grid "jamie dupree" was changed successfully. You may edit it again below.|
+|pause| 20000|
+| ensure | isElementPresent|link=Cold Spells ...|
+| user clicks| link=Cold Spells ...|
+| user types | Test Headline| into |id=id_areas-20-heading|
+| user clicks |areas-20-delete-link|
+|close; |

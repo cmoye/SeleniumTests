@@ -1,0 +1,73 @@
+This test verifies the grid and section in the preceding tests as created correctly and able to display correctly.
+
+!|script|
+| user opens | http://${region}.www.clarkhoward.com/admin/ |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | //a[@href='sections/section/'] |
+| user clicks and waits | link=automated test to see if Grids with internal content display right |
+| user clicks | ${viewOnSiteBttn} |
+| pause | 20000 |
+| selectWindow |  ${Wndw} |
+| $currentSectionURL= | getLocation |
+| pause | 15000 |
+| user | ensure | existence of text | auto test grid heading name Video |
+| user clicks and waits | //div[@id='cmGridObject']//a[contains(@href, '/videos/')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| pause | 15000 |
+| user | ensure | existence of | //meta[contains (@content, '/videos/')] |
+| user opens | $currentSectionURL |
+| pause | 15000 |
+| user | ensure | existence of text | auto test grid heading name Blog |
+| user clicks and waits | //a[contains(@href, '/weblogs/')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| pause | 15000 |
+| user | ensure | existence of text | Save |
+| user opens | $currentSectionURL |
+| pause | 15000 |
+| user | ensure | existence of text | auto test grid heading name Blog Entry |
+| user clicks and waits | //div[@id='cmGridObject']/div[3]/div/h2/a |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| pause | 90000 |
+| user | ensure | existence of text| Meanwhile, I've been wondering about the feasibility of harvesting only pine beetle damaged trees - and using wild growing invasive species to make bio fuel..... Kudzu, Asian Privet, and the blight of Ailanthus altissima (Tree-of-Heaven). I used to live on old farm land INFESTED with all of it and came to understand just how pervasive, aggressive and insidious these alien species are. Truly Satan's botanical minions. So if devouring them as biofuel worked out, we'd get fuel AND restore landscapes to their original glory. It seems so logical -- a Win Win!! |
+| user opens | $currentSectionURL |
+| pause | 15000 |
+| user | ensure | existence of text | auto test grid heading name Poll |
+| user | ensure | existence of | //div[@class='cmPollResults tease'] |
+| user | ensure | existence of text | auto test grid heading name Q-n Set |
+| user clicks and waits | //div[@id='cmGridObject']//div[5]//a[contains (@href, '/answers/')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| pause | 15000 |
+| user | ensure | existence of | //meta[contains (@content, '/answers/')] |
+| user opens | $currentSectionURL |
+| pause | 15000 |
+| user | ensure | existence of text | auto test grid heading name Photo |
+| user clicks and waits| //div[@id='cmGridObject']//img[contains(@src, '/img/photos/')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| pause | 15000 |
+| user | ensure | existence of text | Laurel Canyon |
+| user opens | $currentSectionURL |
+| pause | 15000 |
+| user | ensure | existence of text | auto test grid heading name Gallery |
+| user clicks and waits| //a[contains(@href, 'gallery')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| pause | 15000 |
+| user | ensure | existence of text | 1 of 23 |
+| user opens | $currentSectionURL |
+| user | ensure | existence of text | auto test grid heading name Flatpage |
+| user clicks and waits | //div[@id='cmGridObject']/div[8]/div/h2/a |
+| pause | 15000 |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| pause | 15000 |
+| user | ensure | existence of | //meta[contains (@content, 'http://${region}.www.clarkhoward.com/')] |
+| user | ensure | existence of text | With the "LillyAnswers" discount card, low-income seniors can get a 30-day supply of Lilly retail drugs such as Prozac and Vista, an osteoporosis drug for just $12 a month. To qualify for the card, seniors must have income of less than $18,000 a year as singles or $24,000 as couples. The card will be honored at CVS, Longs and Wal-Mart pharmacies. Call 1-877-RX-LILLY to apply.  |
+| user opens | $currentSectionURL |
+| pause | 15000 |

@@ -1,0 +1,25 @@
+!|script|
+| user opens | http://${clark}/admin |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | //div[@id='sections']/table/tbody/tr[3]/td[1]/a |
+| user clicks | id_title |
+| user types | automatedsection | into | id_title |
+| user types | automatedsection | into | id_description |
+| $urlPath= | getUniqueString |
+| user types | /$urlPath/ | into | id_url_path |
+| user clicks | //img[@alt='Lookup'] |
+| user waits for Pop up | id_grid | for | 2000 |
+| selectWindow | name=id_grid |
+| user types | automatedgrid | into | searchbar |
+| user clicks and waits | //input[@value='Search'] |
+| user clicks and waits | link=automatedgrid |
+| selectWindow | null |
+| user selects | label=${wsbradio} | from | id_originating_site |
+| user clicks | link=[209] AP |
+| user clicks and waits | _continue |
+| user clicks and waits  | link=View on site |
+| selectWindow | !-automatedsection | -!${wsbradio} |
+| pause | 2000 |
+| ensure |isElementPresent |link=This is an automated test of the story input|

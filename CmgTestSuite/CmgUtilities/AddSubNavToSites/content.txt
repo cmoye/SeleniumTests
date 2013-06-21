@@ -1,0 +1,51 @@
+#!|scenario| add subnav to each | sitenum |
+| user opens | http://${region}.www.boortz.com/admin |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits |//div[@id='treemenus']/table/tbody/tr/td[2]/a||
+| user clicks and waits | //table[@id='result_list']/tbody/tr[@sitenum]/th/a|
+| user clicks and waits | link=Add an item|
+| user types | New Test Tab| into | id_caption |
+| user clicks and waits |_addanother|
+| user selects | !-label=regexp:\s+\|-\sNew Test Tab-! | from |id_parent |
+| user types |New Tab Subnav Level 1| into | id_caption |
+| user clicks and waits |_addanother|
+| user selects | !-label=regexp:\s+\|-\sNew Tab Subnav Level 1-! |from | id_parent |
+| user types | New Tab Subnav Level 2| into | id_caption |
+| user clicks and waits |_addanother|
+| user selects | !-label=regexp:\s+\|-\sNew Tab Subnav Level 2-! | from | id_parent |
+| user types | New Tab Subnav Level 3| into |id_caption |
+| user clicks and waits  |_addanother |
+| user selects | !-label=regexp:\s+\|-\sHome-! | from | id_parent |
+| user types | Home Tab Subnav Level 1| into | id_caption |
+| user clicks and waits |_addanother |
+| user selects | !-label=regexp:\s+\|-\sHome Tab Subnav Level 1-! | from | id_parent |
+| user types | Home Tab Subnav Level 2 | into | id_caption |
+| user clicks and waits |_addanother |
+| user selects | !-label=regexp:\s+\|-\sHome Tab Subnav Level 2-! | from | id_parent |
+| user types | Home Tab Subnav Level 3 | into | id_caption |
+| user clicks and waits |_addanother|
+| user selects | !-label=regexp:\s+\|-\sLast Songs Played-! | from | id_parent |
+| user types |First Level Subnav | into |id_caption |
+| user clicks and waits |_addanother |
+| user selects | !-label=regexp:\s+\|-\sFirst Level Subnav-! | from | id_parent |
+| user types | Second Level Subnav | into |id_caption |
+| user clicks and waits |_addanother |
+| user selects | !-label=regexp:\s+\|-\sSecond Level Subnav-! | from |id_parent |
+| user types | Third Level Subnav | into | id_caption |
+| user clicks and waits |_save |
+| user clicks and waits | link=Menus |
+| ensure | isElementPresent |  link=Log out |
+| user clicks and waits |  link=Log out |
+| pause | 15000 |
+| ensure | isElementPresent | link=Log in again |
+
+!| add subnav to each | sitenum |
+| sitenum |
+| 84 |
+| 31 |
+| 1 |
+| 3 |
+| 4 |
+| 60 |

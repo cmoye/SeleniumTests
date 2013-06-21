@@ -1,0 +1,22 @@
+!|script|
+| user opens | ${adminURL} |
+| user types | cmgtester | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | link=Automatic lists |
+| pause | 10000 |
+| user clicks and waits | link=Creation date |
+| user clicks and waits | link=Creation date |
+| user clicks and waits | link=This is an automated test of the automatic list input |
+| user selects | ${wsbradio} | from | ${selectSearchSites} |
+| user clicks | ${addSearchSitesBttn} |
+| user clicks and waits | link=[588] News |
+| user selects | Photo | from | ${selectContentType} |
+| user clicks | ${addContentTypeBttn} |
+| user selects | AP Story | from | ${selectContentType} |
+| user clicks | ${addContentTypeBttn} |
+| user selects | Publication date (Newest first) | from | //select[@id='id_ordering'] |
+| user clicks and waits | ${saveAndContinueEditingBttn} |
+| pause | 3000 |
+
+

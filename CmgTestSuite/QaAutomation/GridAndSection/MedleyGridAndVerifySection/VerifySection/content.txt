@@ -1,0 +1,62 @@
+!|script|
+|$FileName=|getEval|"C:\\\\CreateNewGrid .txt"|
+|$sTime1=|getEval|var file = Components.classes["@mozilla.org/file/local;1"] .createInstance(Components.interfaces.nsILocalFile); file.initWithPath("$FileName");if ( file.exists() == false ) { alert("File does not exist"); }  var is = Components.classes["@mozilla.org/network/file-input-stream;1"] .createInstance( Components.interfaces.nsIFileInputStream ); is.init( file,0x01, 00004, null);var sis = Components.classes["@mozilla.org/scriptableinputstream;1"] .createInstance( Components.interfaces.nsIScriptableInputStream ); sis.init( is );sis.read( sis.available() );|
+| user opens | http://www.${env}.daytondailynews.com/admin/ |
+| pause | 5000 |
+| user types | cmgtester1@coxinc.com | into |id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | cmgtest3r | into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+| pause | 15000|
+| user clicks and waits | css=a[href='/admin/sections/section/'] |
+| user clicks and waits | link=Automated Section for Medley Grid $sTime1 |
+| user clicks | link=View on site |
+| pause |20000 |
+| selectWindow |  !-Automated Section for Medley Grid $sTime1 | -!www.${env}.daytondailynews.com |
+| pause |10000 |
+| $currentSectionURL= | getLocation |
+| pause |10000 |
+| user | ensure | existence of text | Video $sTime1 |
+| user | ensure | existence of text | AutoList $sTime1 |
+| user | ensure | existence of text | Latest news |
+| user | ensure | existence of text | Manual List $sTime1 |
+| user | ensure | existence of text | Breast cancer testing, treatment information |
+| user | ensure | existence of text | Blog Entry $sTime1 |
+| ensure | isElementPresent| link=Lawmakers tangle over Benghazi attacks hearing |
+| user | ensure | existence of text | Gallery $sTime1 |
+| ensure | isElementPresent| link=Jail mugs|
+| user | ensure | existence of text | Story $sTime1 |
+| ensure | isElementPresent| link=Area chain restaurant offering free slice of pie |
+| ensure | isElementPresent| css=img[src*='579311_503364363034838_1945356155_n.jpg'] |
+| user | ensure | existence of text | O’Charley’s restaurant is offering slices of its signature Ooey-Gooey Caramel Pie and others as part of its “Free Pie Wednesdays.” |
+| user | ensure | existence of text | Third Party Tease $sTime1 |
+| user | ensure | existence of text | Special Tease $sTime1 |
+| user | ensure | existence of text | Employers |
+| user | ensure | existence of text | Job Seekers |
+| user | ensure | existence of text | Find Better with |
+| ensure | isElementPresent| css=img[src*='monster_logo.png'] |
+|$PremiumHeader=|getText|css=div.premium_header|
+|check|getEval|var Diff="False"; var data="$PremiumHeader"; if(data.indexOf('Our premium news website is unfolding')>=0) {Diff= "True";} else{Diff= "False";}|True|
+|$PremiumStory=|getText|css=div.premium_stories>h3|
+|check|getEval|var Diff="False"; var data="$PremiumStory"; if(data.indexOf("Trending on MyDaytonDailyNews")>=0) {Diff= "True";} else{Diff= "False";}|True|
+| user clicks and waits | //a[contains(text(),'Video')] |
+| pause | 20000 |
+| $TITLE= | getTitle |
+| check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| pause | 30000 |
+| user clicks and waits | css=h3:contains('Blog Entry') + div >h2 >a |
+| $TITLE= | getTitle |
+| check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| pause | 50000 |
+| user clicks and waits| link=Jail mugs|
+| $TITLE= | getTitle |
+| check|getEval|var Diff="False";var a='$TITLE';  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| pause | 30000 |
+| $TITLE= | getTitle |
+| check|getEval|var Diff="False";var a='$TITLE';  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user clicks and waits | link=Area chain restaurant offering free slice of pie |
+| user | ensure | existence of text | More News |
+| user | ensure | existence of text | Area chain restaurant offering free slice of pie | 
+

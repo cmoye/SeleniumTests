@@ -1,0 +1,22 @@
+!|script|
+| user opens | http://${kirotv}/admin/ |
+| user types | cmgtester1 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | css=a[href='/admin/videos/vendorvideo/add/']  |
+|$test= | getUniqueString |
+| user types | http://link.brightcove.com/services/player/bcpid774331384001?bctid=950163509001&+$test | into | id_player_url |
+| user types | This is an automated input video | into | id_title |
+| user types | description of test video | into | id_description |
+| user selects | label=${kirotv} | from | id_originating_site |
+| user types | 588 | into | id_primary_category |
+| user types | barack obama | into | id_topics |
+| user clicks and waits | _continue |
+| pause | 9000 |
+| user | ensure | existence of text | The video "This is an automated input video" was added successfully. You may edit it again below. |
+| user clicks and waits | ${viewOnSiteBttn} |
+|selectWindow;|!-This is an automated input video | www.test.kirotv.com-!|
+| user | ensure | existence of text | This is an automated input video |
+| pause | 9000 |
+| user | reject | existence of text |http://link.brightcove.com |
+

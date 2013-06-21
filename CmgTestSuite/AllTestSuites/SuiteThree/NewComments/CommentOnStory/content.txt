@@ -1,0 +1,22 @@
+!|script|
+| user opens | http://www.test.palmbeachpost.com |
+| user clicks and waits| css=h2.cmTeaseHeadlineXL>a |
+| user clicks | css=a[href='#cmComments'] |
+| user | ensure | existence of text | If you would like to post a comment please|
+| user clicks | css=div#cmJanrainAuthLinks>p.cmUserAnonymous>a.cmOpenJanrainModal |
+|pause|5000|
+|user types| balamn11@gmail.com |into|id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | cox@atl | into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+|pause|20000|
+| user clicks| css=a[href='#cmComments']|
+|pause|10000|
+|$Date=|getEval|var d=new Date(); ""+d.getFullYear()+(d.getMonth()+1)+d.getSeconds()|
+|$Comment=|getEval|"Test Automation"+ "$Date"|
+| user types | $Comment | into | name=text |
+| user clicks | css=input.cmCommentSubmitBtn |
+|pause|25000|
+| user | ensure | existence of text | Posted by balamn11  |
+| user | ensure | existence of text | $Comment|
+| user clicks | link=Sign Out |
+|pause|15000|

@@ -1,0 +1,6 @@
+!|script|
+| user opens | http://${whiotv} |
+| pause | 20000|
+|$TRAFFIC= | captureNetworkTraffic | plain |
+|containsSubstring; | $TRAFFIC | beap.ad.yieldmanager.net |
+| user | reject | existence of text | The page could not be found |

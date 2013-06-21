@@ -1,0 +1,60 @@
+!c This test is a '''Smoke''' test.
+User logs in and navigates to Bug story from home page.
+User navigates to nav tabs and pulldowns.
+User subsequently logs out.
+
+Let's see what we can do:
+!| script |
+| user opens | http://${region}.www.clarkhoward.com |
+| user clicks and waits |link=Sign In or Register|
+| pause | 30000 |
+| user types | John.Ekstedt@coxinc.com | into | //input[@name='username'] |
+| user types | password | into | //input[@id='id_password'] |
+| pause | 15000 |
+| user clicks and waits | //input[@value='Sign in'] |
+| pause | 60000 |
+| ensure | isElementPresent | //div[@id='cmHeaderUserRegistration']/p/a[4] |
+| pause | 15000 |
+| user clicks and waits | link=Home |
+| user clicks and waits | link=This Week's Gallery |
+| user clicks and waits | link=This Week's Travel Photo Gallery |
+| user clicks and waits | link=exact:Comments: |
+| user types | test | into | txtAddComment |
+| user clicks and waits | cmdAddComment |
+| user clicks and waits | //div[5]/ul/li[2]/a|
+| pause | 15000 |
+| ensure | isTextPresent | Clark Howard's Audio Podcasts and Video Archives |
+| ensure | isElementPresent | //div[5]/div/div[1]/a/img |
+| user clicks and waits | //div[5]/ul/li[2]/ul/li[4]/a |
+| pause | 15000 |
+| ensure | isTextPresent| Clark Stinks Audio Archive |
+| user clicks and waits | link=Radio & TV|
+| pause | 15000 |
+| ensure | isTextPresent| The Clark Howard Show on Radio and TV. Save more, spend less and avoid getting ripped off! |
+| user clicks and waits | link=Show Notes|
+| pause | 15000 |
+| ensure | isElementPresent | //div[@id='cmGridObject']/div[1]/h3 |
+| ensure | isTextPresent| This Week's Show Notes |
+| user clicks and waits | link=Clark's Topics|
+| pause | 15000 |
+| ensure | isTextPresent| Clark Howard's most recent show notes, guides and videos, categorized by topic. |
+| user clicks and waits | link=Clark's Bargains|
+| pause | 15000 |
+| ensure | isTextPresent| Clark finds deals wherever he goes -- and shares them with you here! |
+| user clicks and waits | link=Help & Advice|
+| pause | 15000 |
+| ensure | isTextPresent| Clark Howard's Help & Advice Resources |
+| user clicks and waits | link=Community|
+| pause | 15000 |
+| ensure | isTextPresent| Discuss customer service, scams, purchases, debt management, insurance, real estate, taxes, travel and other money matters. |
+| user clicks and waits | link=About Clark|
+| pause | 15000 |
+| ensure | isElementPresent |  link=Sign Out |
+| user clicks and waits |  link=Sign Out |
+| pause | 15000 |
+| ensure | isElementPresent | link=Sign In or Register |
+
+#!include .CmgTestSuite.GenericRoutines.SiteLogout
+
+
+

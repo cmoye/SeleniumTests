@@ -1,0 +1,5 @@
+!|script|
+| user opens | http://${clark} |
+| pause | 3000 |
+| user | ensure | existence of text | Shownotes |
+| user | ensure | existence of text | Clark Howard for Mobile |

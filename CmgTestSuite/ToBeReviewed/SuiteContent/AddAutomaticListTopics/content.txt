@@ -1,0 +1,20 @@
+!|script|
+| user opens |  http://www.${env}.wpxi.com/admin/ |
+|user types |cmgtester|into |//input[@id='id_username']  |
+|user types |cmgtest3r |into |//input[@id='id_password']  |
+|user clicks and waits|//input[@value='Log in'] |
+| user clicks and waits | link=Stories |
+| user clicks and waits | link=www.${env}.wpxi.com |
+| user clicks and waits | link=Live |
+| user clicks and waits | link=Today |
+| user clicks and waits | link=/News|
+|pause |10000|
+| user clicks and waits | css=#result_list>tbody>tr.row1>th>a |
+|pause |10000|
+| user types | qaautomation | into | id_topics |
+| user clicks and waits | _continue |
+| pause| 30000|
+| user clicks and waits | css=div#content-main >ul.object-tools > li:last-child >a |
+| user | ensure | existence of text | qaautomation  |
+| user | reject | existence of text | The page could not be found |
+

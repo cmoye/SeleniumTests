@@ -1,0 +1,62 @@
+!|script|
+| user opens | http://${wsbtv}/admin/ |
+| user types | cmgtester5 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | css=a[href='/admin/sections/section/'] |
+| user clicks and waits | link=automated test to see if Grids with internal content display right |
+| user clicks | link=View on site |
+| pause |10000 |
+| selectWindow |  !-automated test to see if Grids with internal content display... | -!${wsbtv} |
+| pause |10000 |
+| $currentSectionURL= | getLocation |
+| pause | 10000 |
+| user clicks and waits | //a[contains(text(),'Video')] |
+| pause | 20000 |
+| $TITLE= | getTitle |
+|check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+|note| user | reject | that | $TITLE | contains substring | Page not found |
+| user opens | $currentSectionURL |
+| pause | 30000 |
+| user clicks and waits | css=a[href*='/weblogs/'] |
+| $TITLE= | getTitle |
+|note| user | reject | that | $TITLE | contains substring | Page not found |
+|check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| pause | 30000 |
+| user clicks and waits | css=h3:contains('Blog Entry') + div >h2 >a |
+| $TITLE= | getTitle |
+|note| user | reject | that | $TITLE | contains substring | Page not found |
+|check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| pause | 30000 |
+| user | ensure | existence of text | auto test grid heading name Photo |
+| user clicks and waits| css=h3:contains('Photo') + div >div img |
+| $TITLE= | getTitle |
+|note| user | reject | that | $TITLE | contains substring | Page not found |
+|check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| note |user clicks and waits| //a[contains(@href, 'gallery')] |
+| pause | 50000 |
+| user clicks and waits| css=a[href*='gallery'] |
+| $TITLE= | getTitle |
+|check|getEval|var Diff="False";var a='$TITLE';  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+|note| user | reject | that | $TITLE | contains substring | Page not found |
+| user opens | $currentSectionURL |
+| user clicks and waits | css=h3:contains('Flatpage') + div a |
+| pause | 50000 |
+| $TITLE= | getTitle |
+|note| user | reject | that | $TITLE | contains substring | Page not found |
+|note| user | reject | existence of text | The page could not be found |
+|check|getEval|var Diff="False";var a="$TITLE";  if(a.indexOf('Page not found')>=0) {Diff= "True";}else{Diff= "False";};var Value=Diff;|False|
+| user opens | $currentSectionURL |
+| pause | 20000 |
+| ensure|isElementPresent|css=div#cmTrafficMap>div#cmTrafficSpeed.cmClearfix>div.cmTrafficTitle>p:contains("Live Traffic")|
+| pause | 35000 |
+|note |user clicks and waits| css=a[href*='Custom tease headline here'] |
+|note|user clicks and waits| css=div[class='cmTease cmClearfix cmTeaseCol6 cmTeasePhotoTop']>h2>a |
+|$ValidateText=|getText|css=div#cmGridObject>div.cmCol3>div.cmTease>h2>a|
+|user clicks and waits| css=div.cmTease>div.cmTeasePhoto>a>img.cmDarkBoxShadow |
+|note| pause | 90000 |
+| user | ensure | existence of text | $ValidateText |
+| user | reject | existence of text | The page could not be found |

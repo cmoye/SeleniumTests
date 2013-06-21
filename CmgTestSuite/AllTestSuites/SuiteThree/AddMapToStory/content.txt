@@ -1,0 +1,35 @@
+!|script|
+| user opens | http://${pbp}/admin/ |
+| user types | cmgtester3 | into | id_username |
+| user types | cmgtest3r | into | id_password |
+| user clicks and waits | //input[@value='Log in'] |
+| user clicks and waits | css=a[href='/admin/news/medleystory/add/'] |
+|note|$test=|getEval|document.body.innerHTML.replace('https',http'); google.load('maps', '3', {other_params:"sensor=false"});|
+| user types | Automation Adding Map To Story | into | id_headline |
+| user selects | label=${pbp} | from | id_originating_site |
+| user types | Miami, New York, Atlanta, Maine | into | //body[@id='tinymce'] |
+| user clicks | link=[372] Entertainment |
+| pause | 15000|
+| user clicks and waits | metadata_suggest_button |
+| pause | 10000 |
+| selectFrame;| id=id_story_ifr|
+| user | ensure | existence of text | New York |
+| selectWindow;|null|
+| user clicks and waits | id_generate_staticmap |
+| pause | 10000 |
+| user clicks and waits | _continue |
+| pause | 30000 |
+| user | ensure | existence of text | Automation Adding Map To Story |
+| $MAPID= | getValue | id_related_objects-relatedobject-from_type-from_id-2-0-to_id |
+| ensure | isElementPresent| css=tr#related_objects-relatedobject-from_type-from_id-2-0>td>a[href="/admin/maps/medleystaticmap/$MAPID/"]>strong:contains('Automation Adding Map To Story')|
+| user clicks and waits | ${viewOnSiteBttn} |
+| pause | 10000 |
+| selectWindow; | !-Automation Adding Map To Story | -!${pbp} |
+| pause | 5000 |
+| user | reject | existence of text | The page could not be found |
+| user | ensure | existence of text | Automation Adding Map To Story  |
+|note | user | ensure | existence of text | From Our News Partners |
+| user clicks and waits | link=View Larger |
+| pause | 3000 |
+| ensure | isElementPresent |//body[@id='staticmap_$MAPID']/div/div/div[3]/div[1]/h1||
+| user | reject | existence of text | The page could not be found |

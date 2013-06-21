@@ -1,0 +1,32 @@
+!contents
+!| script |
+| user opens | http://www.test.palmbeachpost.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | Full Site |
+| user opens | http://test.palmbeachpost.com/fullsite?return=%2F |
+| pause | 3000 |
+| user opens | http://www.test.palmbeachpost.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | View mobile site |
+| user clicks and waits | link=View mobile site |
+| user | ensure | existence of text | Full Site |
+| user opens | http://test.palmbeachpost.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | Full Site |
+| user opens | http://test.palmbeachpost.com/fullsite?return=%2F |
+| pause | 3000 |
+| user opens | http://www.test.palmbeachpost.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | View mobile site |
+| user clicks and waits | link=View mobile site |
+| user | ensure | existence of text | Full Site |
+| user opens | http://m.test.palmbeachpost.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | Full Site |
+| user opens | http://test.palmbeachpost.com/fullsite?return=%2F |
+| pause | 3000 |
+| user opens | http://www.test.palmbeachpost.com/ |
+| pause | 3000 |
+| user | ensure | existence of text | View mobile site |
+| user clicks and waits | link=View mobile site |
+| user | ensure | existence of text | Full Site |

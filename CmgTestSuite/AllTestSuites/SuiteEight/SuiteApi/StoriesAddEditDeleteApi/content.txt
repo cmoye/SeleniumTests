@@ -1,0 +1,129 @@
+!| script                                                                                                                           |
+|user opens            |http://${wsbradio}/admin/                                                                         |
+|note|user opens            |http://www.fe13.wsbradio.com/admin/                                                                        |
+|pause                 |10000                                                                                                       |
+|user types            |cmgtester                    |into|//input[@id='id_username']                                               |
+|user types            |cmgtest3r                    |into|//input[@id='id_password']                                               |
+|user clicks and waits |//input[@value='Log in']                                                                                    |
+|pause                 |15000                                                                                                        |
+|user clicks and waits |css=a[href='/admin/news/medleystory/add/']                                                                  |
+|pause                 |5000                                                                                                        |
+|user waits for text   |Add story                                                                                                   |
+|pause                 |10000                                                                                                       |
+|$Story=        |getEval         |var d=new Date();"InitialAutomation_API_TestStory" + d.getHours() + d.getMinutes() + d.getSeconds();                         |
+|user types            |$Story                       |into|css=input#id_headline                                                    |
+|addSelection;         |css=select#id_bylines_from   |label=Syke                                                                    |
+|user clicks and waits |css=a:contains('Add')                                                                                       |
+|user types            |APIAutomatedScript_NewStory_NewStory_$Story|into|css=body#tinymce                                                         |
+|note|user selects and waits|www.fe13.wsbradio.com             |from|css=select#id_originating_site                                           |
+|user selects and waits|www.test.wsbradio.com             |from|css=select#id_originating_site                                           |
+|note|addSelection;         |css=select#id_sites_from     |label=www.test.wsbradio.com                                                   |
+|addSelection;         |css=select#id_sites_from     |label=${wsbradio}                                                   |
+|user clicks           |css=a[href='javascript: (function(){ SelectBox.move("id_sites_from","id_sites_to");})()']                   |
+|user types            |209                          |into|css=input#id_primary_category                                            |
+|addSelection;         |css=select#id_categories_from|/AP                                                                           |
+|user clicks           |css=a[href='javascript: (function(){ SelectBox.move("id_categories_from","id_categories_to");})()']         |
+|user types            |APIAutomatedScript_Title_$Story            |into|css=input#id_custom_page_title                                           |
+|user types            |APIAutomatedScript_Description_$Story      |into|css=input#id_serp_description                                            |
+|user types            |Facebook_$Story              |into|css=input#id_social_summary                                              |
+|user selects and waits|Photo                     |from|css=select#id_related_objects-relatedobject-from_type-from_id-0-to_type|
+|user types            |329973 |into|css=input#id_related_objects-relatedobject-from_type-from_id-0-to_id   |
+|user clicks           |css=input[name='_continue']                                                                                 |
+|pause                 |60000                                                                                                       |
+|note|selectWindow; |!-Change story | Medley-!|
+|ensure                |isTextPresent                |The story "$Story" was added successfully. You may edit it again below.       |
+|ensure |isElementPresent |css=a:contains('tempc')|
+|user clicks|css=div[class='breadcrumbs']>a:contains('Stories')|
+|pause|30000|
+|note|select Window;|!-Select story to change | Medley-!|
+|user clicks and waits |css=a:contains('Add story')|
+|pause|15000|
+|$EditStory=        |getEval         |var d=new Date();"InitialAutomation_API_TestStory" + d.getHours() + d.getMinutes() + d.getSeconds();                         |
+|user types            |$EditStory|into|css=input#id_headline                                                    |
+|addSelection;         |css=select#id_bylines_from   |label=Syke                                                                    |
+|user clicks and waits |css=a:contains('Add')                                                                                       |
+|user types            |APIAutomatedScript_NewStory_NewStory_$Story|into|css=body#tinymce                                                         |
+|note|user selects and waits|www.fe13.wsbradio.com             |from|css=select#id_originating_site                                           |
+|user selects and waits|www.test.wsbradio.com             |from|css=select#id_originating_site                                           |
+|note|addSelection;         |css=select#id_sites_from     |label=www.test.wsbradio.com                                                   |
+|addSelection;         |css=select#id_sites_from     |label=${wsbradio}                                                   |
+|user clicks           |css=a[href='javascript: (function(){ SelectBox.move("id_sites_from","id_sites_to");})()']                   |
+|user types            |209                          |into|css=input#id_primary_category                                            |
+|addSelection;         |css=select#id_categories_from|/AP                                                                           |
+|user clicks           |css=a[href='javascript: (function(){ SelectBox.move("id_categories_from","id_categories_to");})()']         |
+|user types            |APIAutomatedScript_Title_$EditStory            |into|css=input#id_custom_page_title                                           |
+|user types            |APIAutomatedScript_Description_$EditStory      |into|css=input#id_serp_description                                            |
+|user types            |Facebook_$Story              |into|css=input#id_social_summary                                              |
+|user selects and waits|Photo                     |from|css=select#id_related_objects-relatedobject-from_type-from_id-0-to_type|
+|user types            |329973 |into|css=input#id_related_objects-relatedobject-from_type-from_id-0-to_id   |
+|user clicks           |css=input[name='_continue']                                                                                 |
+|pause                 |60000                                                                                                       |
+|note|selectWindow; |!-Change story | Medley-!|
+|ensure                |isTextPresent                |The story "$EditStory" was added successfully. You may edit it again below.       |
+|user clicks|css=div[class='breadcrumbs']>a:contains('Stories')|
+|pause|30000|
+|note|select Window;|!-Select story to change | Medley-!|
+|user clicks and waits |css=a:contains('Add story')|
+|pause|15000|
+|$DeleteStory=        |getEval         |var d=new Date();"InitialAutomation_API_TestStory" + d.getHours() + d.getMinutes() + d.getSeconds();                         |
+|user types            |$DeleteStory|into|css=input#id_headline                                                    |
+|addSelection;         |css=select#id_bylines_from   |label=Syke                                                                    |
+|user clicks and waits |css=a:contains('Add')                                                                                       |
+|user types            |APIAutomatedScript_NewStory_NewStory_$DeleteStory|into|css=body#tinymce                                                         |
+|note|user selects and waits|www.fe13.wsbradio.com             |from|css=select#id_originating_site                                           |
+|user selects and waits|www.test.wsbradio.com             |from|css=select#id_originating_site                                           |
+|addSelection;         |css=select#id_sites_from     |label=www.test.wsbradio.com                                                   |
+|note|addSelection;         |css=select#id_sites_from     |label=${wsbradio}                                                   |
+|user clicks           |css=a[href='javascript: (function(){ SelectBox.move("id_sites_from","id_sites_to");})()']                   |
+|user types            |209                          |into|css=input#id_primary_category                                            |
+|addSelection;         |css=select#id_categories_from|/AP                                                                           |
+|user clicks           |css=a[href='javascript: (function(){ SelectBox.move("id_categories_from","id_categories_to");})()']         |
+|user types            |APIAutomatedScript_Title_$DeleteStory            |into|css=input#id_custom_page_title                                           |
+|user types            |APIAutomatedScript_Description_$DeleteStory      |into|css=input#id_serp_description                                            |
+|user types            |Facebook_$Story              |into|css=input#id_social_summary                                              |
+|user selects and waits|Photo                     |from|css=select#id_related_objects-relatedobject-from_type-from_id-0-to_type|
+|user types            |329973 |into|css=input#id_related_objects-relatedobject-from_type-from_id-0-to_id   |
+|user clicks           |css=input[name='_continue']                                                                                 |
+|pause                 |60000                                                                                                       |
+|note|selectWindow; |!-Change story | Medley-!|
+|ensure                |isTextPresent                |The story "$DeleteStory" was added successfully. You may edit it again below.       |
+|user opens            |http://${wsbradio}/admin/news/medleystory/                                                        |
+|pause                 |60000                                                                                                       |
+|note|user clicks and waits |css=div[class='breadcrumbs']>a:contains('Stories')|
+|pause                 |15000                                                                                                       |
+|note|selectWindow;         |!-Select story to change | Medley-!                                                                         |
+|user waits for text   |Select story to change                                                                                      |
+|$EditStoryName=|getEval | var d=new Date();"Test Automation Edited STORY " + d.getHours() + d.getMinutes() + d.getSeconds();  |
+|user clicks and waits | link=$EditStory|
+|pause|15000|
+|note|selectWindow; |!-Change story | Medley-!|
+|user waits for text | Change story |
+|user types |$EditStoryName|into |css=input#id_headline|
+|$EditStoryDesc=            |getText|css=body#tinymce |
+|user types            |$EditStoryDesc $EditStoryName|into|css=body#tinymce|
+|user selects and waits|Photo                     |from|css=select#id_related_objects-relatedobject-from_type-from_id-0-to_type|
+|user types            |329973 |into|css=input#id_related_objects-relatedobject-from_type-from_id-0-to_id   |
+|user clicks and waits           |css=input[name='_continue']                                                                                 |
+|pause                 |15000                                                                                                       |
+|note|selectWindow; |!-Change story | Medley-!|
+|ensure                |isTextPresent                | was changed successfully. You may edit it again below.       |
+|check|getText|css=body#tinymce>p|$EditStoryDesc $EditStoryName|
+|ensure |isElementPresent |css=a:contains('tempc')|
+|note|user opens            |http://${wsbradio}/admin/news/medleystory/                                                        |
+|user clicks|css=div[class='breadcrumbs']>a:contains('Stories')|
+|pause                 |15000                                                                                                       |
+|note|selectWindow;         |!-Select story to change | Medley-!                                                                         |
+|user waits for text   |Select story to change                                                                                      |
+|user clicks and waits | link=$DeleteStory|
+|pause|60000|
+|note|selectWindow; |!-Change story | Medley-!|
+|pause|15000|
+| user selects | Deleted | from | css=select#id_status |
+|user clicks and waits           |css=input[name='_continue']                                                                                 |
+|pause                 |15000                                                                                                       |
+|note|selectWindow; |!-Change story | Medley-!|
+|ensure|isTextPresent|was changed successfully. You may edit it again below.|
+| user | reject | existence of text | The page could not be found |
+|$FileName=|getEval|"C:\\\\StoryFile.txt"|
+|$StoryCheckPoints=|getEval|"$Story"+","+"$EditStoryName" +","+"$DeleteStory"|
+|getEval|var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile );file.initWithPath("$FileName"); if (!file.exists()) file.create(0x00, 0644); var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream); outputStream.init(file,0x02,00004,null);outputStream.write("$StoryCheckPoints","$StoryCheckPoints".length); outputStream.flush(); outputStream.close();||

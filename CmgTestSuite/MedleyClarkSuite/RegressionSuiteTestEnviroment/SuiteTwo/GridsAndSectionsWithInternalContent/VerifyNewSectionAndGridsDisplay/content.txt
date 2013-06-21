@@ -1,0 +1,51 @@
+!|script|
+| user opens | ${adminURL} |
+| user types | cmgtester4 | into | ${medleyLoginName} |
+| user types | cmgtest3r | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | //a[@href='sections/section/'] |
+| user clicks and waits | link=automated test to see if Grids with internal content display right |
+| user clicks | ${viewOnSiteBttn} |
+| pause | 20000 |
+| selectWindow |  !-automated test to see if Grids with internal content display... | -!${clark} |
+| $currentSectionURL= | getLocation |
+| user clicks and waits | //div[@id='cmGridObject']//a[contains(@href, '/videos/')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| user | ensure | existence of | //meta[contains (@content, '/videos/')] |
+| user opens | $currentSectionURL |
+| user clicks and waits | //a[contains(@href, '/weblogs/')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| user opens | $currentSectionURL |
+| user clicks and waits | //div[@id='cmGridObject']/div[3]/div/h2/a |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| user opens | $currentSectionURL |
+| user | ensure | existence of text | auto test grid heading name Q-n Set |
+| user clicks and waits | //div[@id='cmGridObject']//div[5]//a[contains (@href, '/answers/')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| user | ensure | existence of | //meta[contains (@content, '/answers/')] |
+| user opens | $currentSectionURL |
+| user | ensure | existence of text | auto test grid heading name Photo |
+| user clicks and waits| //div[@id='cmGridObject']//img[contains(@src, '/img/photos/')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| user opens | $currentSectionURL |
+| user clicks and waits| //a[contains(@href, 'gallery')] |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| user opens | $currentSectionURL |
+| user clicks and waits | //div[@id='cmGridObject']/div[8]/div/h2/a |
+| pause | 5000 |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| user | ensure | existence of | //meta[contains (@content, 'http://${clark}/')] |
+| user opens | $currentSectionURL |
+| user clicks and waits | //div[@id='cmGridObject']/div[9]/div/h2/a |
+| $TITLE= | getTitle |
+| user | reject | that | $TITLE | contains substring | Page not found |
+| user | ensure | existence of | //meta[contains (@content, '/staff/')] |
+| user opens | $currentSectionURL |
+| pause | 5000 |

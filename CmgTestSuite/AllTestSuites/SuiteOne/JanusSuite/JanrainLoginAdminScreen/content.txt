@@ -1,0 +1,8 @@
+!| script |
+| user opens | http://www.test.accessatlanta.com/admin/ |
+| pause | 35000 |
+| user types | cmgtester1@coxinc.com | into | css=input#capture_signIn_traditionalSignIn_emailAddress.capture_traditionalSignIn_emailAddress |
+| user types | cmgtest3r | into | css=input#capture_signIn_traditionalSignIn_password.capture_traditionalSignIn_password |
+| pause | 15000 |
+| user clicks | css=input#capture_signIn_traditionalSignIn_signInButton.capture_traditionalSignIn_signInButton|
+| pause | 15000 |

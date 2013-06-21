@@ -1,0 +1,13 @@
+!| script                                                                                                                                                              |
+|pause                 |120000                                                                                                                                          |
+|$FileName=|getEval|"C:\\\\GalleryFile.txt"|
+|$GalleryCheckPoints=|getEval|var file = Components.classes["@mozilla.org/file/local;1"] .createInstance(Components.interfaces.nsILocalFile); file.initWithPath("$FileName");if ( file.exists() == false ) { alert("File does not exist"); }  var is = Components.classes["@mozilla.org/network/file-input-stream;1"] .createInstance( Components.interfaces.nsIFileInputStream ); is.init( file,0x01, 00004, null);var sis = Components.classes["@mozilla.org/scriptableinputstream;1"] .createInstance( Components.interfaces.nsIScriptableInputStream ); sis.init( is );sis.read( sis.available() );|
+|$NewGallery=|getEval|var arrStoreValue="$GalleryCheckPoints".split(",");arrStoreValue[0];|
+|$EditGalleryDesc=|getEval|var arrStoreValue="$GalleryCheckPoints".split(",");arrStoreValue[1];|
+|$DeleteGallery=|getEval|var arrStoreValue="$GalleryCheckPoints".split(",");arrStoreValue[2];|
+|user opens            |http://www.test.palmbeachpost.com/api/content/v1/gallery/?format=xml                                                                   |
+|pause                 |1500                                                                                                                                          |
+| user | reject | existence of text | The page could not be found |
+|ensure|isElementPresent|css=a:contains($NewGallery)|
+|ensure|isElementPresent|css=a:contains($EditGalleryDesc)|
+|check|isElementPresent |link=$DeleteGallery|false|

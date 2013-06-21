@@ -1,0 +1,3 @@
+!contents -R2 -g -p -f -h
+
+This page contain tests for regression found in http://intranet.cmgdigital.com/display/collaboration/Regression+Tests+for+0.5+and+0.9

@@ -1,0 +1,8 @@
+!|script|
+| user opens | http://${kissrocks}/ |
+| pause | 10000|
+| user clicks and waits | adx_al |
+| pause | 7000|
+|$TRAFFIC= | captureNetworkTraffic | plain |
+|containsSubstring; | $TRAFFIC | ad.afy11.net |
+

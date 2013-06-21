@@ -1,0 +1,18 @@
+!| script |
+| user opens | http://www.test.clarkhoward.com/travel/photos/oct15_08/ |
+| pause | 9000 |
+| ensure | isElementPresent | link=View mobile site |
+| user opens | http://www.test.clarkhoward.com |
+| pause | 9000 |
+| ensure | isElementPresent | link=View mobile site  |
+| user clicks and waits | link=View mobile site |
+| user | ensure | existence of text | View full site |
+| user clicks and waits | link=View full site |
+| user | ensure | existence of text | Follow Clark Howard on |
+| user opens | http://test.clarkhoward.com/ |
+| pause | 5000 |
+| user | ensure | existence of text | Clark Howard for Mobile |
+#| user opens | http://test.clarkhoward.com/ |
+#| pause | 4000 |
+#| user | reject | existence of text | Follow Clark Howard on |
+ 

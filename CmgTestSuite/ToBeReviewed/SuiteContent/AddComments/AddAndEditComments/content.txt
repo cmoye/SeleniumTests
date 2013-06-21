@@ -1,0 +1,40 @@
+!| script |
+|user opens | http://www.${env}.ajc.com/weblogs/atlanta-hawks/2013/may/17/van-gundy-budenholzer-have-been-interviewed/ |
+|pause |5000 |
+|user clicks |css=div#cmJanrainAuthLinks>p.cmUserAnonymous>a.cmOpenJanrainModal |
+|pause |15000 |
+|user waits for text   |Sign in with your existing account |
+|user types | twittertest8@rediffmail.com | into | css=input[id='capture_signIn_traditionalSignIn_emailAddress'] |
+|user types | atlanta | into | css=input#capture_signIn_traditionalSignIn_password |
+|user clicks and waits | css=input[id='capture_signIn_traditionalSignIn_signInButton']  |
+|pause |10000 |
+|user | ensure | existence of text | Van Gundy, Budenholzer have been interviewed |
+|user | ensure | existence of text | Post comment |
+|$sTime=|getEval|var d=new Date(); var hours;var minutes;var seconds; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();}  ""+hours+minutes+seconds|
+|$comment= | getEval|"Automation test comment " + "$sTime"|
+|user types | $comment | into | name=text |
+|pause | 7000 |
+|user clicks and waits | css=input.cmCommentSubmitBtn |
+|pause | 8000 |
+|user | ensure | existence of text | Posted by twittertest8 |
+|ensure | isElementPresent | link=Edit |
+|user clicks | link=Edit|
+|user clicks | css=#comment_edit_form > textarea[name="text"] |
+|$commentTestTextData= |getEval| "$comment" + " This text is edited" |
+|user types | $commentTestTextData |into |css=#comment_edit_form > textarea[name="text"] |
+|user clicks | css=#comment_edit_form > input.cmCommentSubmitBtn |
+|pause |10000 |
+|user | ensure | existence of text | Posted by twittertest8 |
+|user | ensure | existence of text | $commentTestTextData |
+|ensure | isElementPresent | link=Edit |
+|pause |5000 |
+|user clicks and waits | link=< previous |
+|pause |20000 |
+| user clicks and waits | link=Report Abuse |
+|pause |10000 |
+|user | ensure |existence of text | Please select a reason for reporting this comment.|
+|pause |5000 |
+|user clicks | name=reason |
+|pause |15000 |
+|user clicks | css=option[value="vulgar"] |
+|user clicks | css=button.cmModerationFlagRemoveBtn |

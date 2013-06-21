@@ -1,0 +1,6 @@
+!| script |
+|open|http://${wpxi}/feeds/categories/news/|
+|pause |	10000|
+| user clicks and waits | link=This is an automated test of the story input |
+| user | ensure | existence of text | This is an automated test of the story input |
+| user | reject | existence of text | The page could not be found |

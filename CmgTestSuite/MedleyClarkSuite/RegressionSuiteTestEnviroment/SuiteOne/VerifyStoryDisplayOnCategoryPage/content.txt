@@ -1,0 +1,6 @@
+!| script |
+| user opens | http://${wsbradio}/categories/ |
+| user clicks and waits | //a[contains(@href, '/categories/news/')] |
+| pause | 25000 |
+| user clicks and waits | link=This is an automated test of the story input |
+| user | ensure | existence of text | This is an automated test of the story input |

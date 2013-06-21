@@ -1,0 +1,14 @@
+!|script|
+| user opens | http://www.test.wsbradio.com/ |
+|pause|5000|
+|note|user clicks |   css=div#cmJanrainAuthLinks>p.cmUserAnonymous>a.cmOpenJanrainModal  |
+|user clicks | css=a:contains(!-'Sign In | Register') -!  | 
+|pause|5000|
+| user types | balamn11@gmail.com | into |id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | cox@atl| into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+| pause | 15000|
+| user clicks and waits | link=Member Center |
+| pause | 15000|
+| ensure|isElementPresent|link=Subscriptions|
+| pause | 15000|

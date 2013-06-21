@@ -1,0 +1,31 @@
+!|script|
+| user opens | http://www.test.kirotv.com |
+| user | ensure | existence of text | 5-Day Forecast  |
+| user opens | http://www.test.kirotv.com/s/weather |
+|pause|10000|
+| user types | 30086 | into |  //input[@value="Enter ZIP or City, State"] |
+| user clicks and waits | css=form.cmWeatherSearchForm > p > button[type="submit"] |
+| user | ensure | existence of text | Stone Mountain, GA 30086 |
+| user | ensure | existence of text | Current Conditions |
+|$UpdatedSta=|getText|//span[@class='cmWeatherUpdated']|
+|$UpdatedTime=|getEval|var Str1="$UpdatedSta".replace("p.m.", "PM");var Str2=Str1.replace("a.m.", "AM");var Str3=Str2.replace("Updated:", "");var Str4=Str3.replace("EDT", "");var Str5=Str4.replace("EST", "");Str5;|
+|$TodayTime=|getEval|var now=new Date();var Sign="AM";var hours = now.getHours();var minutes = now.getMinutes();if(hours > 11){Sign="PM"};if(hours > 11){hours=hours%12};if (minutes < 10){minutes = "0" + minutes};(hours+":"+minutes +" "+Sign);|
+|check|getEval|var Diff="False"; var d1 = new Date("$UpdatedTime"); var d1Time = d1.getTime();var d2 = new Date("$TodayTime"); var d2Time = d2.getTime();var oneMinute = 1000*60*60*60; if(((d2Time-d1Time)/oneMinute ) > 10) {Diff= "False";}else{Diff= "True";};var Value=Diff;|True|
+| user | ensure | existence of text | Humidity |
+| user | ensure | existence of text | Wind |
+| user | ensure | existence of text | Dew Point |
+| user | ensure | existence of text | Precipitation |
+| user | ensure | existence of text | Pressure |
+| user | ensure | existence of text | Visibility |
+| user | ensure | existence of text | Sunrise |
+| user | ensure | existence of text | Sunset |
+| user | ensure | existence of text | Today's Forecast |
+| user | ensure | existence of text | Hour by Hour |
+| user | ensure | existence of text | View 48 Hour by Hour |
+| user clicks and waits | link=View 48 Hour by Hour |
+| user | ensure | existence of text | Hour by Hour |
+|$Today=|getEval|var now=new Date();var weekday=new Array(7);weekday[0]="Sunday";weekday[1]="Monday";weekday[2]="Tuesday";weekday[3]="Wednesday";weekday[4]="Thursday";weekday[5]="Friday";weekday[6]="Saturday";var month=new Array(12); month[0]="Jan."; month[1]="Feb.";month[2]="March";month[3]="April"; month[4]="May";month[5]="June"; month[6]="July";month[7]="Aug.";month[8]="Sept.";month[9]="Oct."; month[10]="Nov."; month[11]="Dec.";(weekday[now.getDay()]+", "+month[now.getMonth()]+" "+ now.getDate());|
+|$Tomorrow=|getEval|var now=new Date();now.setDate (now.getDate() + 1);var weekday=new Array(7);weekday[0]="Sunday";weekday[1]="Monday";weekday[2]="Tuesday";weekday[3]="Wednesday";weekday[4]="Thursday";weekday[5]="Friday";weekday[6]="Saturday";var month=new Array(12); month[0]="Jan."; month[1]="Feb.";month[2]="March";month[3]="April"; month[4]="May";month[5]="June"; month[6]="July";month[7]="Aug.";month[8]="Sept.";month[9]="Oct."; month[10]="Nov."; month[11]="Dec.";(weekday[now.getDay()]+", "+month[now.getMonth()]+" "+ now.getDate());|
+| user | ensure | existence of text | $Today |
+| user | ensure | existence of text | $Tomorrow|
+| user | reject | existence of text | NA|

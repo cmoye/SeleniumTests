@@ -1,0 +1,52 @@
+#!|scenario| add the story into each | vm |
+| open | @vm |
+| user types | imelnikov | into | ${medleyLoginName} |
+| user types | Nika1945! | into | ${medleyLoginPassword} |
+| user clicks and waits | ${medleyLoginButton} |
+| user clicks and waits | ${medleyAddNewsStory} |
+| pause | 30000 |
+| user types | This is an automated test of the story input | into | ${storyHeadline} |
+| user types |  This is a Print headline of the automated test of the story input | into | ${storyPrintHeadline} |
+| user types |  Let's see if this works | into | ${storySubhead} |
+| pause | 2000 |
+| user selects | Kirk Mellish | from | ${storyAvailableBylines} |
+| user clicks | ${storyAddBylinesButton} |
+| pause | 5000 |
+| user types | IAM Tester | into | ${storyOneOffByline} |
+| user types | Telegraph Agency of Zanzibar | into | ${storyBylineSource} |
+| user selects | Atlanta, GA | from | ${storyDateline} |
+| user types |  This is a story of my life. It begins like this... Once upon a time | into | ${storyBody} |
+| user types | Editor's note: | into | ${storyPrestoryBlurb} |
+| user types | Lorne Cameron & Lynn Orr contributed to this story. | into | ${storyPoststoryBlurb} |
+| user selects | Enabled | from | ${storyCommentsStatus} |
+| user selects | vm13.www.clarkhoward.com | from | ${selectAvailableSites} |
+| user clicks | link=Business & Entrepreneurs |
+| pause | 5000 |
+| user selects | /clark-howard/Business & Entrepreneurs/Inventions & Patents | from | ${selectAvailableCategories} |
+| user clicks | ${addCategoriesButton} |
+| pause | 10000 |
+| user selects | Live | from | ${statusSelect} |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user types | This is an automated test topic | into | ${topicsTextbox} |
+| user selects |  Photo | from | ${storyLeadRelatedObjectContentType} |
+| user clicks | ${storyObjectIdLookupButton} |
+| user waits for Pop Up | id_related_objects__dash__relatedobject__dash__from_type__dash__from_id__dash__0__dash__to_id | for | 30000 |
+| selectWindow | !-Select photo | Medley-! |
+| user clicks | ${selectPhotoFirstTitleOnTheList} |
+| selectWindow | null |
+| pause | 20000 |
+| user clicks | //input[@name='_save'] |
+| pause | 20000 |
+
+!| add the story into each | vm |
+| vm |
+| ${VM5}admin/ |
+| ${VM11}admin/ |
+| ${VM13}admin/ |
+
+#!| add URL for each | vmURL |
+#| vmURL |
+#| ${VM12} |
+#| ${VM13} |
+#| $vmURL=| get text | //select[@id='id_originating_site'] |

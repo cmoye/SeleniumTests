@@ -1,0 +1,12 @@
+!|script|
+| user opens | http://www.fe18.palmbeachpost.com/s/blogs/ |
+| user clicks and waits| css=ul.cmTeaseRssList>li>a |
+|user types| balamn| into| css=input[id=author]|
+|user types|balamn11@gmail.com|into|css=input[id=email]|
+| user types | www.coxinc.com| into | css=input[id=url]|
+|$Date=|getEval|var d=new Date(); ""+d.getFullYear()+(d.getMonth()+1)+d.getSeconds()|
+|$Comment=|getEval|"Test Automation"+ "$Date"|
+| user types | $Comment | into | css=textarea[id=comment]|
+| user clicks | css=input[id=submit] |
+|pause|15000|
+| user | ensure | existence of text | $Comment|

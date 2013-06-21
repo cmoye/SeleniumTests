@@ -1,0 +1,69 @@
+!|script|
+| user opens | http://${foxreno}/admin/ |
+| user types | cmgtester7 | into | css=input#id_username |
+| user types | cmgtest3r | into | css=input#id_password |
+| user clicks and waits |css=input[type='submit'] |
+| pause|20000|
+| user clicks and waits | css=a[href='/admin/list_o_rama/manuallist/add/'] |
+| pause|40000|
+| user types | automated manual list | into |css=input#id_title |
+| user selects | label=${foxreno} | from | css=select#id_originating_site |
+| user types | 588 | into | css=input#id_primary_category |
+| user selects | label=Story | from | css=select#id_listitem_set-0-content_type |
+| user clicks | css=img[alt=Lookup] |
+| user waits for Pop up | id_listitem_set__dash__0__dash__object_id | for | 3000 |
+| selectWindow; | name=id_listitem_set__dash__0__dash__object_id |
+| pause | 20000 |
+| user clicks  | css=table#result_list>tbody>tr:first-child>th:first-child>a |
+| pause|20000|
+| selectWindow; | null |
+| user selects | label=AP Story | from | css=select#id_listitem_set-1-content_type |
+| pause | 20000 |
+| user clicks | css=#lookup_id_listitem_set-1-object_id > img[alt=Lookup] |
+| pause | 20000 |
+| user waits for Pop Up | id_listitem_set__dash__1__dash__object_id | for | 3000 |
+| selectWindow; | name=id_listitem_set__dash__1__dash__object_id |
+| pause | 20000 |
+| user clicks  | css=table#result_list>tbody>tr:first-child>th:first-child>a |
+| pause|20000|
+| selectWindow; | null |
+| user selects | label=Poll | from | css=select#id_listitem_set-2-content_type |
+| user clicks | css=#lookup_id_listitem_set-2-object_id > img[alt=Lookup] |
+| user waits for Pop Up | id_listitem_set__dash__2__dash__object_id | for | 3000 |
+| selectWindow;| name=id_listitem_set__dash__2__dash__object_id |
+| pause | 20000 |
+| user clicks |css=table#result_list>tbody>tr:first-child>th:first-child>a |
+| pause|20000|
+| selectWindow; | null |
+| user selects | label=Video | from | css=select#id_listitem_set-3-content_type |
+| user clicks | css=#lookup_id_listitem_set-3-object_id > img[alt=Lookup] |
+| user waits for Pop up | id_listitem_set__dash__3__dash__object_id | for | 3000 |
+| selectWindow; | name=id_listitem_set__dash__3__dash__object_id |
+| pause | 30000 |
+| user clicks | css=table#result_list>tbody>tr:first-child>th:first-child>a   |
+| pause|20000|
+| selectWindow; | null |
+| user selects | label=Gallery | from | css=select#id_listitem_set-4-content_type |
+| user clicks | css=#lookup_id_listitem_set-4-object_id > img[alt=Lookup] |
+| user waits for Pop up | id_listitem_set__dash__4__dash__object_id | for | 3000 |
+| selectWindow; | name=id_listitem_set__dash__4__dash__object_id |
+| pause | 30000 |
+| user clicks  | css=table#result_list>tbody>tr:first-child>th:first-child>a |
+| pause|20000|
+| selectWindow; | null |
+| user selects | label=Photo | from | css=select#id_listitem_set-5-content_type |
+| user clicks | css=#lookup_id_listitem_set-5-object_id > img[alt=Lookup] |
+| user waits for Pop up | id_listitem_set__dash__5__dash__object_id | for | 3000 |
+| selectWindow; | name=id_listitem_set__dash__5__dash__object_id |
+| pause | 20000 |
+| user clicks | css=table#result_list>tbody>tr:first-child>td>a>b>img  |
+| pause|20000|
+| selectWindow; | null |
+| user clicks and waits | css=input[name='_continue']|
+| pause| 45000|
+| user clicks and waits | css=div#content-main >ul.object-tools > li:last-child >a |
+| selectWindow; | !-automated manual list | -!${wsbradio} |
+| pause | 5000 |
+| user | ensure | existence of text | automated manual list  |
+| user | reject | existence of text | The page could not be found |
+#| user clicks | css=a:contains("View on site") |

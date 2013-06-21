@@ -1,0 +1,33 @@
+ !|script                                                                             |
+|user opens           |http://test.www.clarkhoward.com/admin                         |
+|pause                |10000                                                         |
+|user types           |bala.guntipal   |into             |//input[@id='id_username'] |
+|user types           |qatest1         |into             |//input[@id='id_password'] |
+|user clicks and waits|//input[@value='Log in']                                      |
+|pause                |5000                                                          |
+|user clicks and waits|link=AP Stories                                               |
+|pause                |5000                                                          |
+|user waits for text  |Select AP Story to change                                     |
+|user clicks and waits|//table[@id='result_list']/tbody/tr[1]/th/a                   |
+|user waits for text  |Change AP Story                                               |
+|user clicks          |link=View on test.www.cmgdefault.com                          |
+|pause                |10000                                                         |
+|selectWindow;        |!-Page not found | test.www.cmgdefault.com-!                    |
+|user                 |ensure          |existence of text|The page could not be found|
+|close;                                                                              |
+|pause                |10000                                                         |
+|selectWindow;        |null                                                          |
+|user clicks          |link=View on test.www.wsbradio.com                            |
+|pause                |10000                                                         |
+|selectWindow;        |!-Page not found | test.www.wsbradio.com-!                      |
+|user                 |ensure          |existence of text|The page could not be found|
+|close;                                                                              |
+|pause                |10000                                                         |
+|selectWindow;        |null                                                          |
+|user clicks          |link=View on test.www.wsbtv.com                               |
+|pause                |10000                                                         |
+|selectWindow;        |!-Page not found | test.www.wsbtv.com-!                         |
+|user                 |ensure          |existence of text|The page could not be found|
+|close;                                                                              |
+|pause                |10000                                                         |
+|selectWindow;        |null                                                          |

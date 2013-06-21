@@ -1,0 +1,42 @@
+!|script|
+| $FileName=|getEval|"C:\\\\AddNewStoryFile1.txt"|
+| $sTimestamp1=|getEval|var file = Components.classes["@mozilla.org/file/local;1"] .createInstance(Components.interfaces.nsILocalFile); file.initWithPath("$FileName");if ( file.exists() == false ) { alert("File does not exist"); }  var is = Components.classes["@mozilla.org/network/file-input-stream;1"] .createInstance( Components.interfaces.nsIFileInputStream ); is.init( file,0x01, 00004, null);var sis = Components.classes["@mozilla.org/scriptableinputstream;1"] .createInstance( Components.interfaces.nsIScriptableInputStream ); sis.init( is );sis.read( sis.available() );|
+| user opens | http://www.${env}.daytondailynews.com/admin/ |
+| pause | 5000 |
+| user types | cmgtester1@coxinc.com | into |id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | cmgtest3r | into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+| pause | 15000|
+| ensure |isElementPresent | css=div#user-tools |
+| user clicks and waits | link=Stories |
+| pause|20000|
+| user clicks and waits | link=All |
+| user types | This is my Automation Story $sTimestamp1 | into | id=searchbar |
+| user clicks and waits | css=form#changelist-search>div>input[type='submit'] |
+| pause|30000|
+| user clicks and waits | link=This is my Automation Story $sTimestamp1 |
+| pause|30000|
+| user clicks | css=th > input[type="button"] |
+| pause|20000|
+| user waits for Pop Up | !-Add tease | Medley-! | for | 10000 |
+| selectWindow; | !-Add tease | Medley-! |
+| user types | Custom tease headline $sTimestamp1 | into | id=id_headline |
+| user types | Custom tease summary $sTimestamp1 | into | id=tinymce |
+| user selects | label=Photo | from | id=id_photo |
+| user clicks | css=img[alt="Lookup"] |
+|user waits for Pop Up | !-Select photo | Medley-! | for | 15000 |
+| selectWindow; | !-Select photo | Medley-! |
+| pause | 25000|
+| user clicks | css=table#result_list>tbody>tr.row1>th>a |
+| pause | 20000 |
+| selectWindow; |!-Add tease | Medley-!|
+| user selects | label=www.${env}.daytondailynews.com | from | id=id_originating_site |
+| user types | /online/home | into | id=id_categories_input |
+| pause |5000 |
+| addSelection; | //select[@id='id_categories_from'] | label=/Online/Home |
+| user clicks and waits | css=div.selector.stacked > ul.selector-chooser > li > a.selector-add  |
+| pause | 10000 |
+| user clicks and waits |id=id_override_related_objects |
+| user clicks | name=_save |
+| pause | 30000 |
+|close; |

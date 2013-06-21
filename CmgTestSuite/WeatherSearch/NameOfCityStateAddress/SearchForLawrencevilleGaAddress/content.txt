@@ -1,0 +1,22 @@
+!| script |
+| user opens | ${weathersearchURL} |
+| user types | 2960 Treehouse Lane, Lawrenceville GA | into | //input[@name='q' and @value='Enter ZIP or City, State'] |
+| user clicks and waits | //div[@id='cmWeather']/form/p/button|
+| pause | 15000 |
+| ensure | isTextPresent |Lawrenceville, GA 30044|
+| user clicks | 1_cmToolTipLink |
+| user clicks | 2_cmToolTipLink|
+| user clicks | 3_cmToolTipLink|
+| ensure | isTextPresent | Wind: |
+| ensure | isTextPresent | Pressure: |
+| ensure | isTextPresent | Rain: |
+| ensure | isTextPresent | Chance of Precip |
+| reject | isTextPresent | Atlanta, GA |
+| reject | isTextPresent | N/A |
+| reject | isTextPresent | Humidity: % |
+| reject | isTextPresent | Pressure: in. |
+| reject | isTextPresent | Visibility: mi. |
+| reject | isTextPresent | Dew Point: ° |
+| reject | isTextPresent | Sunrise: a.m. |
+| reject | isTextPresent | Feels Like: ° |
+| reject | isTextPresent | Sunset: p.m. |

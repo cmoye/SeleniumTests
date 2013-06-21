@@ -1,0 +1,50 @@
+!| script |
+| user opens | http://test.www.wsbradio.com/s/news/local/ |
+| $TRAFFIC= | captureNetworkTraffic | plain |
+| containsSubstring; | $TRAFFIC | Omniture DC/2.0.0 |
+| containsSubstring; | $TRAFFIC | pageName=%2Fre%2F314%2F113%2Fs%2Fnews%2Flocal%2F|
+| containsSubstring; | $TRAFFIC | events=event1 |
+| containsSubstring; | $TRAFFIC | h1=ga%3A%20atlanta%7Cradio%7Cwsb-am |
+| containsSubstring; | $TRAFFIC | h2=radio%7Cga%3A%20atlanta%7Cwsb-am |
+| containsSubstring; | $TRAFFIC | c1=1057 |
+| containsSubstring; | $TRAFFIC | c7=24 |
+| containsSubstring; | $TRAFFIC | v7=24 |
+| containsSubstring; | $TRAFFIC | v12=1057 |
+| containsSubstring; | $TRAFFIC | c16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c13=wsb%20radio%20local%20news |
+| containsSubstring; | $TRAFFIC | v13=wsb%20radio%20local%20news |
+| containsSubstring; | $TRAFFIC | v16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c20=1 |
+| containsSubstring; | $TRAFFIC | v20=1 |
+| containsSubstring; | $TRAFFIC | c22=section%20front |
+| containsSubstring; | $TRAFFIC | v22=section%20front |
+| containsSubstring; | $TRAFFIC | c42=wsb-am |
+| containsSubstring; | $TRAFFIC | v42=wsb-am |
+| containsSubstring; | $TRAFFIC | c43=newstalk |
+| containsSubstring; | $TRAFFIC | v43=newstalk | |
+
+
+#| containsSubstring; | $TRAFFIC | c2=7fa75d61-2328-4eef-9229-94be67 |
+#| containsSubstring; | $TRAFFIC | v2=7fa75d61-2328-4eef-9229-94be67 |
+#| containsSubstring; | $TRAFFIC | c3=7175 |
+#| containsSubstring; | $TRAFFIC | v3=7175 |
+#| containsSubstring; | $TRAFFIC | c4=962zc |
+#| containsSubstring; | $TRAFFIC | v4=962zc |
+#| containsSubstring; | $TRAFFIC | c5=30075 |
+#| containsSubstring; | $TRAFFIC | v5=30075 |
+#| containsSubstring; | $TRAFFIC | c6=62896 |
+#| containsSubstring; | $TRAFFIC | v6=62896 |
+#| containsSubstring; | $TRAFFIC | c14=home |
+#| containsSubstring; | $TRAFFIC | v14=home |
+#| containsSubstring; | $TRAFFIC | ch=online |
+#| containsSubstring; | $TRAFFIC | h3=online%7Chome |
+
+#| open | ${oldTestURL} |
+#| captureTraffic |
+#| clickAndWait | //a[@class='wt_rt_001P'] |
+#| captureTraffic |
+#| user | reject | web trends | =undefined |
+#| user | ensure | web trends | WT.cg_n=apartments_apartments |
+#| user | ensure | web trends | clicktype=mobile_footer |
+
+#| $TRAFFIC= | captureNetworkTraffic | plain |

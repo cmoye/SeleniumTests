@@ -1,0 +1,5 @@
+!| script |
+| open | ${baseURL}categories/clark-howard/business-entrepreneurs/ |
+| ensure | isTextPresent | This is a story of my life. It begins like this... Once upon a time |
+| ensure | isElementPresent | //a[@href='http://test.www.clarkhoward.com/news/business-entrepreneurs/automated-test-story-input/nFpH/'] |
+| clickAndWait | link=This is an automated test of the story input |

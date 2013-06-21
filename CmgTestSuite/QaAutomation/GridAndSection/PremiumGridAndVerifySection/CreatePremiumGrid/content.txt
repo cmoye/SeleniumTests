@@ -1,0 +1,155 @@
+!|script|
+| user opens | http://www.${env}.mydaytondailynews.com/admin/ |
+| pause | 5000 |
+| user types |	mjindal | into | //input[@name='username'] |
+| user types | password1 |	into 	|//input[@id='id_password'] |
+| user clicks and waits | //input[@type='submit'] |
+| pause | 1000|
+| user clicks and waits | css=a[href='/admin/grids/premiumgrid/add/'] |
+| user selects | www.${env}.myajc.com | from | ${selectOriginatingSite} |
+| $Time=|getEval|var d=new Date(); var hours;var minutes;var seconds;var ampm; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();} if(d.getHours()>12){ampm='pm';} else{ampm='am';} ""+hours+minutes+seconds+ ampm|
+| user types | Automated Premium Grid $Time | into | ${nameField} |
+| user clicks and waits | css=div.grid-body|
+| user types | Lead Story $Time | into | id=id_areas-0-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-0-content_type |
+| user selects | label=Story | from | id=id_areas-0-content_type |
+| user clicks | css=#lookup_id_areas-0-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select story | Medley-!|
+| user types | DNA confirms remains belong to missing college student Jmaal Keyes | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks and waits | link=Any Date |
+| pause | 20000 |
+| user clicks | ${firstObjectOnListLink} | 
+| selectWindow | null |
+| user clicks | css=#areas-0 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | Premium Story $Time | into | id=id_areas-1-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-1-content_type |
+| user selects | label=Story | from | id=id_areas-1-content_type |
+| user clicks | css=#lookup_id_areas-1-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select story | Medley-!|
+| user types | This is an automated test of the story input | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} | 
+| selectWindow | null |
+| user clicks | css=#areas-1 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | THE STORY IN PHOTOS - Gallery $Time | into | id=id_areas-2-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-2-content_type |
+| user selects | label=Gallery | from | id=id_areas-2-content_type |
+| user clicks | css=#lookup_id_areas-2-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select gallery | Medley-!|
+| user types | Best sports photos from May 16 | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} | 
+| selectWindow | null |
+| user clicks | css=#areas-2 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | AutoList $Time | into | id=id_areas-3-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-3-content_type |
+| user selects | label=Automatic List | from | id=id_areas-3-content_type |
+| user clicks | css=#lookup_id_areas-3-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select automatic list | Medley-!|
+| user types | Breaking News | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks and waits | link=www.${env}.myajc.com |
+| pause|5000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | css=#areas-3 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | Inside MYajc.com $Time | into | id=id_areas-4-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-4-content_type |
+| user selects | label=Manual List | from | id=id_areas-4-content_type |
+| user clicks | css=#lookup_id_areas-4-object_id > img[alt="Lookup"] |
+| pause | 46000|
+| selectWindow| !-Select manual list | Medley-!|
+| user types | Inside MyAJC.com | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | css=#areas-4 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | AP Story $Time | into | id=id_areas-5-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-5-content_type |
+| user selects | label=AP Story | from | id=id_areas-5-content_type |
+| user clicks | css=#lookup_id_areas-5-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select AP Story | Medley-!|
+| user clicks and waits | link=3 |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | css=#areas-5 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | Interviews - Blog Entry $Time | into | id=id_areas-6-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-6-content_type |
+| user selects | label=Blog Entry | from | id=id_areas-6-content_type |
+| user clicks | css=#lookup_id_areas-6-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select blog entry | Medley-!|
+| user types | Van Gundy, Budenholzer have been interviewed | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | css=#areas-6 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | Video $Time | into | id=id_areas-7-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-7-content_type |
+| user selects | label=Video | from | id=id_areas-7-content_type |
+| user clicks | css=#lookup_id_areas-7-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select video | Medley-!|
+| user clicks and waits | link=www.${env}.myajc.com |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | css=#areas-7 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | The AJC Sports List $Time | into | id=id_areas-11-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-11-content_type |
+| user selects | label=Manual List | from | id=id_areas-11-content_type |
+| user clicks | css=#lookup_id_areas-11-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select manual list | Medley-!|
+| user types | MyAJC Home Page Sports List2 | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | css=#areas-11 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | College Recruiting Autolist $Time | into | id=id_areas-12-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-12-content_type |
+| user selects | label=Automatic List | from | id=id_areas-12-content_type |
+| user clicks | css=#lookup_id_areas-12-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select automatic list | Medley-!|
+| user types | college recruiting | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks and waits | link=www.${env}.myajc.com |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | css=#areas-12 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user types | Nation & World News $Time | into | id=id_areas-13-heading |
+| user selects | label=--- Select one --- | from | id=id_areas-13-content_type |
+| user selects | label=Automatic List | from | id=id_areas-13-content_type |
+| user clicks | css=#lookup_id_areas-13-object_id > img[alt="Lookup"] |
+| pause | 25000|
+| selectWindow| !-Select automatic list | Medley-!|
+| user types | MyAJC Home Page Nation List | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} |
+| selectWindow | null |
+| user clicks | css=#areas-13 > div.grid-ga-bdr > div.saveCloseControls > input.saveLightbox |
+| user clicks and waits | name=_continue |
+| pause | 30000 |
+| user | ensure | existence of text | Automated Premium Grid $Time |
+| user | reject | existence of text | The page could not be found |
+|$FileName=|getEval|"C:\\\\CreatePremiumGrid .txt"|
+|getEval|var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile );file.initWithPath("$FileName"); if (!file.exists()) file.create(0x00, 0644); var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream); outputStream.init(file,0x02,00004,null);outputStream.write("$Time","$Time".length); outputStream.flush(); outputStream.close();||
+

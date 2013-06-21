@@ -1,0 +1,35 @@
+!| script |
+| user opens | http://www.test.boortz.com/admin |
+| pause | 10000 |
+| user types | cmgtester | into | css=input#id_username |
+| user types | cmgtest3r | into | css=input#id_password |
+| user clicks and waits | css=input[value='Log in'] |
+| pause |5000 |
+| user clicks and waits | link=Moderations |    
+| pause |5000 |
+| user clicks and waits | link=Live |    
+| user clicks |    css=tr.row1 > td.action-checkbox > input[name=_selected_action] |    
+| user selects | value=reject |    from | action |    
+| user clicks |    //button[@name='index'] |    
+| pause |10000 |
+|note| $JScriptText= | var tags=""; var elementTag= this.browserbot.getCurrentWindow().document.getElementsByTagName('li');for(i=0;i<elementTag.length;i++){if(elementTag[i].className=='info'){tag=elementTag[i].textContent;}} |
+|$rejectedtext=|getText|css=li[class='info']|
+| ensure | isTextPresent | $rejectedtext |
+|user clicks and waits | link=Removed|
+| note |    user clicks and waits     //table[@id='result_list']/tbody/tr[1]/td[2]/a |
+| user clicks and waits | //html/body/div/div[3]/div/div/form/div[2]/table/tbody/tr/td[2]/a |    
+| selectWindow; | !-Change comment | Medley-! |
+| pause |10000 |
+| ensure | isTextPresent | Change comment |
+|$Src=|getEval|var src;var counter=0;var a=this.browserbot.getCurrentWindow().document.getElementsByTagName('a'); for(i=0;i<a.length;i++){if(a[i].innerHTML.indexOf("View on")>=0){counter++; src=a[i].href; if(counter==2){break;}}}||
+|$SiteSrc=|getEval| var a= "$Src"; a=a.substring(a.indexOf('/')+2);|
+|$SiteSrcMain=|getEval| var a= "$SiteSrc"; a=a.substring(0,a.indexOf('/'));|
+|$EnsureText=| getText| css=div[class='form-row user']>div>strong|
+| user opens| $Src|
+|note| user clicks |    link=View on site |    
+|ensure|isTextPresent| $EnsureText|
+|ensure|isTextPresent| This comment has been removed for violation |
+|note| selectWindow; | !-Palm Beach County commissioners open trash bidding to allow... | www.test.palmbeachpost.com-! |
+|note |pause | 60000 |
+|note| ensure | isTextPresent | Palm Beach County commissioners open trash bidding to allow Southern Waste Systems |
+|note| ensure | isTextPresent | This comment has been removed for violation of the visitor agreement. |

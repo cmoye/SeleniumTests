@@ -1,0 +1,11 @@
+!|script|
+| user opens | http://${k99} |
+|pause | 4000 |
+| user | ensure | existence of text | 5-Day Forecast |
+| user | ensure | existence of text | WHIO-TV Radar |
+| user clicks and waits | link=5-Day Forecast |
+| pause | 2000 |
+| user | ensure | existence of text | Today's Forecast |
+| user | reject | existence of text | N/A |
+| $Tomorrow=|getEval|var now=new Date();now.setDate (now.getDate() + 1); var month=new Array(12); month[0]="Jan."; month[1]="Feb.";month[2]="March";month[3]="April"; month[4]="May";month[5]="June"; month[6]="July";month[7]="Aug.";month[8]="Sept.";month[9]="Oct."; month[10]="Nov."; month[11]="Dec.";(month[now.getMonth()]+" "+ now.getDate());|
+| user | ensure | existence of text | $Tomorrow|

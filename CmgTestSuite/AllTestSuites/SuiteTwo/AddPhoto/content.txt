@@ -1,0 +1,32 @@
+!|script|
+| user opens | http://www.test.wsbradio.com/admin/ |
+| user types | cmgtester | into | id_username |
+| user types | cmgtest3r | into | id_password |
+| user clicks and waits | css=input[value='Log in'] |
+| user clicks and waits | css=a[href='/admin/photos/medleyphoto/'] |
+|pause| 3000|
+|note| user clicks and waits | css=a[href='/admin/photos/medleyphoto/add/'] |
+|note| user clicks and waits | xpath=(//a[contains(text(),'Photos')])[5] |
+| user clicks and waits | link=Add photo |
+|pause| 13000|
+| user types | C:\Users\Administrator\Pictures\tulips.jpeg | into |id=id_photo|
+|note||getEval|this.browserbot.getCurrentWindow().document.getElementById('id_photo_span_queue').innerHTML='<li id="id_photo_span_SWFUpload_0_1"><span class="swfuQueueText">Winter.jpg</span><a class="swfuQueueRemove" href="#">X</a><div class="swfuQueueProgress">.</div></li>';|
+| user clicks | id=id_reproduction_allowed |
+|$sTime=|getEval|var d=new Date(); var hours;var minutes;var seconds; if(d.getHours()<=9){hours='0'+d.getHours();} else{hours=d.getHours();} if(d.getMinutes()<=9){minutes='0'+d.getMinutes();} else{minutes=d.getMinutes();}  if(d.getSeconds()<=9){seconds='0'+d.getSeconds();} else{seconds=d.getSeconds();}  ""+hours+minutes+seconds|
+|$Title=|getEval| "Automation pic "+ "$sTime"|
+| user types | $Title | into | id=id_title |
+| user types | $Title| into | id=id_caption |
+| user clicks | link=Today |
+| user clicks | link=Now |
+| user selects | label=www.test.wsbradio.com | from | id=id_originating_site |
+| user types | 588 | into | id=id_primary_category |
+|note|588|
+|pause| 30000|
+| user clicks and waits | name=_continue |
+| user clicks | ${viewOnSiteBttn} |
+|pause|30000|
+|note| user clicks | name=_selected_action |
+|note| user clicks and waits | link=$Title|
+| ensure | isElementPresent | css=div.photoSelDiv>a>img |
+| user clicks and waits | link=View on site |
+| user | ensure | existence of text | $Title |

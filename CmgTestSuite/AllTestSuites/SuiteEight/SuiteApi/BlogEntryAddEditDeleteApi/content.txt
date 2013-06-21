@@ -1,0 +1,97 @@
+!| script                                                                                                                                                                |
+|user opens            |http://${wsbradio}/admin/                                                                                                           |
+|pause                 |10000                                                                                                                                            |
+|user types            |cmgtester                              |into             |//input[@id='id_username']                                                       |
+|user types            |cmgtest3r                                     |into             |//input[@id='id_password']                                                       |
+|user clicks and waits |//input[@value='Log in']                                                                                                                         |
+|note|pause                 |15000                                                                                                                                             |
+|note|selectWindow;|!-Site administration | Medley-!|
+|user clicks and waits|css=a[href='/admin/weblogs/medleyblog/']|
+|note|pause|10000|
+|note|selectWindow;|!-Select blog to change | Medley-!|
+|user clicks and waits |css=a:contains('${wsbradio}')|
+|note|pause|10000|
+|$blog=|getText|//table/tbody/tr/th/a|
+|user opens |http://${wsbradio}/admin/|
+|pause|10000|
+|selectWindow;|!-Site administration | Medley-!|
+|user clicks and waits |css=a[href='/admin/weblogs/medleyentry/add/']                                                                                                           |
+|pause                 |5000                                                                                                                                             |
+|user waits for text   |Add blog entry                                                                                                                                         |
+|note|pause                 |10000                                                                                                                                            |
+|$blogEntry= |getEval           | var d=new Date();"Test BlogEntry Automation" + d.getHours() + d.getMinutes() + d.getSeconds(); |
+|user types            |$blogEntry                           |into             |css=input#id_title                                                          |
+|user selects and waits|Enabled|from             |css=select#id_comment_status                                                 |
+|user types            |This is an Automation blog entry                    |into             |css=body#tinymce                                                        |
+|user selects and waits |$blog|from|css=select#id_blog|
+|addSelection;|css=select#id_categories_from|label=/AP|
+|user clicks |css=a[href='javascript: (function(){ SelectBox.move("id_categories_from","id_categories_to");})()']|
+|user clicks and waits          |css=input[name='_continue']                                                                                                                       |
+|pause                 |15000                                                                                                                                            |
+|note|;|!-Change blog entry | Medley-!|
+|user                  |ensure                                       |existence of text| The blog entry "$blogEntry" was added successfully. You may edit it again below.|
+|user clicks and waits|css=div[class='breadcrumbs']>a:contains('Blog entries')|
+|note|pause|30000|
+|note|selectWindow;|!-Select blog entry to change | Medley-!|
+|user clicks and waits|css=a:contains('Add blog entry')|
+|note|pause|30000|
+|$EditBlogEntry= |getEval           | var d=new Date();"Test BlogEntry Automation" + d.getHours() + d.getMinutes() + d.getSeconds(); |
+|user types            |$EditBlogEntry|into             |css=input#id_title                                                          |
+|user selects and waits|Enabled|from             |css=select#id_comment_status                                                 |
+|user types            |This is an Automation blog entry                    |into             |css=body#tinymce                                                        |
+|user selects and waits |$blog|from|css=select#id_blog|
+|addSelection;|css=select#id_categories_from|label=/AP|
+|user clicks |css=a[href='javascript: (function(){ SelectBox.move("id_categories_from","id_categories_to");})()']|
+|user clicks and waits          |css=input[name='_continue']                                                                                                                       |
+|note|pause                 |15000                                                                                                                                            |
+|note|selectWindow;|!-Change blog entry | Medley-!|
+|user                  |ensure                                       |existence of text| The blog entry "$EditBlogEntry" was added successfully. You may edit it again below.|
+|user clicks and waits|css=div[class='breadcrumbs']>a:contains('Blog entries')|
+|note|pause|30000|
+|note|selectWindow;|!-Select blog entry to change | Medley-!|
+|user clicks and waits|css=a:contains('Add blog entry')|
+|note|pause|30000|
+|$DeleteBlogEntry= |getEval           | var d=new Date();"Test BlogEntry Automation" + d.getHours() + d.getMinutes() + d.getSeconds(); |
+|user types            |$DeleteBlogEntry|into             |css=input#id_title                                                          |
+|user selects and waits|Enabled|from             |css=select#id_comment_status                                                 |
+|user types            |This is an Automation blog entry                    |into             |css=body#tinymce                                                        |
+|user selects and waits |$blog|from|css=select#id_blog|
+|addSelection;|css=select#id_categories_from|label=/AP|
+|user clicks |css=a[href='javascript: (function(){ SelectBox.move("id_categories_from","id_categories_to");})()']|
+|user clicks and waits          |css=input[name='_continue']                                                                                                                       |
+|note|pause                 |15000                                                                                                                                            |
+|note|selectWindow;|!-Change blog entry | Medley-!|
+|user                  |ensure                                       |existence of text| The blog entry "$DeleteBlogEntry" was added successfully. You may edit it again below.|
+|user clicks and waits|css=div[class='breadcrumbs']>a:contains('Blog entries')|
+|note|pause|30000|
+|note|selectWindow;|!-Select blog entry to change | Medley-!|
+|$EditedBlogEntryName=|  getEval           | var d=new Date();"Test Edited_BlogEntry Automation" + d.getHours() + d.getMinutes() + d.getSeconds();  |
+|user clicks and waits          |link=$EditBlogEntry|
+|note|pause                 |10000                                                                                                                                            |
+|user waits for text   |Change blog entry                                                                                                                                        |
+|note|pause                 |10000                                                                                                                                            |
+|user types            |$EditedBlogEntryName|into             |css=input#id_title                                                          |
+|user selects and waits|Enabled|from             |css=select#id_comment_status                                                 |
+|user types            |This is an Automation blog entryEdited                    |into             |css=body#tinymce                                                        |
+|user selects and waits |$blog|from|css=select#id_blog|
+|addSelection;|css=select#id_categories_from|label=/AP|
+|user clicks |css=a[href='javascript: (function(){ SelectBox.move("id_categories_from","id_categories_to");})()']|
+|user clicks and waits          |css=input[name='_continue']                                                                                                                       |
+|note|pause     |15000                                                                                                                                            |
+|user                  |ensure                                       |existence of text| The blog entry "$EditedBlogEntryName" was changed successfully. You may edit it again below.|
+|user opens            |http://${wsbradio}/admin/weblogs/medleyentry/                                                                                                            |
+|pause                 |15000                                                                                                                                            |
+|user clicks and waits|link=$DeleteBlogEntry|
+|note|pause|10000|
+|user waits for text   |Change blog entry                                                                                                                                        |
+|note|pause|10000|
+|addSelection;|css=select#id_display|Removed by staff|
+|note|pause|40000|
+|user clicks and waits          |//input[@name='_continue']                                                                                                                       |
+|pause                 |3000                                                                                                                                            |
+|user waits for text   |Change blog entry                                                                                                                                        |
+|user                  |ensure                                       |existence of text| was changed successfully. You may edit it again below.|
+| user | reject | existence of text | The page could not be found |
+|$FileName=|getEval|"C:\\\\BlogEntryFile.txt"|
+|$GalleryCheckPoints=|getEval|"$blogEntry"+","+"$EditedBlogEntryName" +","+"$DeleteBlogEntry"|
+|getEval|var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile );file.initWithPath("$FileName"); if (!file.exists()) file.create(0x00, 0644); var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream); outputStream.init(file,0x02,00004,null);outputStream.write("$GalleryCheckPoints","$GalleryCheckPoints".length); outputStream.flush(); outputStream.close();||

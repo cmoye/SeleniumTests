@@ -1,0 +1,35 @@
+!|script|
+|user opens |http://${wsoctv}/admin/|
+|pause |	10000|
+|user types 	|cmgtester6 |	into |	css=input#id_username|
+|user types 	|cmgtest3r 	|into 	|css=input#id_password|
+|user clicks and waits |	css=input[type='submit']|
+|user clicks and waits | css=a[href='/admin/polls/medleypoll/add/'] |
+|$EditText=       |getUniqueString|
+|$typeText= |getEval| "automation poll"+ $EditText|
+|user types 	|$typeText|	into 	|css=input#id_question |
+|note|user types 	|automation poll |	into 	|css=input#id_question |
+|user clicks and waits | css=span.datetimeshortcuts >a:contains('Today') |
+|user types | 23:59:59 | into |css=#id_expire_date_1  |
+|pause | 5000 |
+|user selects 	|label=${wsoctv} |	from |	css=#id_originating_site |
+|user types 	|588 	|into |	css=#id_primary_category |
+|user types 	|Yes |	into 	|css=input#id_choices-0-choice |
+|user types 	|No |	into 	|css=input#id_choices-1-choice |
+|user types 	|Maybe |	into 	|css=input#id_choices-2-choice |
+|user clicks and waits| 	css=input[name='_continue']|
+| pause | 10000 |
+|user |ensure |	existence of text | was added successfully. You may edit it again below. |
+|user | reject | existence of text | The page could not be found |
+| user clicks and waits | css=a:contains('View on site') |
+| selectWindow | !-$typeText | -!${wsoctv} |
+| user | reject | existence of text | The page could not be found |
+| pause | 10000 |
+| user clicks | //p[@class='choice']/input |
+| pause | 10000 |
+| user clicks and waits | css=input[type="submit"] |
+| pause | 50000 |
+| user | ensure | existence of text | Thank you for voting! |
+| pause | 5000 |
+| reject | isElementPresent | css=input[value='Vote']  |
+| user | reject | existence of text | The page could not be found |

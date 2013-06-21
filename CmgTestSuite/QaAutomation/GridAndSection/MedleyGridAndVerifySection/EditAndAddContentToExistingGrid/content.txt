@@ -1,0 +1,51 @@
+!|script|
+|$FileName=|getEval|"C:\\\\CreateNewGrid .txt"|
+|$sTime1=|getEval|var file = Components.classes["@mozilla.org/file/local;1"] .createInstance(Components.interfaces.nsILocalFile); file.initWithPath("$FileName");if ( file.exists() == false ) { alert("File does not exist"); }  var is = Components.classes["@mozilla.org/network/file-input-stream;1"] .createInstance( Components.interfaces.nsIFileInputStream ); is.init( file,0x01, 00004, null);var sis = Components.classes["@mozilla.org/scriptableinputstream;1"] .createInstance( Components.interfaces.nsIScriptableInputStream ); sis.init( is );sis.read( sis.available() );|
+| user opens | http://www.${env}.daytondailynews.com/admin/ |
+| pause | 5000 |
+| user types | cmgtester1@coxinc.com | into |id=capture_signIn_traditionalSignIn_emailAddress|
+| user types | cmgtest3r | into | id=capture_signIn_traditionalSignIn_password |
+| user clicks | id=capture_signIn_traditionalSignIn_signInButton |
+| pause | 15000|
+| user clicks and waits | css=a[href='/admin/grids/grid/'] |
+| user types | Automated Medley Grid $sTime1 | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause | 3000 |
+| user clicks and waits | link=Automated Medley Grid $sTime1 |
+| user clicks | link=Add another Grid Area |
+| pause|3000|
+| user types | Third Party Tease $sTime1| into | //input[@id='id_areas-6-heading'] |
+| user selects | 100% | from | //select[contains(@id, '6-width')] |
+| user selects | Third Party Tease | from | //select[contains(@id,  '6-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-6-object_id'] |
+| user waits for Pop Up | !-Select third party tease | Medley-! | for | 15000 |
+| pause | 15000 |
+| selectWindow |  !-Select third party tease | Medley-! |
+| pause | 10000 |
+| user types | marcomm box | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} | 
+| selectWindow | null |
+| user clicks |//div[@id='areas-6']/div/div[3]/input|
+| pause|3000|
+| user clicks | link=Add another Grid Area |
+| pause|3000|
+| user types | Special Tease $sTime1 | into | //input[@id='id_areas-7-heading'] |
+| user selects | 100% | from | //select[contains(@id, '7-width')] |
+| user selects | Special Tease | from | //select[contains(@id,  '7-content_type')] |
+| user clicks | //a[@id='lookup_id_areas-7-object_id'] |
+| user waits for Pop Up | !-Select special tease | Medley-! | for | 15000 |
+| pause | 15000 |
+| selectWindow |  !-Select special tease | Medley-! |
+| pause | 10000 |
+| user types | Monster Search Console | into | //input[@id='searchbar']	|
+| user clicks and waits | //x:div/x:input[2] |
+| user clicks | link=All |
+| pause|3000|
+| user clicks | ${firstObjectOnListLink} | 
+| selectWindow | null |
+| user clicks |//div[@id='areas-7']/div/div[3]/input|
+| pause|10000|
+| user clicks and waits | _continue |
+| pause | 30000 |

@@ -1,0 +1,54 @@
+!| script |
+| user opens | http://test.www.k92fm.com/ |
+| $TRAFFIC= | captureNetworkTraffic | plain |
+| containsSubstring; | $TRAFFIC | Omniture DC/2.0.0 |
+| containsSubstring; | $TRAFFIC | pageName=http%3A%2F%2Ftest.www.k92fm.com%2F |
+| containsSubstring; | $TRAFFIC | events=event1 |
+| containsSubstring; | $TRAFFIC | h1=fl%3A%20orlando%7Cradio%7Cwwka-fm |
+| containsSubstring; | $TRAFFIC | h2=radio%7Cfl%3A%20orlando%7Cwwka-fm |
+| containsSubstring; | $TRAFFIC | c1=1057 |
+| containsSubstring; | $TRAFFIC | c7=24 |
+| containsSubstring; | $TRAFFIC | v7=24 |
+| containsSubstring; | $TRAFFIC | v12=1057 |
+| containsSubstring; | $TRAFFIC | c16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c13=k92fm.com%20%7C%20test.www.k92fm.com |
+| containsSubstring; | $TRAFFIC | v13=k92fm.com%20%7C%20test.www.k92fm.com |
+| containsSubstring; | $TRAFFIC | v16=non-mobile%20site |
+| containsSubstring; | $TRAFFIC | c18=First%20Visit |
+| containsSubstring; | $TRAFFIC | v18=First%20Visit |
+| containsSubstring; | $TRAFFIC | c19=New |
+| containsSubstring; | $TRAFFIC | v19=New |
+| containsSubstring; | $TRAFFIC | c20=1 |
+| containsSubstring; | $TRAFFIC | v20=1 |
+| containsSubstring; | $TRAFFIC | c22=homepage |
+| containsSubstring; | $TRAFFIC | v22=homepage |
+| containsSubstring; | $TRAFFIC | c42=wwka-fm |
+| containsSubstring; | $TRAFFIC | v42=wwka-fm |
+| containsSubstring; | $TRAFFIC | c43=country |
+| containsSubstring; | $TRAFFIC | v43=country |
+| containsSubstring; | $TRAFFIC | v55=http%3A%2F%2Ftest.www.k92fm.com%2F |
+
+#| containsSubstring; | $TRAFFIC | c2=7fa75d61-2328-4eef-9229-94be67 |
+#| containsSubstring; | $TRAFFIC | v2=7fa75d61-2328-4eef-9229-94be67 |
+#| containsSubstring; | $TRAFFIC | c3=7175 |
+#| containsSubstring; | $TRAFFIC | v3=7175 |
+#| containsSubstring; | $TRAFFIC | c4=962zc |
+#| containsSubstring; | $TRAFFIC | v4=962zc |
+#| containsSubstring; | $TRAFFIC | c5=30075 |
+#| containsSubstring; | $TRAFFIC | v5=30075 |
+#| containsSubstring; | $TRAFFIC | c6=62896 |
+#| containsSubstring; | $TRAFFIC | v6=62896 |
+#| containsSubstring; | $TRAFFIC | c14=home |
+#| containsSubstring; | $TRAFFIC | v14=home |
+#| containsSubstring; | $TRAFFIC | ch=online |
+#| containsSubstring; | $TRAFFIC | h3=online%7Chome |
+
+#| open | ${oldTestURL} |
+#| captureTraffic |
+#| clickAndWait | //a[@class='wt_rt_001P'] |
+#| captureTraffic |
+#| user | reject | web trends | =undefined |
+#| user | ensure | web trends | WT.cg_n=apartments_apartments |
+#| user | ensure | web trends | clicktype=mobile_footer |
+
+#| $TRAFFIC= | captureNetworkTraffic | plain |

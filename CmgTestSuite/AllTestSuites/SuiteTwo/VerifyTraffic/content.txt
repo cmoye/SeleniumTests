@@ -1,0 +1,24 @@
+!|script                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|user opens           |http://${wsbradio}/traffic/                                                                                                                                                                                                                                                                                                                                                               |
+|pause                |10000 |
+|ensure|isElementPresent|css=div.cmBreadcrumb>ul>li>a:contains("Home")|
+|ensure|isElementPresent|css=div.cmBreadcrumb>ul>li:contains("Traffic")|
+|ensure|isElementPresent|css=html body#cmBaseBody.maps div.cmMainContainer div.cmContainer9 div.cmBodyWrap div.cmCol6 div#cmTrafficMap div#cmTraffic|
+|ensure|isElementPresent|css=html body#cmBaseBody.maps div.cmMainContainer div.cmContainer9 div.cmBodyWrap div.cmCol6 div#cmTrafficMap div#cmTrafficSpeed.cmClearfix div.cmTrafficTitle p:contains("Live Traffic")|
+|ensure|isElementPresent|//a[contains(@href,'#cmTrafficTriptime')]|
+|ensure|isElementPresent|//a[contains(@href,'#cmTrafficIncidents')]|
+| user clicks  | link=Incidents |
+|pause                |5000 |
+|ensure|isElementPresent|css=div.cmTabbedContainer>div#cmTrafficIncidents.cmTabbedModuleTabs>div#cmIncidents>form>select#selectIncident|
+|user selects|label=All Routes|from|id=selectIncident|
+| user clicks  | link=Trip Times |
+|pause                |5000 |
+|ensure|isElementPresent|css=div.cmTabbedContainer>div#cmTrafficTriptime.cmTabbedModuleTabs>form>select#selectTriptime|
+|user selects|label=All Trip Times|from|id=selectTriptime|
+| user | reject | existence of text | The page could not be found |
+|close;                                                                                                                                                                                                                                                                                         |
+
+
+
+
+

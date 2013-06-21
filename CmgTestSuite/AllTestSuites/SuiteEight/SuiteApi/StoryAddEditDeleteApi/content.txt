@@ -1,0 +1,51 @@
+!| script                                                                                                                           |
+|user opens            |http://${wsbradio}/admin/                                                                         |
+|pause                 |10000                                                                                                       |
+|user types            |cmgtester                    |into|//input[@id='id_username']                                               |
+|user types            |cmgtest3r                    |into|//input[@id='id_password']                                               |
+|user clicks and waits |//input[@value='Log in']                                                                                    |
+|pause                 |15000                                                                                                        |
+|user clicks and waits |css=a[href='/admin/news/medleystory/']                                                                  |
+|user clicks and waits |link=www.test.wsbradio.com|
+|pause|20000|
+|user clicks and waits |link=Live|
+|pause|15000|
+| user clicks and waits | ${firstObjectOnListLink} |
+|$DeleteStory= |getEval   |var d=new Date();"DeletedAutomation_API_TestStory" + d.getHours() + d.getMinutes() + d.getSeconds();                         |
+|user types            |$DeleteStory|into|css=input#id_headline                                                    |
+|user types            |APIAutomatedScript_DeletedStory_$DeleteStory|into|css=body#tinymce                                                         |
+|user types            |209                          |into|css=input#id_primary_category                                            |
+|user selects | Deleted | from | css=select#id_status |
+|user clicks and waits           |css=input[name='_save']                                                                                 |
+|pause                 |30000                                                                                                       |
+|ensure                |isTextPresent                |The story "$DeleteStory" was changed successfully. |
+|user | ensure | existence of text | Select story to change |
+|user clicks and waits |link=www.test.wsbradio.com|
+|pause|20000|
+|user clicks and waits |link=Live|
+|pause|15000|
+| user clicks and waits| ${firstObjectOnListLink} |
+|$EditStory=|getEval | var d=new Date();"Test Automation Edited STORY " + d.getHours() + d.getMinutes() + d.getSeconds();  |
+|user types            |$EditStory|into|css=input#id_headline                                                    |
+|user types            |APIAutomatedScript_EditedStory_$EditStory|into|css=body#tinymce                                                         |
+|user types            |209                          |into|css=input#id_primary_category                                            |
+|user clicks and waits       |css=input[name='_save']                                                                                 |
+|pause                 |30000                                                                                                       |
+|ensure                |isTextPresent                |The story "$EditStory" was changed successfully. |
+|user | ensure | existence of text | Select story to change | 
+|user clicks and waits | link=Add story                                                                 |
+|pause                 |10000                                                                                                        |
+|user waits for text   |Add story                                                                                                   |
+|$Story= |getEval         |var d=new Date();"InitialAutomation_API_TestStory" + d.getHours() + d.getMinutes() + d.getSeconds();                         |
+|user types            |$Story                       |into|css=input#id_headline                                                    |
+| user selects | label=${wsbradio} | from | id_originating_site |
+|user types            |APIAutomatedScript_NewStory_$Story|into|css=body#tinymce                                                         |
+| user clicks | link=[209] AP |
+| pause | 15000|
+|user clicks and waits          |css=input[name='_save']                                                                                 |
+|pause                 |30000                                                                                                       |
+|ensure                |isTextPresent                | The story "$Story" was added successfully.  |
+| user | reject | existence of text | The page could not be found |
+|$FileName=|getEval|"C:\\\\StoryFile.txt"|
+|$StoryCheckPoints=|getEval|"$Story"+","+"$EditStory" +","+"$DeleteStory"|
+|getEval|var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile );file.initWithPath("$FileName"); if (!file.exists()) file.create(0x00, 0644); var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream); outputStream.init(file,0x02,00004,null);outputStream.write("$StoryCheckPoints","$StoryCheckPoints".length); outputStream.flush(); outputStream.close();||
